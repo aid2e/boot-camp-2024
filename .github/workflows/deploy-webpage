@@ -26,7 +26,8 @@ jobs:
         pip install -U jupyter-book
 
     - name: Build the Jupyter Book
-      run: jupyter-book build .
+      run: |
+        jupyter-book build AID2E-2024/AID2E-2024
 
     - name: Deploy to GitHub Pages
       run: |
