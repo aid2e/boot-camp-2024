@@ -1,6 +1,6 @@
 # Welcome to AID2E Boot Camp 2024
 
-This is the landing page for the AID2E Boot camp 2024 held from July 8 2024 to July 19 2024 at College of William & Mary. 
+This is the landing page for the AID2E Boot camp 2024 held from July 8 2024 to July 19 2024 at College of William & Mary. Working on the tutorials now
 
 ```{important}
 The week-1 lectures are scheduled to to take place at [1291 at Integrated Science Center (ISC) 540 landrum drive 23185](https://g.co/kgs/scy1jxD)
