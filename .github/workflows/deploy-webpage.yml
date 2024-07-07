@@ -28,7 +28,7 @@ jobs:
         pip install jupyter-book ghp-import
 
     - name: Build Jupyter Book
-      run: jupyter-book build .
+      run: jupyter-book build AID2E-2024/AID2E-2024
 
     - name: Deploy to GitHub Pages
       run: ghp-import -n -p -f _build/html -b webpage
