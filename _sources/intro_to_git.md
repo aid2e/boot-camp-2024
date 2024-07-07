@@ -59,3 +59,6 @@ A remote is a named reference to another Git repository. When you create a repo,
 Git operations are executed through commands like `git push` and `git pull`. Here, `git` is the command, and `push` or `pull` is the subcommand specifying the operation you want Git to perform. These subcommands are often accompanied by options, which are indicated with hyphens (-) or double hyphens (--), such as `git reset --hard`.
 
 These terms and others, like `push` and `pull`, will become clearer as you continue learning. Refer back to this glossary as needed to reinforce your understanding while you work through the module.
+
+## Installing `git`
+
