@@ -35,8 +35,9 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git clone --branch webpage https://github.com/${{ github.repository }} webpage
-        rsync -av --delete AID2E-2024/AID2E-2024/_build/html/ webpage/
         cd webpage
+        rm -rf *
+        cp -r AID2E-2024/AID2E-2024/_build/html/* webpage/
         git add .
         git commit -m 'Deploy Jupyter Book'
         git push origin webpage
