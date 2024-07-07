@@ -28,9 +28,11 @@ jobs:
         pip install jupyter-book ghp-import
 
     - name: Build Jupyter Book
-      run: jupyter-book build AID2E-2024/AID2E-2024
+      run: |
+        jupyter-book build AID2E-2024/AID2E-2024 --path-output ./
+        ls _build/html/
 
     - name: Deploy to GitHub Pages
-      run: ghp-import -n -p -f _build/html -b webpage
+      run: ghp-import -n -p -f _build/html -b webpage -r origin
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
