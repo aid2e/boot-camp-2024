@@ -62,3 +62,19 @@ These terms and others, like `push` and `pull`, will become clearer as you conti
 
 ## Installing `git`
 
+````{tab} Linux
+git comes default in Linux systems. In a terminal try out
+```tcsh
+git --version
+```
+````
+````{tab} MacOs
+git comes installed by default in MacOs systems. In a termnial try out 
+```zsh
+git --version
+```
+````
+````{tab} Windows
+* Download the executable from [https://git-scm.com/download/win](https://git-scm.com/download/win)
+````
+
