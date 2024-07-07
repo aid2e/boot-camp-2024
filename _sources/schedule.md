@@ -9,3 +9,7 @@
 | Wednesday | Introduction to Gaussian Process Regression         | Gaussian Process Regression Practical             | Introduction to Monte Carlo-based integration methods | Monte Carlo-based integration methods Practical |
 | Thursday  | Introduction to the EIC and ePIC software frameworks | eic-shell, epic, EICrecon, edm4eic                 | Debugging techniques                               | Debugging Practical                               |
 | Friday    | Multi-Objective Evolutionary Optimization           | Evolutionary Optimization Practical               | Multi-Objective Bayesian Optimization              | Bayesian Optimization Practical                   |
+
+## Week 2
+
+We will be working on projects in Week 2
