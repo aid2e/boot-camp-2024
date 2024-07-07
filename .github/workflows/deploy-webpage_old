@@ -5,17 +5,15 @@ on:
     branches:
       - webpage-src
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout source branch
       uses: actions/checkout@v2
+      with:
+        ref: webpage-src
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -25,12 +23,17 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install jupyter-book ghp-import
+        pip install -U jupyter-book
 
-    - name: Build Jupyter Book
-      run: jupyter-book build .
-
+    - name: Build the Jupyter Book
+      run: |
+        jupyter-book build AID2E-2024/AID2E-2024
+    
+  deploy:
     - name: Deploy to GitHub Pages
-      run: ghp-import -n -p -f _build/html -b webpage
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: actions/deploy-pages@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: webpage
+        folder: AID2E-2024/AID2E-2024/_build/html
+
