@@ -18,7 +18,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.12.4'
 
     - name: Install dependencies
       run: |
@@ -29,12 +29,13 @@ jobs:
       run: |
         jupyter-book build AID2E-2024/AID2E-2024
 
+
     - name: Deploy to GitHub Pages
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git clone --branch webpage https://github.com/${{ github.repository }} webpage
-        rsync -av --delete _build/html/ webpage/
+        rsync -av --delete AID2E-2024/AID2E-2024/_build/html/ webpage/
         cd webpage
         git add .
         git commit -m 'Deploy Jupyter Book'
