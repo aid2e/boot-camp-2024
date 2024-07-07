@@ -448,6 +448,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">Installing <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-git">Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -525,23 +526,55 @@ document.write(`
 <h2>Installing <code class="docutils literal notranslate"><span class="pre">git</span></code><a class="headerlink" href="#installing-git" title="Link to this heading">#</a></h2>
 <div class="tab-set docutils">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Linux</label><div class="tab-content docutils">
-<p>git comes default in Linux systems. In a terminal try out</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span></code> comes default in Linux systems. In a terminal try out</p>
 <div class="highlight-tcsh notranslate"><div class="highlight"><pre><span></span>git --version
 </pre></div>
 </div>
+<p>If <code class="docutils literal notranslate"><span class="pre">git</span></code> is not installed by default, then open a terminal and try to install <code class="docutils literal notranslate"><span class="pre">git</span></code> as</p>
+<ul class="simple">
+<li><p>If Debian/Ubuntu based distributions <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span> <span class="pre">&amp;&amp;</span> <span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">git</span></code></p></li>
+<li><p>If Fedora based distributions <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">git</span></code></p></li>
+<li><p>If Arch based distributions <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pacman</span> <span class="pre">-S</span> <span class="pre">git</span></code></p></li>
+</ul>
 </div>
 <input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">MacOs</label><div class="tab-content docutils">
 <p>git comes installed by default in MacOs systems. In a termnial try out</p>
 <div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
 </pre></div>
 </div>
+<p>If <code class="docutils literal notranslate"><span class="pre">git</span></code> is not installed by default, then open a terminal and try to install <code class="docutils literal notranslate"><span class="pre">git</span></code> as</p>
+<ul class="simple">
+<li><p>Installing using <code class="docutils literal notranslate"><span class="pre">brew</span></code> installer <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
+<li><p>Alternatively, you can install using Xcode command line tools as <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code></p></li>
+</ul>
 </div>
 <input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Windows</label><div class="tab-content docutils">
 <ul class="simple">
 <li><p>Download the executable from <a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p></li>
+<li><p>Run the installer and follow the on-screen instructions.</p></li>
+<li><p>Use the default settings unless you have specific requirements.</p></li>
+<li><p>Once installed open <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> and check out the version <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code></p></li>
 </ul>
 </div>
 </div>
+</section>
+<section id="configuring-your-git">
+<h2>Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code><a class="headerlink" href="#configuring-your-git" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Open your terminal.</p></li>
+<li><p>Set your username:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your username&quot;</span>
+</pre></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Do not get confused between <code class="docutils literal notranslate"><span class="pre">git</span></code> and <code class="docutils literal notranslate"><span class="pre">GitHub</span></code>. Git is a distributed version control system primarily used for tracking changes in source code during software development. It allows multiple developers to collaborate on projects and manage their revisions efficiently. Git operates locally on your computer, meaning you can work on projects offline and commit changes to your local repository.</p>
+<p>GitHub, on the other hand, is a web-based platform that provides hosting for Git repositories. It adds a layer of collaboration features on top of Git. GitHub allows you to store your Git repositories in the cloud, making it easier for teams to work together on projects. It provides tools for code review, issue tracking, project management, and integration with other services. GitHub also serves as a platform for open-source community contributions, enabling developers worldwide to share and contribute to projects.</p>
+</div>
+</aside>
 </section>
 </section>
 
@@ -622,6 +655,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">Installing <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-git">Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
 </ul>
   </nav></div>
 

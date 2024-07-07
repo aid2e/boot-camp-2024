@@ -63,18 +63,44 @@ These terms and others, like `push` and `pull`, will become clearer as you conti
 ## Installing `git`
 
 ````{tab} Linux
-git comes default in Linux systems. In a terminal try out
+`git` comes default in Linux systems. In a terminal try out
 ```tcsh
 git --version
 ```
+If `git` is not installed by default, then open a terminal and try to install `git` as 
+* If Debian/Ubuntu based distributions `sudo apt update && sudo apt install git`
+* If Fedora based distributions `sudo dnf install git`
+* If Arch based distributions `sudo pacman -S git`
 ````
 ````{tab} MacOs
 git comes installed by default in MacOs systems. In a termnial try out 
 ```zsh
 git --version
 ```
+If `git` is not installed by default, then open a terminal and try to install `git` as 
+* Installing using `brew` installer `brew install git`.
+* Alternatively, you can install using Xcode command line tools as `xcode-select --install`
 ````
 ````{tab} Windows
 * Download the executable from [https://git-scm.com/download/win](https://git-scm.com/download/win)
+* Run the installer and follow the on-screen instructions.
+* Use the default settings unless you have specific requirements.
+* Once installed open `cmd.exe` and check out the version `git --version`
+````
+
+## Configuring your `git`
+
+1. Open your terminal.
+2. Set your username: 
+```bash
+git config --global user.name "Your username"
+```
+
+````{margin}
+```{important}
+Do not get confused between `git` and `GitHub`. Git is a distributed version control system primarily used for tracking changes in source code during software development. It allows multiple developers to collaborate on projects and manage their revisions efficiently. Git operates locally on your computer, meaning you can work on projects offline and commit changes to your local repository.
+
+GitHub, on the other hand, is a web-based platform that provides hosting for Git repositories. It adds a layer of collaboration features on top of Git. GitHub allows you to store your Git repositories in the cloud, making it easier for teams to work together on projects. It provides tools for code review, issue tracking, project management, and integration with other services. GitHub also serves as a platform for open-source community contributions, enabling developers worldwide to share and contribute to projects.
+```
 ````
 
