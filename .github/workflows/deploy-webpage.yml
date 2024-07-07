@@ -29,16 +29,9 @@ jobs:
       run: |
         jupyter-book build AID2E-2024/AID2E-2024
 
-
     - name: Deploy to GitHub Pages
-      run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git clone --branch webpage https://github.com/${{ github.repository }} 
-        cd ${{ github.repository_name }}
-        rm -rf *
-        cp -r ../AID2E-2024/AID2E-2024/_build/html/* ./
-        git add .
-        git commit -m 'Deploy Jupyter Book'
-        git push origin webpage
+      uses: actions/deploy-pages@v4
+      with:
+        branch: webpage
+        folder: AID2E-2024/AID2E-2024/_build/html
 
