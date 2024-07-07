@@ -448,7 +448,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">Installing <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-git">Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-git">Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-alternatives-to-store-pat">A few alternatives to store PAT</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -560,21 +563,103 @@ document.write(`
 </section>
 <section id="configuring-your-git">
 <h2>Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code><a class="headerlink" href="#configuring-your-git" title="Link to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Note this could be your GitHub username or other services like <a class="reference external" href="https://GitLab.com">GitLab</a>, <a class="reference external" href="https://bitbucket.org/">Bitbucket</a> etc. Check out the 10 alternatives to <code class="docutils literal notranslate"><span class="pre">GitHub</span></code> <a class="reference external" href="https://www.softwaretestinghelp.com/github-alternatives/">here</a>. We will look closely into GitHub for this tutorial.</p>
+</div>
+</aside>
+<p>We shall try to configure your credentials to git. Note that we are using GitHub for hosting for remote repository. Make sure to have your an account created and signed up at <a class="reference external" href="https://github.com">GitHub</a>.</p>
 <ol class="arabic simple">
 <li><p>Open your terminal.</p></li>
-<li><p>Set your username:</p></li>
+<li><p>Set your username💻:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your username&quot;</span>
 </pre></div>
 </div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
+<ol class="arabic simple" start="3">
+<li><p>Set your email📧:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;your.email@example.com&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Check your configuration using</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--list
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>Personal Access Tokens (PAT)</strong>: In order to use password in GitHub Command Line Interface (CLI), one have to use tokens.</p>
+<ul class="simple">
+<li><p>Go to <a class="github reference external" href="https://github.com/settings/tokens">settings/tokens</a>, Login is required for this step.</p></li>
+<li><p>Click on “Generate new token” -&gt; “Generate new token (classic)”.</p></li>
+<li><p>Give your token a descriptive name. For eg. one could use a token for performing pushes to certain respository.</p></li>
+<li><p>Select the scopes or permissions you’d like to grant this token. For typical Git operations, the following scopes are recommended: <code class="docutils literal notranslate"><span class="pre">repo</span></code>, <code class="docutils literal notranslate"><span class="pre">write:packages</span></code>, <code class="docutils literal notranslate"><span class="pre">workflow</span></code>, <code class="docutils literal notranslate"><span class="pre">read:packages</span></code>, <code class="docutils literal notranslate"><span class="pre">delete:packages</span></code>, <code class="docutils literal notranslate"><span class="pre">admin:repo_hook</span></code>.</p></li>
+<li><p>Click on “Generate token”</p></li>
+<li><p>You will see a token has been generated with. Usually it looks like <code class="docutils literal notranslate"><span class="pre">ghp_*</span></code>. Copy this as this will be used as <code class="docutils literal notranslate"><span class="pre">passwords</span></code> when prompted.</p></li>
+<li><p>In order to securely store the credentials you can store it in the global configuration file. The next time you perform an action that requires authentication, Git will prompt you for your PAT and store it in plaintext in a file under your home directory (~/.git-credentials).</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span>store
+</pre></div>
+</div>
+<section id="a-few-alternatives-to-store-pat">
+<h3>A few alternatives to store PAT<a class="headerlink" href="#a-few-alternatives-to-store-pat" title="Link to this heading">#</a></h3>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">Using environemental variables</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>Open your terminal</p></li>
+<li><p>Set your PAT as an environmental variable</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">GITHUB_TOKEN</span><span class="o">=</span>your_personal_access_token
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Use the environment variable in your Git commands:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://<span class="nv">$GITHUB_TOKEN</span>@github.com/username/repo.git
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">Using Git Credential Manager</label><div class="tab-content docutils">
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">Windows and macOS</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>Git for Windows includes the Git Credential Manager by default. On macOS, you can install it using Homebrew:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>tap<span class="w"> </span>microsoft/git
+brew<span class="w"> </span>install<span class="w"> </span>--cask<span class="w"> </span>git-credential-manager-core
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">Linux</label><div class="tab-content docutils">
+<ol class="arabic simple">
+<li><p>Install the Git Credential Manager Core:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git-credential-manager-core
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Configure Git to use the Credential Manager:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>credential.helper<span class="w"> </span>manager-core
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Do not get confused between <code class="docutils literal notranslate"><span class="pre">git</span></code> and <code class="docutils literal notranslate"><span class="pre">GitHub</span></code>. Git is a distributed version control system primarily used for tracking changes in source code during software development. It allows multiple developers to collaborate on projects and manage their revisions efficiently. Git operates locally on your computer, meaning you can work on projects offline and commit changes to your local repository.</p>
 <p>GitHub, on the other hand, is a web-based platform that provides hosting for Git repositories. It adds a layer of collaboration features on top of Git. GitHub allows you to store your Git repositories in the cloud, making it easier for teams to work together on projects. It provides tools for code review, issue tracking, project management, and integration with other services. GitHub also serves as a platform for open-source community contributions, enabling developers worldwide to share and contribute to projects.</p>
 </div>
-</aside>
+<p>Now, let us proceed into Excersise now.</p>
+</section>
 </section>
 </section>
 
@@ -655,7 +740,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">Installing <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-git">Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-your-git">Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-few-alternatives-to-store-pat">A few alternatives to store PAT</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
