@@ -42,7 +42,7 @@ git init
    type="text/javascript"
    src="https://utteranc.es/client.js"
    async="async"
-   repo="executablebooks/jupyter-book"
+   repo="aid2e/boot-camp-2024"
    issue-term="git-course-exercise-1"
    theme="github-dark"
    label="💬 git-ex-1"
