@@ -6,8 +6,9 @@ When working with HPC systems, you often need to connect to a front-end node (al
 The Figure is taken from [Lectures on HPC given at W&M by research computing team](https://www.wm.edu/offices/it/services/researchcomputing/using/tutorials/)
 ```
 
-![alt text](../../images/intro-to-HPC/WM_HPC_login.png)
-
+```{tip}
+SSH (Secure Shell) is a protocol used to securely connect to remote servers. In this case, you need to connect to an intermediate server first, and then from there, connect to the front-end node. This is like making a stopover at an intermediate airport before reaching your final destination.
+```
 ## Prerequisites
 - SSH client installed on your local machine.
 - Access credentials (username and password or SSH key) for both the intermediate server and the front-end node.
