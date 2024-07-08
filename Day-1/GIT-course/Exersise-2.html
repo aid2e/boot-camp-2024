@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.2. Exercise 2: Working collaboratively &#8212; AID2E-Boot-Camp-2024</title>
+    <title>2.2. Exercise 2: Commits, push and branches &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -232,9 +232,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2"><a class="reference internal" href="git_configure.html">1.3. Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="git_exercises.html">2. Exercises for <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="git_exercises.html">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Exersise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. Exercise 2: Working collaboratively</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.2. Exercise 2: Commits, push and branches</a></li>
 </ul>
 </details></li>
 </ul>
@@ -434,7 +434,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -445,11 +447,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 2: Working collaboratively</h1>
+    <h1>Exercise 2: Commits, push and branches</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-commit">2.2.1. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-push">2.2.2. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">2.2.3. Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-merge">2.2.4. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -459,9 +472,134 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-working-collaboratively">
-<h1><span class="section-number">2.2. </span>Exercise 2: Working collaboratively<a class="headerlink" href="#exercise-2-working-collaboratively" title="Link to this heading">#</a></h1>
-<p>In this exercise, you will learn the how to work on git within a collaboration. You will be cloning a repository and create your new branch. Then we will try to create a pull request. Request review as well as merge the request.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-commits-push-and-branches">
+<h1><span class="section-number">2.2. </span>Exercise 2: Commits, push and branches<a class="headerlink" href="#exercise-2-commits-push-and-branches" title="Link to this heading">#</a></h1>
+<p>In this exercise, you will learn how commits can be reset and the idea of branching. We will be using the repo that you had created from our previous exercise.</p>
+<section id="git-commit">
+<h2><span class="section-number">2.2.1. </span><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code><a class="headerlink" href="#git-commit" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Navigate to the repository in your terminal and list the contents in the directory.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>my-first-git-repo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ls
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Before making any changes, it’s a good practice to check the status of your repository to see which files are tracked and which are not.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>status
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Check out the commit history of your git repo</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Let us try to add more files and modify the exisiting files</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;This is another file. I am </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2"> and I am doing great in learning about git&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>second_file.txt
+cat<span class="w"> </span>second_file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Add this to staging in your the git repo</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>second_file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Now that the file is staged, you can commit the changes. A commit is a snapshot of your repository at a specific point in time.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add second_file.txt with initial content&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Oh… but now say we need to modify the file <code class="docutils literal notranslate"><span class="pre">first_file.txt</span></code>. So lets do add another line to it.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; This is another line of content in the first_file.txt &quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>first_file.txt
+cat<span class="w"> </span>first_file.txt
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Try this</p>
+<p>Can you add and commit these changes?</p>
+</div>
+<ul class="simple">
+<li><p>Lets check out the commit logs</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The commits we make here are local commits. These may not neccesarily transalte to remote repository. The remote repository gets updated with all commit history only when you do push it.</p>
+</div>
+</section>
+<section id="git-push">
+<h2><span class="section-number">2.2.2. </span><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code><a class="headerlink" href="#git-push" title="Link to this heading">#</a></h2>
+<p>Now let us push these changes to the remote repository.</p>
+<ul class="simple">
+<li><p>Check the remote repository that and how its corresponding alias naming and past actions so far. You can do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">remote</span> <span class="pre">--help</span></code> to get the a detailed manual on its usage.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>-v
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Now let us push these changes to the remote repository. The git push command uploads your local commits to the remote repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>--set-upstream<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* --set-upstream: This option sets the upstream (tracking) reference for the branch.
+* origin: This is the name of the remote repository.
+* main: This is the name of the branch you want to push. In this case the name of the branch is `main`
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>After pushing, you can verify that your changes are on the remote repository by visiting the repository URL in your web browser or by using:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>log<span class="w"> </span>origin/main
+</pre></div>
+</div>
+</section>
+<section id="branches">
+<h2><span class="section-number">2.2.3. </span>Branches<a class="headerlink" href="#branches" title="Link to this heading">#</a></h2>
+<p>A branch in Git is a lightweight movable pointer to a commit. The default branch in a new repository is called <code class="docutils literal notranslate"><span class="pre">main</span></code>. When you create a new branch, you’re creating a new pointer to a specific commit.</p>
+<ul class="simple">
+<li><p>You can list exisiting branches in the repo using the following command. The current branch will be highlighted with an asterisk (*).</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To create a new branch, use the git branch command followed by the name of the new branch. For eg. To cerate a new branch with the name new-feature</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>branch<span class="w"> </span>new-feature
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>To switch to the new branch, use the git checkout command followed by the branch name:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>new-feature.<span class="w"> </span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One can also simply do <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">&lt;branch-name&gt;</span></code> to switch to the new branch. This command will create the branch if it is not exisiting already.</p>
+</div>
+<ul class="simple">
+<li><p>Now that you’re on the new branch, you can make changes and commit them. These changes will only affect the feature-1 branch.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Some new feature&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>feature.txt
+git<span class="w"> </span>add<span class="w"> </span>feature.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add feature.txt with some new feature&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="git-merge">
+<h2><span class="section-number">2.2.4. </span><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code><a class="headerlink" href="#git-merge" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -518,6 +656,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-commit">2.2.1. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-push">2.2.2. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branches">2.2.3. Branches</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-merge">2.2.4. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

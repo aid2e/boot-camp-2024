@@ -98,7 +98,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/Exersise-1.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.2. Exercise 2: Working collaboratively" href="Exersise-2.html" />
+    <link rel="next" title="2.2. Exercise 2: Commits, push and branches" href="Exersise-2.html" />
     <link rel="prev" title="2. Exercises for git" href="git_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -234,7 +234,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="git_exercises.html">2. Exercises for <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Exercise 1: Basic Git Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Exersise-2.html">2.2. Exercise 2: Working collaboratively</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Exersise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
 </ul>
 </details></li>
 </ul>
@@ -480,9 +480,12 @@ document.write(`
 <p>This is going to be our remote repository to which we will be uploading our projects.</p>
 <ul class="simple">
 <li><p>Go to GitHub and create a new repository named <code class="docutils literal notranslate"><span class="pre">my-first-git-project</span></code>.</p></li>
-<li><p><strong>Do not</strong> initialize it with a README, .gitignore, or license. We will be creating a private repository so that we will be using the personal access tokens as well.</p></li>
 </ul>
 <p><img alt="creating repo" src="../../_images/create-repo.png" /></p>
+<ul class="simple">
+<li><p><strong>Do not</strong> initialize it with a README, .gitignore, or license. We will be creating a private repository so that we will be using the personal access tokens as well.</p></li>
+</ul>
+<p><img alt="New repo creation" src="../../_images/new-repo.png" /></p>
 </section>
 <section id="initialize-a-new-local-git-repository">
 <h2><span class="section-number">2.1.2. </span>Initialize a new local <code class="docutils literal notranslate"><span class="pre">git</span></code> repository<a class="headerlink" href="#initialize-a-new-local-git-repository" title="Link to this heading">#</a></h2>
@@ -499,7 +502,7 @@ document.write(`
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Initialize a <code class="docutils literal notranslate"><span class="pre">git</span></code> repository</p></li>
+<li><p>Initialize a <code class="docutils literal notranslate"><span class="pre">git</span></code> repository. This should create a directory named <code class="docutils literal notranslate"><span class="pre">.git</span></code> within this folder.</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
 </pre></div>
@@ -526,28 +529,28 @@ document.write(`
 <section id="add-contents-to-the-local-repo">
 <h2><span class="section-number">2.1.4. </span>Add contents to the local repo<a class="headerlink" href="#add-contents-to-the-local-repo" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>Let us add contents to the repo and to the remote git repo at GitHub</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, Git My Name is </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">!&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hello.txt
-git<span class="w"> </span>add<span class="w"> </span>hello.txt
+<li><p>Let us add contents to the repo and stage it for a commit.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, Git My Name is </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">!&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>first_file.txt
+git<span class="w"> </span>add<span class="w"> </span>first_file.txt
 </pre></div>
 </div>
 </li>
 </ul>
-<p>you can also specific a directory to be included as well. Also, you can include all the files by specifying the option <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code></p>
+<p>you can also specific a directory to be included as well. Also, you can include all the files by specifying the option <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code>, to list down a complete usage of <code class="docutils literal notranslate"><span class="pre">add</span></code> try out <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">--help</span></code></p>
 <ul class="simple">
-<li><p>Let us commit this file to be staged.</p></li>
+<li><p>Let us commit this file to be pushed into the repo. This commit will now update the records in git that there has been a commit (or change) that had happended. This is like recording the history. The -m flag allows you to add a commit message directly from the command line. Commit messages should be concise yet descriptive.</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;My first commit message&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;My first commit message. Commit message has to short and meaningful&quot;</span>
 </pre></div>
 </div>
-<p>If you have not authenticated before it will ask you to authenticate yourself. Try out the steps we did during configuring <code class="docutils literal notranslate"><span class="pre">git</span></code></p>
+<p>If you have not authenticated before it will ask you to authenticate yourself with username and email. Try out the steps we did during configuring <code class="docutils literal notranslate"><span class="pre">git</span></code>. Note that this is because, the <code class="docutils literal notranslate"><span class="pre">.git</span></code> will record this as to who had made this commit.</p>
 <ul class="simple">
-<li><p>Now push the commit to the remote repository.</p></li>
+<li><p>Now push the commit to the remote repository to sync the remote and local repo.</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </pre></div>
 </div>
-<p>The command pushes the commit to origin in the branch main. Note, that if the branch name is not in the remote repository, then, it will create the repo in the remote repository as well.</p>
+<p>This may once again prompt for authentication. The command pushes the commit to origin in the branch main. Note, that if the branch name is not in the remote repository, then, it will create the branch in the remote repository as well.</p>
 <p>You can post a screenshot or your push action below in the comment section.</p>
 <script
    type="text/javascript"
@@ -605,7 +608,7 @@ git<span class="w"> </span>add<span class="w"> </span>hello.txt
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Exercise 2: Working collaboratively</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Exercise 2: Commits, push and branches</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -94,6 +94,23 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
+    <script>
+                window.addEventListener("load", function () {
+                  var svgs = d3.selectAll(".mermaid#id-6d8f0038-5881-4312-974a-debebc232485 svg");
+                  svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                      inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                  });
+                });
+                </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Day-1/GIT-course/git_basics';</script>
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/git_basics.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -234,7 +251,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="git_exercises.html">2. Exercises for <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Exersise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Exersise-2.html">2.2. Exercise 2: Working collaboratively</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Exersise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
 </ul>
 </details></li>
 </ul>
@@ -481,6 +498,25 @@ document.write(`
 <h1><span class="section-number">1.2. </span>What is Git?<a class="headerlink" href="#what-is-git" title="Link to this heading">#</a></h1>
 <p>Git was created by Linus Torvalds in 2005, the same individual who developed the Linux operating system. Since its inception, Git has been maintained by Junio Hamano, who has played a crucial role in its ongoing development and stability.</p>
 <p>To navigate the world of Git, it’s essential to familiarize yourself with its unique terminology. Here’s a concise glossary of terms that you’ll encounter frequently as you delve into Git. Don’t worry about grasping all the details immediately; these terms will become second nature as you progress through the exercises in this book.</p>
+<figure class="align-center" id="id1">
+<div id="id-6d8f0038-5881-4312-974a-debebc232485" class="mermaid">
+                gitGraph LR:
+       commit
+       commit
+       branch develop
+       commit
+       commit
+       checkout main
+       commit
+       commit
+       merge develop
+       commit
+       commit
+        </div>
+        <figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Example Git diagram</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <section id="working-tree">
 <h2><span class="section-number">1.2.1. </span><strong>Working Tree</strong><a class="headerlink" href="#working-tree" title="Link to this heading">#</a></h2>
 <p>The working tree consists of the nested directories and files that make up the project you are currently working on. Think of it as the active workspace where all your changes and edits occur.</p>
@@ -505,7 +541,7 @@ document.write(`
 </section>
 <section id="commit">
 <h2><span class="section-number">1.2.5. </span><strong>Commit</strong><a class="headerlink" href="#commit" title="Link to this heading">#</a></h2>
-<p>To commit, in Git terminology, means to create a commit object. This action is akin to committing changes to a database; it records your changes so that others can eventually see them.</p>
+<p>To commit, in Git terminology, means to create a commit object. This action is akin to committing changes to a database; it records your changes so that others can eventually see them. A commit in Git is a fundamental concept that represents a snapshot of your repository at a specific point in time. Each commit records changes to the files in your repository and includes metadata such as the author, date, and a commit message. Each commit has a unique identifier (SHA-1 hash)</p>
 </section>
 <section id="branch">
 <h2><span class="section-number">1.2.6. </span><strong>Branch</strong><a class="headerlink" href="#branch" title="Link to this heading">#</a></h2>
@@ -513,7 +549,7 @@ document.write(`
 </section>
 <section id="remote">
 <h2><span class="section-number">1.2.7. </span><strong>Remote</strong><a class="headerlink" href="#remote" title="Link to this heading">#</a></h2>
-<p>A remote is a named reference to another Git repository. When you create a repo, Git sets up a default remote named <code class="docutils literal notranslate"><span class="pre">origin</span></code> for push and pull operations.</p>
+<p>A remote is a named reference to another Git repository. When you create a repo, Git sets up a default remote named <code class="docutils literal notranslate"><span class="pre">origin</span></code> for push and pull operations. This can be changed as well.</p>
 </section>
 <section id="commands-subcommands-and-options">
 <h2><span class="section-number">1.2.8. </span><strong>Commands, Subcommands, and Options</strong><a class="headerlink" href="#commands-subcommands-and-options" title="Link to this heading">#</a></h2>

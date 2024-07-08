@@ -31,6 +31,20 @@ graph TD
     B --> E
 ```
 ````
+
+With a VCS, you gain several powerful capabilities:
+
+1. **Change Tracking**: See all changes made to your project, including when they were made and who made them. This historical record is invaluable for understanding the evolution of your project.
+   
+2. **Descriptive Changes**: Each change can include a message explaining the reasoning behind it. This makes it easier to understand the context and purpose of each modification.
+   
+3. **Version Retrieval**: Retrieve past versions of the entire project or individual files. This feature is essential for reverting to a known good state if something goes wrong or for simply reviewing past work.
+   
+4. **Branching and Merging**: Create branches to experiment with changes. Branching allows multiple sets of changes (such as new features or bug fixes) to be developed simultaneously, possibly by different team members. Once the changes are tested and validated, they can be merged back into the main branch.
+   
+5. **Tagging**: Attach tags to specific versions, such as marking a new release. Tags provide an easy way to identify and reference significant points in your project's history.
+
+By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.
 ````{div} full-width
 ```{mermaid}
 :zoom:
@@ -59,83 +73,3 @@ graph LR
     T1 --> T2(Marking a new release)
 ```
 ````
-
-```{mermaid}
-:zoom:
-graph TB
-    VCS(Version Control System)
-    VCS --> CT(Change Tracking)
-    VCS --> DC(Descriptive Changes)
-    VCS --> VR(Version Retrieval)
-    VCS --> BM(Branching and Merging)
-    VCS --> T(Tagging)
-    CT --> C1{See all changes}
-    C1 --> C2(When they were made)
-    C1 --> C3(Who made them)
-    DC --> D1{Each change can include a message}
-    D1 --> D2(Explaining the reasoning)
-    VR --> V1{Retrieve past versions}
-    V1 --> V2(Of the entire project)
-    V1 --> V3(Of individual files)
-    BM --> B1{Create branches to experiment}
-    B1 --> B2(Multiple sets of changes)
-    B2 --> B3(New features)
-    B2 --> B4(Bug fixes)
-    B1 --> B5{Once changes are tested and validated}
-    B5 --> B6(Merge back into the main branch)
-    T --> T1{Attach tags to specific versions}
-    T1 --> T2(Marking a new release)
-```
-
-```{mermaid}
-:zoom:
-classDiagram
-    VersionControlSystem -- ChangeTracking : has
-    VersionControlSystem -- DescriptiveChanges : has
-    VersionControlSystem -- VersionRetrieval : has
-    VersionControlSystem -- BranchingAndMerging : has
-    VersionControlSystem -- Tagging : has
-    ChangeTracking : +seeAllChanges()
-    ChangeTracking : +whenTheyWereMade()
-    ChangeTracking : +whoMadeThem()
-    DescriptiveChanges : +includeMessageWithEachChange()
-    DescriptiveChanges : +explainReasoning()
-    VersionRetrieval : +retrievePastVersions()
-    VersionRetrieval : +ofEntireProject()
-    VersionRetrieval : +ofIndividualFiles()
-    BranchingAndMerging : +createBranchesToExperiment()
-    BranchingAndMerging : +developMultipleSetsOfChanges()
-    BranchingAndMerging : +developNewFeatures()
-    BranchingAndMerging : +fixBugs()
-    BranchingAndMerging : +testAndValidateChanges()
-    BranchingAndMerging : +mergeBackIntoMainBranch()
-    Tagging : +attachTagsToSpecificVersions()
-    Tagging : +markNewRelease()
-```
-
-With a VCS, you gain several powerful capabilities:
-
-1. **Change Tracking**: See all changes made to your project, including when they were made and who made them. This historical record is invaluable for understanding the evolution of your project.
-   
-2. **Descriptive Changes**: Each change can include a message explaining the reasoning behind it. This makes it easier to understand the context and purpose of each modification.
-   
-3. **Version Retrieval**: Retrieve past versions of the entire project or individual files. This feature is essential for reverting to a known good state if something goes wrong or for simply reviewing past work.
-   
-4. **Branching and Merging**: Create branches to experiment with changes. Branching allows multiple sets of changes (such as new features or bug fixes) to be developed simultaneously, possibly by different team members. Once the changes are tested and validated, they can be merged back into the main branch.
-   
-5. **Tagging**: Attach tags to specific versions, such as marking a new release. Tags provide an easy way to identify and reference significant points in your project's history.
-
-By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.
-
-```{mermaid}
-graph TB
-    VCS(Version Control System)
-    VCS --> LVCS(Local VCS)
-    VCS --> CVCS(Centralized VCS)
-    VCS --> DVCS(Distributed VCS)
-    LVCS --> RCS(Revision Control System)
-    CVCS --> SVN(Subversion)
-    CVCS --> CVS(Concurrent Versions System)
-    DVCS --> Git
-    DVCS --> Mercurial
-```
