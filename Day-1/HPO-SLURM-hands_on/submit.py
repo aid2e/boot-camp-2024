@@ -53,9 +53,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output_dir', help='Output directory')
     parser.add_argument('--script_dir', type=str, help='Path to the script dir file')
-    parser.add_argument('--isSLURM', type=bool, help='is it slurm', default=False)
+    parser.add_argument('--isSLURM', type=str, help='is it slurm')
     parser.add_argument('--ncores', type=int, help='Number of cores', default=1)
     args = parser.parse_args()
+    args.isSLURM = bool(args.isSLURM)
     
     if (not os.path.exists(args.output_dir)):
         os.makedirs(args.output_dir)
@@ -68,5 +69,5 @@ if __name__ == '__main__':
     # Generate configurations
     with open(config_template) as f:
         configurations = json.load(f)
-    submit_slurm_job(configurations, args.output_dir)
+    submit_slurm_job(configurations, args.output_dir, args.isSLURM)
         
