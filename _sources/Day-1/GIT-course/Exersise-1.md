@@ -43,7 +43,7 @@ git init
    src="https://utteranc.es/client.js"
    async="async"
    repo="aid2e/boot-camp-2024"
-   issue-term="git-course-exercise-1"
+   issue-term="pathname"
    theme="github-dark"
    label="💬 git-ex-1"
    crossorigin="anonymous"
