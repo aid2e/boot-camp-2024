@@ -51,7 +51,3 @@ Despite its advantages, HPC also presents several challenges:
 
 In this chapter we shall go through how to use HPC resources through Simple Linux Utility for Resource Management (SLURM).
 William & Mary HPC has several nodes and manages its job execution through `SLURM` and `PBS`. Check out the properties for various nodes at College of William & Mary [here](https://www.wm.edu/offices/it/services/researchcomputing/hw/nodes/)
-
-```{tableofcontents}
-```
-

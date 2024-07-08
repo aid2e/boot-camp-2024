@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.6.1. SSH into a Front-End Node Using Proxy Jump &#8212; AID2E-Boot-Camp-2024</title>
+    <title>3.2. SSH into a Front-End Node Using Proxy Jump &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -99,7 +99,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Introduction to Optimization" href="../../Day-2/intro_to_python.html" />
-    <link rel="prev" title="3. High Performance Computing" href="intro_to_HPC.html" />
+    <link rel="prev" title="3.1. High Performance Computing" href="intro_to_HPC.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -241,8 +241,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to High Performance Computing (HPC)</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_HPC.html">3. High Performance Computing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.6.1. SSH into a Front-End Node Using Proxy Jump</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_HPC_HTC.html">3. Introduction to High Perforamance Computing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro_to_HPC.html">3.1. High Performance Computing</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.2. SSH into a Front-End Node Using Proxy Jump</a></li>
 </ul>
 </details></li>
 </ul>
@@ -461,11 +462,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">3.6.1.1. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guide">3.6.1.2. Step-by-Step Guide</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ssh-configuration">3.6.1.2.1. 1. Basic SSH Configuration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-proxyjump">3.6.1.2.2. 2. Using ProxyJump</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-configuration-file">3.6.1.2.3. 3. SSH configuration file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">3.2.1. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guide">3.2.2. Step-by-Step Guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ssh-configuration">3.2.2.1. 1. Basic SSH Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-proxyjump">3.2.2.2. 2. Using ProxyJump</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-configuration-file">3.2.2.3. 3. SSH configuration file</a></li>
 </ul>
 </li>
 </ul>
@@ -480,10 +481,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ssh-into-a-front-end-node-using-proxy-jump">
-<h1><span class="section-number">3.6.1. </span>SSH into a Front-End Node Using Proxy Jump<a class="headerlink" href="#ssh-into-a-front-end-node-using-proxy-jump" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3.2. </span>SSH into a Front-End Node Using Proxy Jump<a class="headerlink" href="#ssh-into-a-front-end-node-using-proxy-jump" title="Link to this heading">#</a></h1>
 <p>When working with HPC systems, you often need to connect to a front-end node (also known as a login node) through an intermediate server (proxy). This is common in secure environments where direct access to the front-end node is restricted. The <code class="docutils literal notranslate"><span class="pre">ProxyJump</span></code> option in SSH allows you to achieve this.</p>
 <section id="prerequisites">
-<h2><span class="section-number">3.6.1.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.2.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>SSH client installed on your local machine.</p></li>
 <li><p>Access credentials (username and password or SSH key) for both the intermediate server and the front-end node.</p></li>
@@ -491,9 +492,9 @@ document.write(`
 </ul>
 </section>
 <section id="step-by-step-guide">
-<h2><span class="section-number">3.6.1.2. </span>Step-by-Step Guide<a class="headerlink" href="#step-by-step-guide" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.2.2. </span>Step-by-Step Guide<a class="headerlink" href="#step-by-step-guide" title="Link to this heading">#</a></h2>
 <section id="basic-ssh-configuration">
-<h3><span class="section-number">3.6.1.2.1. </span>1. Basic SSH Configuration<a class="headerlink" href="#basic-ssh-configuration" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.2.2.1. </span>1. Basic SSH Configuration<a class="headerlink" href="#basic-ssh-configuration" title="Link to this heading">#</a></h3>
 <p>First, ensure you can SSH into the intermediate server:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>user@intermediate-server
 </pre></div>
@@ -504,14 +505,14 @@ document.write(`
 </div>
 </section>
 <section id="using-proxyjump">
-<h3><span class="section-number">3.6.1.2.2. </span>2. Using ProxyJump<a class="headerlink" href="#using-proxyjump" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.2.2.2. </span>2. Using ProxyJump<a class="headerlink" href="#using-proxyjump" title="Link to this heading">#</a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">-J</span></code> option with the ssh command to specify the intermediate server:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-J<span class="w"> </span>user@intermediate-server<span class="w"> </span>user@front-end-node
 </pre></div>
 </div>
 </section>
 <section id="ssh-configuration-file">
-<h3><span class="section-number">3.6.1.2.3. </span>3. SSH configuration file<a class="headerlink" href="#ssh-configuration-file" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.2.2.3. </span>3. SSH configuration file<a class="headerlink" href="#ssh-configuration-file" title="Link to this heading">#</a></h3>
 <p>To simplify the process, you can configure your SSH client to use the proxy jump by default. Edit your SSH configuration file (~/.ssh/config) and add the following entries:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>intermediate-server
 <span class="w">    </span>HostName<span class="w"> </span>intermediate-server.example.com
@@ -567,7 +568,7 @@ Host<span class="w"> </span>front-end-node
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>High Performance Computing</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>High Performance Computing</p>
       </div>
     </a>
     <a class="right-next"
@@ -595,11 +596,11 @@ Host<span class="w"> </span>front-end-node
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">3.6.1.1. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guide">3.6.1.2. Step-by-Step Guide</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ssh-configuration">3.6.1.2.1. 1. Basic SSH Configuration</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-proxyjump">3.6.1.2.2. 2. Using ProxyJump</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-configuration-file">3.6.1.2.3. 3. SSH configuration file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">3.2.1. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guide">3.2.2. Step-by-Step Guide</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ssh-configuration">3.2.2.1. 1. Basic SSH Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-proxyjump">3.2.2.2. 2. Using ProxyJump</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-configuration-file">3.2.2.3. 3. SSH configuration file</a></li>
 </ul>
 </li>
 </ul>
