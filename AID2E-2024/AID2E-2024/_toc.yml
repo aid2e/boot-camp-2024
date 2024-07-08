@@ -25,6 +25,7 @@ parts:
         - file: Day-1/GIT-course/Exercise-1
         - file: Day-1/GIT-course/Exercise-2
         - file: Day-1/GIT-course/Exercise-3
+        - file: Day-1/GIT-course/Exercise-4
 - caption: "Introduction to High Performance Computing (HPC)"
   numbered: true
   chapters:
