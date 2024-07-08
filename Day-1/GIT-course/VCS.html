@@ -99,7 +99,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
     <script>
                 window.addEventListener("load", function () {
-                  var svgs = d3.selectAll(".mermaid#id-4fa5ec43-d9ac-4976-839c-7fbdc75e9b0c svg, .mermaid#id-0cdf5e1e-5467-4a04-bbf9-58489536b64a svg");
+                  var svgs = d3.selectAll(".mermaid#id-c0bc718a-4d39-46bf-bd35-c98442447732 svg, .mermaid#id-69d02a5a-83a8-42b0-a80d-eca0c7ff24b0 svg");
                   svgs.each(function() {
                     var svg = d3.select(this);
                     svg.html("<g>" + svg.html() + "</g>");
@@ -256,12 +256,19 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </details></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using VS-Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../VS-code.html">Installing Visual Studio Code</a></li>
+
+
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to High Performance Computing (HPC)</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HPC-course/intro_to_HPC_HTC.html">3. Introduction to High Perforamance Computing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../HPC-course/intro_to_HPC.html">3.1. High Performance Computing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HPC-course/ssh_login.html">3.2. SSH into a Front-End Node Using Proxy Jump</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../HPC-course/file_systems_WM.html">3.3. William &amp; Mary Research Computing: File Systems Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../HPC-course/SLURM_commands.html">3.4. Introduction to SLURM</a></li>
 </ul>
 </details></li>
 </ul>
@@ -489,7 +496,7 @@ document.write(`
 <p>One of the primary goals of a VCS is to facilitate collaborative work. Imagine a team of developers working on the same project, perhaps even the same files, simultaneously. Without a VCS, their changes could easily conflict, leading to confusion and potential loss of work. A VCS allows multiple team members to collaborate seamlessly, ensuring that each person’s contributions are preserved and integrated without affecting others’ work.</p>
 <p>Another term often used interchangeably with VCS is Software Configuration Management (SCM) system. While version control is a critical component of SCM, SCM encompasses a broader range of practices and tools. Git, one of the most popular VCS tools, highlights this interchangeability in its official documentation, which can be found at <a class="reference external" href="http://git-scm.com">git-scm.com</a>. Although VCSs are predominantly used for software projects, their utility extends to other types of projects, such as books and online tutorials.</p>
 <div class="full-width docutils">
-<div id="id-4fa5ec43-d9ac-4976-839c-7fbdc75e9b0c" class="mermaid">
+<div id="id-c0bc718a-4d39-46bf-bd35-c98442447732" class="mermaid">
             graph TD
     subgraph Local VCS
         A[Local Repository]
@@ -521,7 +528,7 @@ document.write(`
 </ol>
 <p>By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.</p>
 <div class="full-width docutils">
-<div id="id-0cdf5e1e-5467-4a04-bbf9-58489536b64a" class="mermaid">
+<div id="id-69d02a5a-83a8-42b0-a80d-eca0c7ff24b0" class="mermaid">
             graph LR
     VCS(Version Control System)
     VCS --&gt; CT(Change Tracking)
