@@ -48,6 +48,7 @@ To submit a job using `sbatch`, you need to create a submission script that spec
 
 # Load any necessary modules
 module load python/3.8
+module load anaconda3
 
 # Run your executable or script or ANYTHING YOU WANT
 echo "I am going to sleep for 10s"
@@ -57,8 +58,6 @@ sleep 15s
 echo "I am going run something that does not exist"
 AID2E_IS_AWESOME
 echo "I am going to gracefully end this job"
-
-
 ```
 
 Let's break down the different parts of the submission script:
@@ -71,20 +70,16 @@ Let's break down the different parts of the submission script:
 
 - `#SBATCH --error=error.log`: This line specifies the file where the standard error of your job will be written.
 
-- `#SBATCH --ntasks=4`: This line specifies the number of tasks (CPUs) to allocate for your job. You can adjust this number based on the requirements of your code.
+- `#SBATCH --ntasks=1`: This line specifies the number of tasks (CPUs) to allocate for your job. You can adjust this number based on the requirements of your code.
 
-- `#SBATCH --mem=8G`: This line specifies the amount of memory to allocate per node for your job. Again, you can adjust this based on your code's memory requirements.
+- `#SBATCH --mem=1G`: This line specifies the amount of memory to allocate per node for your job. Again, you can adjust this based on your code's memory requirements.
 
 - `#SBATCH --time=01:00:00`: This line sets the walltime limit for your job. It specifies the maximum amount of time your job can run.
 
-- `module load mymodule`: This line loads any necessary modules that your code depends on. Replace `mymodule` with the name of the module you need to load.
-
-- `./myexecutable`: This line runs your executable or script. Replace `myexecutable` with the name of your executable or script file.
-
-To submit your job, save the submission script to a file (e.g., `myscript.sh`) and use the following command:
+To submit your job, save the submission script to a file (e.g., `myscript.csh`) and use the following command:
 
 ```bash
-sbatch myscript.sh
+sbatch myscript.csh
 ```
 
 This will submit your job to the SLURM cluster, and you will receive a job ID as output. You can use this job ID to monitor the status of your job using the `squeue` command.
