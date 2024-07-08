@@ -18,11 +18,22 @@ parts:
         - file: Day-1/GIT-course/git_configure.md
     - file: Day-1/GIT-course/git_exercises
       sections:
-        - file: Day-1/GIT-course/Exersise-1
-        - file: Day-1/GIT-course/Exersise-2
-- caption: "Introduction to High Performance Computing (HPC)"
+        - file: Day-1/GIT-course/Exercise-1
+        - file: Day-1/GIT-course/Exercise-2
+        - file: Day-1/GIT-course/Exercise-3
+- caption: Using VS-Code
   chapters:
-    - file: Day-1/HPC-course/intro_to_HPC
-- caption: "Day 2 - Introduction to Python"
+    - file: Day-1/VS-code
+- caption: "Introduction to High Performance Computing (HPC)"
+  numbered: true
+  chapters:
+    - file: Day-1/HPC-course/intro_to_HPC_HTC
+      sections:
+        - file: Day-1/HPC-course/intro_to_HPC.md
+        - file: Day-1/HPC-course/ssh_login
+        - file: Day-1/HPC-course/file_systems_WM
+        - file: Day-1/HPC-course/SLURM_commands
+
+- caption: "Day 2 - Introduction to Optimization"
   chapters:
     - file: Day-2/intro_to_python

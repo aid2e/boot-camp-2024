@@ -68,7 +68,7 @@ If you have not authenticated before it will ask you to authenticate yourself wi
 ```bash
 git push -u origin main
 ```
-This may once again prompt for authentication. The command pushes the commit to origin in the branch main. Note, that if the branch name is not in the remote repository, then, it will create the branch in the remote repository as well.
+This may once again prompt for authentication of your GitHub credentials. The command pushes the commit to origin in the branch main. Note, that if the branch name is not in the remote repository, then, it will create the branch in the remote repository as well.
 
 You can post a screenshot or your push action below in the comment section.
 

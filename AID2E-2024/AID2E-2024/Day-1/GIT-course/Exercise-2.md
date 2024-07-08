@@ -67,9 +67,9 @@ git remote -v
 ```bash
 git push --set-upstream origin main
 ```
-    * --set-upstream: This option sets the upstream (tracking) reference for the branch.
-    * origin: This is the name of the remote repository.
-    * main: This is the name of the branch you want to push. In this case the name of the branch is `main`
+ - `--set-upstream`: This option sets the upstream (tracking) reference for the branch.
+ - `origin`: This is the name of the remote repository.
+ - `main`: This is the name of the branch you want to push. In this case the name of the branch is `main`
 
 * After pushing, you can verify that your changes are on the remote repository by visiting the repository URL in your web browser or by using:
 ```bash
@@ -107,5 +107,10 @@ git add feature.txt
 git commit -m "Add feature.txt with some new feature"
 ```
 
+* You can push this branch to the remote repository as well as 
 
-## `git merge`
+```bash
+git push --set-upstream origin new-feature
+```
+
+Great!!! These are the functionalities that are widely used in `git`. If you still have time you can proceed to the advanced exercises as well.
