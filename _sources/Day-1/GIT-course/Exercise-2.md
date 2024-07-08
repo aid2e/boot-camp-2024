@@ -113,4 +113,4 @@ git commit -m "Add feature.txt with some new feature"
 git push --set-upstream origin new-feature
 ```
 
-Great!!! This these are the functionalities that are widely used in `git`. If you still have time you can proceed to the advanced exercises as well.
+Great!!! These are the functionalities that are widely used in `git`. If you still have time you can proceed to the advanced exercises as well.

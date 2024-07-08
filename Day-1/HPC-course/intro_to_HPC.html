@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>High Performance Computing &#8212; AID2E-Boot-Camp-2024</title>
+    <title>3. High Performance Computing &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -98,8 +98,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/HPC-course/intro_to_HPC.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction to python" href="../../Day-2/intro_to_python.html" />
-    <link rel="prev" title="2.2. Exercise 2: Working collaboratively" href="../GIT-course/Exersise-2.html" />
+    <link rel="next" title="3.6.1. SSH into a Front-End Node Using Proxy Jump" href="ssh_login.html" />
+    <link rel="prev" title="2.3. Advanced exercises" href="../GIT-course/Exercise-3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -232,19 +232,23 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2"><a class="reference internal" href="../GIT-course/git_configure.html">1.3. Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../GIT-course/git_exercises.html">2. Exercises for <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../GIT-course/Exersise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../GIT-course/Exersise-2.html">2.2. Exercise 2: Working collaboratively</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../GIT-course/git_exercises.html">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../GIT-course/Exercise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT-course/Exercise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../GIT-course/Exercise-3.html">2.3. Advanced exercises</a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to High Performance Computing (HPC)</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">High Performance Computing</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">3. High Performance Computing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssh_login.html">3.6.1. SSH into a Front-End Node Using Proxy Jump</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Python</span></p>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Optimization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Day-2/intro_to_python.html">Introduction to python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Day-2/intro_to_python.html">Introduction to Optimization</a></li>
 </ul>
 
     </div>
@@ -457,8 +461,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm">SLURM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs">PBS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-hpc">3.1. What is HPC?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-hpc">3.2. Importance of HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-hpc">3.3. Components of HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-computing">3.4. Parallel Computing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-hpc">3.5. Benefits of HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-hpc">3.6. Challenges in HPC</a></li>
 </ul>
             </nav>
         </div>
@@ -471,12 +479,66 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="high-performance-computing">
-<h1>High Performance Computing<a class="headerlink" href="#high-performance-computing" title="Link to this heading">#</a></h1>
-<section id="slurm">
-<h2>SLURM<a class="headerlink" href="#slurm" title="Link to this heading">#</a></h2>
+<h1><span class="section-number">3. </span>High Performance Computing<a class="headerlink" href="#high-performance-computing" title="Link to this heading">#</a></h1>
+<p>High Performance Computing (HPC) refers to the practice of aggregating computing power in a way that delivers much higher performance than one could get out of a typical desktop computer or workstation. HPC is used to solve complex computational problems that require significant processing power and speed.</p>
+<section id="what-is-hpc">
+<h2><span class="section-number">3.1. </span>What is HPC?<a class="headerlink" href="#what-is-hpc" title="Link to this heading">#</a></h2>
+<p>HPC involves the use of supercomputers and parallel processing techniques to run advanced applications efficiently, reliably, and quickly. Supercomputers are composed of thousands of compute nodes that work together to perform large-scale computations. These systems are capable of processing vast amounts of data and performing trillions of calculations per second.</p>
 </section>
-<section id="pbs">
-<h2>PBS<a class="headerlink" href="#pbs" title="Link to this heading">#</a></h2>
+<section id="importance-of-hpc">
+<h2><span class="section-number">3.2. </span>Importance of HPC<a class="headerlink" href="#importance-of-hpc" title="Link to this heading">#</a></h2>
+<p>HPC is crucial in various fields such as scientific research, engineering, and data analysis. It enables researchers and engineers to solve complex problems that are otherwise impossible to tackle with standard computing resources. Some of the key areas where HPC is essential include:</p>
+<ul class="simple">
+<li><p><strong>Climate Modeling</strong>: Simulating and predicting climate changes and weather patterns.</p></li>
+<li><p><strong>Genomics</strong>: Analyzing genetic data to understand diseases and develop treatments.</p></li>
+<li><p><strong>Physics</strong>: Conducting simulations of physical phenomena, such as particle collisions.</p></li>
+<li><p><strong>Engineering</strong>: Designing and testing new materials, structures, and products.</p></li>
+<li><p><strong>Finance</strong>: Performing risk analysis and modeling financial markets.</p></li>
+</ul>
+</section>
+<section id="components-of-hpc">
+<h2><span class="section-number">3.3. </span>Components of HPC<a class="headerlink" href="#components-of-hpc" title="Link to this heading">#</a></h2>
+<p>HPC systems are composed of several key components:</p>
+<ul class="simple">
+<li><p><strong>Compute Nodes</strong>: Individual computers that perform the calculations. Each node typically contains multiple processors (CPUs) and memory.</p></li>
+<li><p><strong>Interconnect</strong>: A high-speed network that connects the compute nodes, allowing them to communicate and share data quickly.</p></li>
+<li><p><strong>Storage</strong>: Large-scale storage systems that store the data used and generated by HPC applications.</p></li>
+<li><p><strong>Software</strong>: Specialized software, including operating systems, middleware, and applications, that manage and execute HPC workloads.</p></li>
+</ul>
+</section>
+<section id="parallel-computing">
+<h2><span class="section-number">3.4. </span>Parallel Computing<a class="headerlink" href="#parallel-computing" title="Link to this heading">#</a></h2>
+<p>One of the fundamental concepts in HPC is parallel computing. This involves dividing a large problem into smaller sub-problems that can be solved concurrently. There are two main types of parallelism:</p>
+<ul class="simple">
+<li><p><strong>Data Parallelism</strong>: Distributing data across multiple processors and performing the same operation on each subset of data.</p></li>
+<li><p><strong>Task Parallelism</strong>: Distributing different tasks across multiple processors, where each processor performs a different operation.</p></li>
+</ul>
+</section>
+<section id="benefits-of-hpc">
+<h2><span class="section-number">3.5. </span>Benefits of HPC<a class="headerlink" href="#benefits-of-hpc" title="Link to this heading">#</a></h2>
+<p>The primary benefits of HPC include:</p>
+<ul class="simple">
+<li><p><strong>Speed</strong>: HPC systems can perform complex calculations much faster than traditional computers.</p></li>
+<li><p><strong>Efficiency</strong>: HPC allows for the efficient use of resources, reducing the time and cost required to solve large-scale problems.</p></li>
+<li><p><strong>Scalability</strong>: HPC systems can scale to accommodate larger problems by adding more compute nodes.</p></li>
+<li><p><strong>Innovation</strong>: HPC enables breakthroughs in science, engineering, and industry by providing the computational power needed to explore new ideas and solutions.</p></li>
+</ul>
+</section>
+<section id="challenges-in-hpc">
+<h2><span class="section-number">3.6. </span>Challenges in HPC<a class="headerlink" href="#challenges-in-hpc" title="Link to this heading">#</a></h2>
+<p>Despite its advantages, HPC also presents several challenges:</p>
+<ul class="simple">
+<li><p><strong>Cost</strong>: Building and maintaining HPC systems can be expensive.</p></li>
+<li><p><strong>Complexity</strong>: Developing and optimizing applications for HPC systems requires specialized knowledge and skills.</p></li>
+<li><p><strong>Energy Consumption</strong>: HPC systems consume significant amounts of energy, leading to high operational costs and environmental impact.</p></li>
+</ul>
+<p>In this chapter we shall go through how to use HPC resources through Simple Linux Utility for Resource Management (SLURM).
+William &amp; Mary HPC has several nodes and manages its job execution through <code class="docutils literal notranslate"><span class="pre">SLURM</span></code> and <code class="docutils literal notranslate"><span class="pre">PBS</span></code>. Check out the properties for various nodes at College of William &amp; Mary <a class="reference external" href="https://www.wm.edu/offices/it/services/researchcomputing/hw/nodes/">here</a></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ssh_login.html">3.6.1. SSH into a Front-End Node Using Proxy Jump</a></li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -511,20 +573,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../GIT-course/Exersise-2.html"
+       href="../GIT-course/Exercise-3.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.2. </span>Exercise 2: Working collaboratively</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Advanced exercises</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../Day-2/intro_to_python.html"
+       href="ssh_login.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to python</p>
+        <p class="prev-next-title"><span class="section-number">3.6.1. </span>SSH into a Front-End Node Using Proxy Jump</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -544,8 +606,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm">SLURM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs">PBS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-hpc">3.1. What is HPC?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-hpc">3.2. Importance of HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-hpc">3.3. Components of HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-computing">3.4. Parallel Computing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-hpc">3.5. Benefits of HPC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-hpc">3.6. Challenges in HPC</a></li>
 </ul>
   </nav></div>
 
