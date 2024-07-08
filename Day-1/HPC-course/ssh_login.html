@@ -467,6 +467,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ssh-configuration">3.2.2.1. 1. Basic SSH Configuration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-proxyjump">3.2.2.2. 2. Using ProxyJump</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-configuration-file">3.2.2.3. 3. SSH configuration file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ssh-keys">3.2.2.4. 4. Using SSH Keys</a></li>
 </ul>
 </li>
 </ul>
@@ -482,7 +483,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ssh-into-a-front-end-node-using-proxy-jump">
 <h1><span class="section-number">3.2. </span>SSH into a Front-End Node Using Proxy Jump<a class="headerlink" href="#ssh-into-a-front-end-node-using-proxy-jump" title="Link to this heading">#</a></h1>
-<p>When working with HPC systems, you often need to connect to a front-end node (also known as a login node) through an intermediate server (proxy). This is common in secure environments where direct access to the front-end node is restricted. The <code class="docutils literal notranslate"><span class="pre">ProxyJump</span></code> option in SSH allows you to achieve this.</p>
+<p>When working with HPC systems, you often need to connect to a front-end node (also known as a login node) through an intermediate server (proxy). This is common in secure environments where direct access to the front-end node is restricted. The <code class="docutils literal notranslate"><span class="pre">ProxyJump</span></code> option in SSH allows you to achieve this. The network diagram for HPC systems at W&amp;M is shown below.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/WM_HPC_login.png" src="../../_images/WM_HPC_login.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">The Figure is taken from <a class="reference external" href="https://www.wm.edu/offices/it/services/researchcomputing/using/tutorials/">Lectures on HPC given at W&amp;M by research computing team</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><img alt="alt text" src="../../_images/WM_HPC_login.png" /></p>
 <section id="prerequisites">
 <h2><span class="section-number">3.2.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -526,6 +534,18 @@ Host<span class="w"> </span>front-end-node
 </div>
 <p>Replace <code class="docutils literal notranslate"><span class="pre">intermediate-server.example.com</span></code> and <code class="docutils literal notranslate"><span class="pre">front-end-node.example.com</span></code> with the actual hostnames or IP addresses, and your-username with your actual username. For WM resources, the JumpHost when logging in from outside the campus network is named as <code class="docutils literal notranslate"><span class="pre">bastion.wm.edu</span></code>. Check out the instruction from <a class="reference external" href="https://www.wm.edu/offices/it/services/researchcomputing/using/connecting/">here</a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-J<span class="w"> </span>username@bastion.wm.edu<span class="w"> </span>username@bora.sciclone.wm.edu
+</pre></div>
+</div>
+</section>
+<section id="using-ssh-keys">
+<h3><span class="section-number">3.2.2.4. </span>4. Using SSH Keys<a class="headerlink" href="#using-ssh-keys" title="Link to this heading">#</a></h3>
+<p>Some system like the Broohaven National Lab’s, The Scientific Data and Computer Center (SDCC), this method is used to <a class="reference external" href="https://www.sdcc.bnl.gov/information/ssh/troubleshooting-ssh-connections">login</a> to their nodes. SSH keys adds another layer of secutity as it generates an SSH key pair if you don’t already have one:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your-email@example.com&quot;</span>
+</pre></div>
+</div>
+<p>Ensure your SSH configuration file (<code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>) includes the path to your private key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Host<span class="w"> </span>*
+<span class="w">    </span>IdentityFile<span class="w"> </span>~/.ssh/id_rsa
 </pre></div>
 </div>
 </section>
@@ -601,6 +621,7 @@ Host<span class="w"> </span>front-end-node
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ssh-configuration">3.2.2.1. 1. Basic SSH Configuration</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-proxyjump">3.2.2.2. 2. Using ProxyJump</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-configuration-file">3.2.2.3. 3. SSH configuration file</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-ssh-keys">3.2.2.4. 4. Using SSH Keys</a></li>
 </ul>
 </li>
 </ul>

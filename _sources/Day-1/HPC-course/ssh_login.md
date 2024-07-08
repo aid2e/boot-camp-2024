@@ -1,6 +1,12 @@
 # SSH into a Front-End Node Using Proxy Jump
 
-When working with HPC systems, you often need to connect to a front-end node (also known as a login node) through an intermediate server (proxy). This is common in secure environments where direct access to the front-end node is restricted. The `ProxyJump` option in SSH allows you to achieve this.
+When working with HPC systems, you often need to connect to a front-end node (also known as a login node) through an intermediate server (proxy). This is common in secure environments where direct access to the front-end node is restricted. The `ProxyJump` option in SSH allows you to achieve this. The network diagram for HPC systems at W&M is shown below. 
+
+```{figure} ../../images/intro-to-HPC/WM_HPC_login.png
+The Figure is taken from [Lectures on HPC given at W&M by research computing team](https://www.wm.edu/offices/it/services/researchcomputing/using/tutorials/)
+```
+
+![alt text](../../images/intro-to-HPC/WM_HPC_login.png)
 
 ## Prerequisites
 - SSH client installed on your local machine.
@@ -51,3 +57,21 @@ Replace `intermediate-server.example.com` and `front-end-node.example.com` with 
 ```bash
 ssh -J username@bastion.wm.edu username@bora.sciclone.wm.edu
 ```
+
+### 4. Using SSH Keys
+
+Some system like the Broohaven National Lab's, The Scientific Data and Computer Center (SDCC), this method is used to [login](https://www.sdcc.bnl.gov/information/ssh/troubleshooting-ssh-connections) to their nodes. SSH keys adds another layer of secutity as it generates an SSH key pair if you don't already have one:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+```
+
+Ensure your SSH configuration file (`~/.ssh/config`) includes the path to your private key:
+
+
+```bash
+Host *
+    IdentityFile ~/.ssh/id_rsa
+```
+
+
