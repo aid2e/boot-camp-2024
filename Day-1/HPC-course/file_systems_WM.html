@@ -472,13 +472,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">3.3.3. Best Practices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transferring-files-2-2">3.3.4. Transferring Files[^2^][2]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transferring-files">3.3.4. Transferring Files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-globus">3.3.4.1. Using Globus</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permissions-and-sharing">3.3.5. Permissions and Sharing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-permissions">3.3.5.1. Changing Permissions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">3.3.5.2. Example</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">3.3.6. Conclusion</a></li>
@@ -497,7 +496,7 @@ document.write(`
 <h1><span class="section-number">3.3. </span>William &amp; Mary Research Computing: File Systems Tutorial<a class="headerlink" href="#william-mary-research-computing-file-systems-tutorial" title="Link to this heading">#</a></h1>
 <section id="overview">
 <h2><span class="section-number">3.3.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>William &amp; Mary Research Computing offers multiple file systems for different purposes[^1^][1]. This tutorial will guide you through each file system, its use case, and how to interact with it.</p>
+<p>William &amp; Mary Research Computing offers multiple file systems for different purposes. This tutorial will guide you through each file system, its use case, and how to interact with it. Most of the content in this page has been taken from the lecture given at <a class="reference external" href="https://www.wm.edu/offices/it/services/researchcomputing/using/tutorials/introtohpc_0921231.pdf">W&amp;M by W&amp;M Research Computing</a></p>
 </section>
 <section id="file-systems">
 <h2><span class="section-number">3.3.2. </span>File Systems<a class="headerlink" href="#file-systems" title="Link to this heading">#</a></h2>
@@ -562,12 +561,12 @@ document.write(`
 <li><p><strong>Responsible Usage</strong>: Be mindful of disk space usage to ensure fair resource distribution among users.</p></li>
 </ul>
 </section>
-<section id="transferring-files-2-2">
-<h2><span class="section-number">3.3.4. </span>Transferring Files[^2^][2]<a class="headerlink" href="#transferring-files-2-2" title="Link to this heading">#</a></h2>
+<section id="transferring-files">
+<h2><span class="section-number">3.3.4. </span>Transferring Files<a class="headerlink" href="#transferring-files" title="Link to this heading">#</a></h2>
 <section id="using-globus">
 <h3><span class="section-number">3.3.4.1. </span>Using Globus<a class="headerlink" href="#using-globus" title="Link to this heading">#</a></h3>
 <ul>
-<li><p><strong>Purpose</strong>: Efficiently transfer files between local systems and W&amp;M clusters.</p></li>
+<li><p><strong>Purpose</strong>: Efficiently transfer files between local systems and W&amp;M clusters. Check out <a class="reference external" href="https://www.globus.org/">globus.org</a></p></li>
 <li><p><strong>Usage</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example command to transfer files using Globus</span>
 globus<span class="w"> </span>transfer<span class="w"> </span>&lt;source_endpoint&gt;<span class="w"> </span>&lt;destination_endpoint&gt;
@@ -583,7 +582,7 @@ globus<span class="w"> </span>transfer<span class="w"> </span>&lt;source_endpoin
 <h3><span class="section-number">3.3.5.1. </span>Changing Permissions<a class="headerlink" href="#changing-permissions" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Commands</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change group ownership[^3^][3]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change group ownership</span>
 chgrp<span class="w"> </span>&lt;group&gt;<span class="w"> </span>&lt;file/directory&gt;
 
 <span class="c1"># Change permissions</span>
@@ -593,20 +592,14 @@ chmod<span class="w"> </span>&lt;permissions&gt;<span class="w"> </span>&lt;file
 </li>
 </ul>
 </section>
-<section id="example">
-<h3><span class="section-number">3.3.5.2. </span>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allow users in the VASP group to read my results file</span>
-chgrp<span class="w"> </span>vasp<span class="w"> </span>-R<span class="w"> </span>results/<span class="o">[</span>^4^<span class="o">][</span><span class="m">4</span><span class="o">]</span>
-chmod<span class="w"> </span>g+rX<span class="w"> </span>-R<span class="w"> </span>results/
-</pre></div>
-</div>
-</section>
 </section>
 <section id="conclusion">
 <h2><span class="section-number">3.3.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>Understanding and effectively using the different file systems at William &amp; Mary Research Computing is crucial for efficient and responsible resource usage. For more detailed information, refer to the <a class="reference external" href="https://www.wm.edu/offices/it/services/researchcomputing/using/index.php">Research Computing documentation</a>[^5^][5][^6^][6].</p>
-<hr class="docutils" />
-<p>Feel free to reach out if you have any questions or need further assistance!</p>
+<p>Understanding and effectively using the different file systems at William &amp; Mary Research Computing is crucial for efficient and responsible resource usage. For more detailed information, refer to the <a class="reference external" href="https://www.wm.edu/offices/it/services/researchcomputing/using/index.php">Research Computing documentation</a>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Try this</p>
+<p>Can you perform the git exercise here in at one of the HPC systems? Try to create a directory at <code class="docutils literal notranslate"><span class="pre">sciclone/home/&lt;username&gt;/data10/</span></code></p>
+</div>
 </section>
 </section>
 
@@ -683,13 +676,12 @@ chmod<span class="w"> </span>g+rX<span class="w"> </span>-R<span class="w"> </sp
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices">3.3.3. Best Practices</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transferring-files-2-2">3.3.4. Transferring Files[^2^][2]</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transferring-files">3.3.4. Transferring Files</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-globus">3.3.4.1. Using Globus</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permissions-and-sharing">3.3.5. Permissions and Sharing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-permissions">3.3.5.1. Changing Permissions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">3.3.5.2. Example</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">3.3.6. Conclusion</a></li>

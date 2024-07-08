@@ -2,7 +2,7 @@
 # William & Mary Research Computing: File Systems Tutorial
 
 ## Overview
-William & Mary Research Computing offers multiple file systems for different purposes[^1^][1]. This tutorial will guide you through each file system, its use case, and how to interact with it.
+William & Mary Research Computing offers multiple file systems for different purposes. This tutorial will guide you through each file system, its use case, and how to interact with it. Most of the content in this page has been taken from the lecture given at [W&M by W&M Research Computing](https://www.wm.edu/offices/it/services/researchcomputing/using/tutorials/introtohpc_0921231.pdf)
 
 ## File Systems
 
@@ -48,10 +48,10 @@ William & Mary Research Computing offers multiple file systems for different pur
 - **Backup Important Data**: Regularly backup important data stored in scratch directories to avoid data loss.
 - **Responsible Usage**: Be mindful of disk space usage to ensure fair resource distribution among users.
 
-## Transferring Files[^2^][2]
+## Transferring Files
 
 ### Using Globus
-- **Purpose**: Efficiently transfer files between local systems and W&M clusters.
+- **Purpose**: Efficiently transfer files between local systems and W&M clusters. Check out [globus.org](https://www.globus.org/)
 - **Usage**:
   ```bash
   # Example command to transfer files using Globus
@@ -63,23 +63,20 @@ William & Mary Research Computing offers multiple file systems for different pur
 ### Changing Permissions
 - **Commands**:
   ```bash
-  # Change group ownership[^3^][3]
+  # Change group ownership
   chgrp <group> <file/directory>
 
   # Change permissions
   chmod <permissions> <file/directory>
   ```
 
-### Example
-```bash
-# Allow users in the VASP group to read my results file
-chgrp vasp -R results/[^4^][4]
-chmod g+rX -R results/
-```
 
 ## Conclusion
-Understanding and effectively using the different file systems at William & Mary Research Computing is crucial for efficient and responsible resource usage. For more detailed information, refer to the [Research Computing documentation](https://www.wm.edu/offices/it/services/researchcomputing/using/index.php)[^5^][5][^6^][6].
+Understanding and effectively using the different file systems at William & Mary Research Computing is crucial for efficient and responsible resource usage. For more detailed information, refer to the [Research Computing documentation](https://www.wm.edu/offices/it/services/researchcomputing/using/index.php).
 
----
 
-Feel free to reach out if you have any questions or need further assistance!
+```{admonition} Try this
+:class: tip
+
+Can you perform the git exercise here in at one of the HPC systems? Try to create a directory at `sciclone/home/<username>/data10/`
+```
