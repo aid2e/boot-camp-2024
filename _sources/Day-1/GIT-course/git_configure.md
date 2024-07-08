@@ -6,6 +6,7 @@
 Note this could be your GitHub username or other services like [GitLab](https://GitLab.com), [Bitbucket](https://bitbucket.org/) etc. Check out the 10 alternatives to `GitHub` [here](https://www.softwaretestinghelp.com/github-alternatives/). We will look closely into GitHub for this tutorial.
 ```
 ````
+
 We shall try to configure your credentials to git. Note that we are using GitHub for hosting for remote repository. Make sure to have your an account created and signed up at [GitHub](https://github.com).
 
 1. Open your terminal.
@@ -79,4 +80,4 @@ git config --global credential.helper manager-core
 ````
 `````
 
-Now, let us proceed into Excersise now.
+Now, let us proceed to exercises now.

@@ -62,3 +62,8 @@ If `git` is not installed by default, then open a terminal and try to install `g
 * Use the default settings unless you have specific requirements.
 * Once installed open `cmd.exe` and check out the version `git --version`
 ````
+
+
+
+
+Great.... Congratulations !!! Now you have git installed in your system.

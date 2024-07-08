@@ -96,6 +96,21 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
+    <script>
+                window.addEventListener("load", function () {
+                  var svgs = d3.selectAll(".mermaid#id-96c0b799-f685-448e-9d2e-40765d50fe40 svg, .mermaid#id-f6744de7-db67-4e16-9784-bbd394690400 svg, .mermaid#id-e05c1f61-fd40-4223-930c-262e35644965 svg, .mermaid#id-fd0cdce3-9b91-4b8a-97e4-1e62c5d42461 svg");
+                  svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                      inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                  });
+                });
+                </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Day-1/GIT-course/VCS';</script>
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/VCS.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -467,7 +482,106 @@ document.write(`
 <p>A Version Control System (VCS) is a powerful tool that helps you manage changes to a collection of files. It tracks every modification, allowing you to recall earlier versions of individual files or even the entire project with ease. This capability is crucial for maintaining the integrity and history of your work.</p>
 <p>One of the primary goals of a VCS is to facilitate collaborative work. Imagine a team of developers working on the same project, perhaps even the same files, simultaneously. Without a VCS, their changes could easily conflict, leading to confusion and potential loss of work. A VCS allows multiple team members to collaborate seamlessly, ensuring that each person’s contributions are preserved and integrated without affecting others’ work.</p>
 <p>Another term often used interchangeably with VCS is Software Configuration Management (SCM) system. While version control is a critical component of SCM, SCM encompasses a broader range of practices and tools. Git, one of the most popular VCS tools, highlights this interchangeability in its official documentation, which can be found at <a class="reference external" href="http://git-scm.com">git-scm.com</a>. Although VCSs are predominantly used for software projects, their utility extends to other types of projects, such as books and online tutorials.</p>
-<p>With a VCS, you gain several powerful capabilities:</p>
+<div class="full-width docutils">
+<div id="id-96c0b799-f685-448e-9d2e-40765d50fe40" class="mermaid">
+            graph TD
+    subgraph Local VCS
+        A[Local Repository]
+    end
+
+    subgraph Centralized VCS
+        B[Central Repository]
+    end
+
+    subgraph Distributed VCS
+        C[Remote Repository 1]
+        D[Remote Repository 2]
+        E[Remote Repository 3]
+    end
+
+    A --&gt; B
+    B --&gt; C
+    B --&gt; D
+    B --&gt; E
+        </div>
+        </div>
+<div class="full-width docutils">
+<div id="id-f6744de7-db67-4e16-9784-bbd394690400" class="mermaid">
+            graph LR
+    VCS(Version Control System)
+    VCS --&gt; CT(Change Tracking)
+    VCS --&gt; DC(Descriptive Changes)
+    VCS --&gt; VR(Version Retrieval)
+    VCS --&gt; BM(Branching and Merging)
+    VCS --&gt; T(Tagging)
+    CT --&gt; C1{See all changes}
+    C1 --&gt; C2(When they were made)
+    C1 --&gt; C3(Who made them)
+    DC --&gt; D1{Each change can include a message}
+    D1 --&gt; D2(Explaining the reasoning)
+    VR --&gt; V1{Retrieve past versions}
+    V1 --&gt; V2(Of the entire project)
+    V1 --&gt; V3(Of individual files)
+    BM --&gt; B1{Create branches to experiment}
+    B1 --&gt; B2(Multiple sets of changes)
+    B2 --&gt; B3(New features)
+    B2 --&gt; B4(Bug fixes)
+    B1 --&gt; B5{Once changes are tested and validated}
+    B5 --&gt; B6(Merge back into the main branch)
+    T --&gt; T1{Attach tags to specific versions}
+    T1 --&gt; T2(Marking a new release)
+        </div>
+        </div>
+<div id="id-e05c1f61-fd40-4223-930c-262e35644965" class="mermaid">
+            graph TB
+    VCS(Version Control System)
+    VCS --&gt; CT(Change Tracking)
+    VCS --&gt; DC(Descriptive Changes)
+    VCS --&gt; VR(Version Retrieval)
+    VCS --&gt; BM(Branching and Merging)
+    VCS --&gt; T(Tagging)
+    CT --&gt; C1{See all changes}
+    C1 --&gt; C2(When they were made)
+    C1 --&gt; C3(Who made them)
+    DC --&gt; D1{Each change can include a message}
+    D1 --&gt; D2(Explaining the reasoning)
+    VR --&gt; V1{Retrieve past versions}
+    V1 --&gt; V2(Of the entire project)
+    V1 --&gt; V3(Of individual files)
+    BM --&gt; B1{Create branches to experiment}
+    B1 --&gt; B2(Multiple sets of changes)
+    B2 --&gt; B3(New features)
+    B2 --&gt; B4(Bug fixes)
+    B1 --&gt; B5{Once changes are tested and validated}
+    B5 --&gt; B6(Merge back into the main branch)
+    T --&gt; T1{Attach tags to specific versions}
+    T1 --&gt; T2(Marking a new release)
+        </div>
+        <div id="id-fd0cdce3-9b91-4b8a-97e4-1e62c5d42461" class="mermaid">
+            classDiagram
+    VersionControlSystem -- ChangeTracking : has
+    VersionControlSystem -- DescriptiveChanges : has
+    VersionControlSystem -- VersionRetrieval : has
+    VersionControlSystem -- BranchingAndMerging : has
+    VersionControlSystem -- Tagging : has
+    ChangeTracking : +seeAllChanges()
+    ChangeTracking : +whenTheyWereMade()
+    ChangeTracking : +whoMadeThem()
+    DescriptiveChanges : +includeMessageWithEachChange()
+    DescriptiveChanges : +explainReasoning()
+    VersionRetrieval : +retrievePastVersions()
+    VersionRetrieval : +ofEntireProject()
+    VersionRetrieval : +ofIndividualFiles()
+    BranchingAndMerging : +createBranchesToExperiment()
+    BranchingAndMerging : +developMultipleSetsOfChanges()
+    BranchingAndMerging : +developNewFeatures()
+    BranchingAndMerging : +fixBugs()
+    BranchingAndMerging : +testAndValidateChanges()
+    BranchingAndMerging : +mergeBackIntoMainBranch()
+    Tagging : +attachTagsToSpecificVersions()
+    Tagging : +markNewRelease()
+        </div>
+        <p>With a VCS, you gain several powerful capabilities:</p>
 <ol class="arabic simple">
 <li><p><strong>Change Tracking</strong>: See all changes made to your project, including when they were made and who made them. This historical record is invaluable for understanding the evolution of your project.</p></li>
 <li><p><strong>Descriptive Changes</strong>: Each change can include a message explaining the reasoning behind it. This makes it easier to understand the context and purpose of each modification.</p></li>

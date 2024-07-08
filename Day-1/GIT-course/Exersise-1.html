@@ -457,11 +457,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">2.1.1. Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-repository-on-github">2.1.1.1. Create a New Repository on GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-new-git-repository">2.1.1.2. Initialize a new <code class="docutils literal notranslate"><span class="pre">git</span></code> repository</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-repository-on-github">2.1.1. Create a New Repository on GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-new-local-git-repository">2.1.2. Initialize a new local <code class="docutils literal notranslate"><span class="pre">git</span></code> repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-remote-origin">2.1.3. Add remote origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-contents-to-the-local-repo">2.1.4. Add contents to the local repo</a></li>
 </ul>
             </nav>
         </div>
@@ -476,10 +475,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-1-basic-git-commands">
 <h1><span class="section-number">2.1. </span>Exercise 1: Basic Git Commands<a class="headerlink" href="#exercise-1-basic-git-commands" title="Link to this heading">#</a></h1>
 <p>In this exercise, you will learn the basic Git commands. you will be creating your own private repository.</p>
-<section id="steps">
-<h2><span class="section-number">2.1.1. </span>Steps<a class="headerlink" href="#steps" title="Link to this heading">#</a></h2>
 <section id="create-a-new-repository-on-github">
-<h3><span class="section-number">2.1.1.1. </span>Create a New Repository on GitHub<a class="headerlink" href="#create-a-new-repository-on-github" title="Link to this heading">#</a></h3>
+<span id="git-ex-create-repo"></span><h2><span class="section-number">2.1.1. </span>Create a New Repository on GitHub<a class="headerlink" href="#create-a-new-repository-on-github" title="Link to this heading">#</a></h2>
 <p>This is going to be our remote repository to which we will be uploading our projects.</p>
 <ul class="simple">
 <li><p>Go to GitHub and create a new repository named <code class="docutils literal notranslate"><span class="pre">my-first-git-project</span></code>.</p></li>
@@ -487,8 +484,8 @@ document.write(`
 </ul>
 <p><img alt="creating repo" src="../../_images/create-repo.png" /></p>
 </section>
-<section id="initialize-a-new-git-repository">
-<h3><span class="section-number">2.1.1.2. </span>Initialize a new <code class="docutils literal notranslate"><span class="pre">git</span></code> repository<a class="headerlink" href="#initialize-a-new-git-repository" title="Link to this heading">#</a></h3>
+<section id="initialize-a-new-local-git-repository">
+<h2><span class="section-number">2.1.2. </span>Initialize a new local <code class="docutils literal notranslate"><span class="pre">git</span></code> repository<a class="headerlink" href="#initialize-a-new-local-git-repository" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In your terminal, let us create new directory</p></li>
 </ul>
@@ -507,19 +504,51 @@ document.write(`
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
 </pre></div>
 </div>
-<ol class="arabic" start="2">
-<li><p>Let us add this to git repo</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, Git!&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hello.txt
+<ul class="simple">
+<li><p>This should initialize a empty repo with branch name <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Try this</p>
+<ul class="simple">
+<li><p>Check out the status of the <code class="docutils literal notranslate"><span class="pre">git</span></code> repo using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p></li>
+<li><p>Check out the commit log by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code></p></li>
+</ul>
+</div>
+</section>
+<section id="add-remote-origin">
+<h2><span class="section-number">2.1.3. </span>Add remote origin<a class="headerlink" href="#add-remote-origin" title="Link to this heading">#</a></h2>
+<p>As mentioned earlier, GitHub provides additional capabilities to git versioning system and allows to collaborate among various developers. Let us link the remote repo at GitHub that we have created in <a class="reference internal" href="#git-ex-create-repo"><span class="std std-ref">step-1</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/username/my-first-git-repo.git
+</pre></div>
+</div>
+<p>This creates a remote repo named origin which points to <code class="docutils literal notranslate"><span class="pre">https://github.com/username/my-first-git-repo.git</span></code></p>
+</section>
+<section id="add-contents-to-the-local-repo">
+<h2><span class="section-number">2.1.4. </span>Add contents to the local repo<a class="headerlink" href="#add-contents-to-the-local-repo" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Let us add contents to the repo and to the remote git repo at GitHub</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, Git My Name is </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">!&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>hello.txt
 git<span class="w"> </span>add<span class="w"> </span>hello.txt
 </pre></div>
 </div>
 </li>
-<li><p>Commit this file</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add hello.txt&quot;</span>
+</ul>
+<p>you can also specific a directory to be included as well. Also, you can include all the files by specifying the option <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code></p>
+<ul class="simple">
+<li><p>Let us commit this file to be staged.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;My first commit message&quot;</span>
 </pre></div>
 </div>
-</li>
-</ol>
+<p>If you have not authenticated before it will ask you to authenticate yourself. Try out the steps we did during configuring <code class="docutils literal notranslate"><span class="pre">git</span></code></p>
+<ul class="simple">
+<li><p>Now push the commit to the remote repository.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>The command pushes the commit to origin in the branch main. Note, that if the branch name is not in the remote repository, then, it will create the repo in the remote repository as well.</p>
+<p>You can post a screenshot or your push action below in the comment section.</p>
 <script
    type="text/javascript"
    src="https://utteranc.es/client.js"
@@ -530,7 +559,6 @@ git<span class="w"> </span>add<span class="w"> </span>hello.txt
    label="💬 git-ex-1"
    crossorigin="anonymous"
 /></section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -597,11 +625,10 @@ git<span class="w"> </span>add<span class="w"> </span>hello.txt
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">2.1.1. Steps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-repository-on-github">2.1.1.1. Create a New Repository on GitHub</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-new-git-repository">2.1.1.2. Initialize a new <code class="docutils literal notranslate"><span class="pre">git</span></code> repository</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-repository-on-github">2.1.1. Create a New Repository on GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-new-local-git-repository">2.1.2. Initialize a new local <code class="docutils literal notranslate"><span class="pre">git</span></code> repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-remote-origin">2.1.3. Add remote origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-contents-to-the-local-repo">2.1.4. Add contents to the local repo</a></li>
 </ul>
   </nav></div>
 
