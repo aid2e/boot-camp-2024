@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.2. What is Git? &#8212; AID2E-Boot-Camp-2024</title>
+    <title>2.1. Exercise 1: Basic Git Commands &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -94,29 +94,12 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
-    <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
-    <script>
-                window.addEventListener("load", function () {
-                  var svgs = d3.selectAll(".mermaid#id-3afbbbb0-51d2-4a06-a5f6-b82574fec1dc svg");
-                  svgs.each(function() {
-                    var svg = d3.select(this);
-                    svg.html("<g>" + svg.html() + "</g>");
-                    var inner = svg.select("g");
-                    var zoom = d3.zoom().on("zoom", function(event) {
-                      inner.attr("transform", event.transform);
-                    });
-                    svg.call(zoom);
-                  });
-                });
-                </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-1/GIT-course/git_basics';</script>
-    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/git_basics.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-1/GIT-course/Exercise-1';</script>
+    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/Exercise-1.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="1.3. Configuring your git" href="git_configure.html" />
-    <link rel="prev" title="1.1. Version Control System (VCS)" href="VCS.html" />
+    <link rel="next" title="2.2. Exercise 2: Commits, push and branches" href="Exercise-2.html" />
+    <link rel="prev" title="2. Exercises on git" href="git_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -243,14 +226,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to git</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_git.html">1. Brief course on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="intro_to_git.html">1. Brief course on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="VCS.html">1.1. Version Control System (VCS)</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. What is Git?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_basics.html">1.2. What is Git?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_configure.html">1.3. Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="git_exercises.html">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="Exercise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="git_exercises.html">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Exercise 1: Basic Git Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Exercise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Exercise-3.html">2.3. Advanced exercises</a></li>
 </ul>
@@ -334,7 +317,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/edit/main/webpage/Day-1/GIT-course/git_basics.md" target="_blank"
+      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/edit/main/webpage/Day-1/GIT-course/Exercise-1.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +334,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-1/GIT-course/git_basics.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-1/GIT-course/Exercise-1.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -381,7 +364,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="../../_sources/Day-1/GIT-course/git_basics.md" target="_blank"
+      <li><a href="../../_sources/Day-1/GIT-course/Exercise-1.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -465,7 +448,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>What is Git?</h1>
+    <h1>Exercise 1: Basic Git Commands</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -475,15 +458,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-tree">1.2.1. <strong>Working Tree</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-repo">1.2.2. <strong>Repository (Repo)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash">1.2.3. <strong>Hash</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object">1.2.4. <strong>Object</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commit">1.2.5. <strong>Commit</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">1.2.6. <strong>Branch</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote">1.2.7. <strong>Remote</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands-subcommands-and-options">1.2.8. <strong>Commands, Subcommands, and Options</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">1.2.9. Installing <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-repository-on-github">2.1.1. Create a New Repository on GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-new-local-git-repository">2.1.2. Initialize a new local <code class="docutils literal notranslate"><span class="pre">git</span></code> repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-remote-origin">2.1.3. Add remote origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-contents-to-the-local-repo">2.1.4. Add contents to the local repo</a></li>
 </ul>
             </nav>
         </div>
@@ -495,105 +473,96 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="what-is-git">
-<h1><span class="section-number">1.2. </span>What is Git?<a class="headerlink" href="#what-is-git" title="Link to this heading">#</a></h1>
-<p>Git was created by Linus Torvalds in 2005, the same individual who developed the Linux operating system. Since its inception, Git has been maintained by Junio Hamano, who has played a crucial role in its ongoing development and stability.</p>
-<p>To navigate the world of Git, it’s essential to familiarize yourself with its unique terminology. Here’s a concise glossary of terms that you’ll encounter frequently as you delve into Git. Don’t worry about grasping all the details immediately; these terms will become second nature as you progress through the exercises in this book.</p>
-<figure class="align-center" id="id1">
-<div id="id-3afbbbb0-51d2-4a06-a5f6-b82574fec1dc" class="mermaid">
-                gitGraph LR:
-       commit
-       commit
-       branch develop
-       commit
-       commit
-       checkout main
-       commit
-       commit
-       merge develop
-       commit
-       commit
-        </div>
-        <figcaption>
-<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">Example Git diagram</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<section id="working-tree">
-<h2><span class="section-number">1.2.1. </span><strong>Working Tree</strong><a class="headerlink" href="#working-tree" title="Link to this heading">#</a></h2>
-<p>The working tree consists of the nested directories and files that make up the project you are currently working on. Think of it as the active workspace where all your changes and edits occur.</p>
-</section>
-<section id="repository-repo">
-<h2><span class="section-number">1.2.2. </span><strong>Repository (Repo)</strong><a class="headerlink" href="#repository-repo" title="Link to this heading">#</a></h2>
-<p>The repository, or repo, is the directory at the top level of your working tree where Git stores all the project’s history and metadata. A bare repository is a special type of repo that doesn’t include a working tree; it’s typically used for sharing or backups. Bare repos usually have names ending in <code class="docutils literal notranslate"><span class="pre">.git</span></code>, such as <code class="docutils literal notranslate"><span class="pre">project.git</span></code>.</p>
-</section>
-<section id="hash">
-<h2><span class="section-number">1.2.3. </span><strong>Hash</strong><a class="headerlink" href="#hash" title="Link to this heading">#</a></h2>
-<p>A hash is a unique number generated by a hash function, representing the contents of a file or another object as a fixed number of digits. Git uses 160-bit hashes (SHA-1) to track changes. By hashing a file’s contents and comparing it to a previous hash, Git can determine if the file has changed, regardless of its timestamp.</p>
-</section>
-<section id="object">
-<h2><span class="section-number">1.2.4. </span><strong>Object</strong><a class="headerlink" href="#object" title="Link to this heading">#</a></h2>
-<p>In a Git repository, there are four types of objects, each identified by a unique SHA-1 hash:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-1-basic-git-commands">
+<h1><span class="section-number">2.1. </span>Exercise 1: Basic Git Commands<a class="headerlink" href="#exercise-1-basic-git-commands" title="Link to this heading">#</a></h1>
+<p>In this exercise, you will learn the basic Git commands. you will be creating your own private repository.</p>
+<section id="create-a-new-repository-on-github">
+<span id="git-ex-create-repo"></span><h2><span class="section-number">2.1.1. </span>Create a New Repository on GitHub<a class="headerlink" href="#create-a-new-repository-on-github" title="Link to this heading">#</a></h2>
+<p>This is going to be our remote repository to which we will be uploading our projects.</p>
 <ul class="simple">
-<li><p><strong>Blob Object</strong>: Contains the content of an ordinary file.</p></li>
-<li><p><strong>Tree Object</strong>: Represents a directory and contains names, hashes, and permissions.</p></li>
-<li><p><strong>Commit Object</strong>: Represents a specific version of the working tree.</p></li>
-<li><p><strong>Tag</strong>: A name attached to a commit, marking it for reference.</p></li>
+<li><p>Go to GitHub and create a new repository named <code class="docutils literal notranslate"><span class="pre">my-first-git-project</span></code>.</p></li>
 </ul>
+<p><img alt="creating repo" src="../../_images/create-repo.png" /></p>
+<ul class="simple">
+<li><p><strong>Do not</strong> initialize it with a README, .gitignore, or license. We will be creating a private repository so that we will be using the personal access tokens as well.</p></li>
+</ul>
+<p><img alt="New repo creation" src="../../_images/new-repo.png" /></p>
 </section>
-<section id="commit">
-<h2><span class="section-number">1.2.5. </span><strong>Commit</strong><a class="headerlink" href="#commit" title="Link to this heading">#</a></h2>
-<p>To commit, in Git terminology, means to create a commit object. This action is akin to committing changes to a database; it records your changes so that others can eventually see them. A commit in Git is a fundamental concept that represents a snapshot of your repository at a specific point in time. Each commit records changes to the files in your repository and includes metadata such as the author, date, and a commit message. Each commit has a unique identifier (SHA-1 hash)</p>
-</section>
-<section id="branch">
-<h2><span class="section-number">1.2.6. </span><strong>Branch</strong><a class="headerlink" href="#branch" title="Link to this heading">#</a></h2>
-<p>A branch is a named series of linked commits. The most recent commit in a branch is known as the head. When you initialize a repository, Git creates a default branch called <code class="docutils literal notranslate"><span class="pre">main</span></code>, though it is often named <code class="docutils literal notranslate"><span class="pre">master</span></code>. The head of the current branch is named <code class="docutils literal notranslate"><span class="pre">HEAD</span></code>. Branches enable developers to work independently (or collaboratively) on separate lines of development and later merge their changes into the main branch.</p>
-</section>
-<section id="remote">
-<h2><span class="section-number">1.2.7. </span><strong>Remote</strong><a class="headerlink" href="#remote" title="Link to this heading">#</a></h2>
-<p>A remote is a named reference to another Git repository. When you create a repo, Git sets up a default remote named <code class="docutils literal notranslate"><span class="pre">origin</span></code> for push and pull operations. This can be changed as well.</p>
-</section>
-<section id="commands-subcommands-and-options">
-<h2><span class="section-number">1.2.8. </span><strong>Commands, Subcommands, and Options</strong><a class="headerlink" href="#commands-subcommands-and-options" title="Link to this heading">#</a></h2>
-<p>Git operations are executed through commands like <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> and <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>. Here, <code class="docutils literal notranslate"><span class="pre">git</span></code> is the command, and <code class="docutils literal notranslate"><span class="pre">push</span></code> or <code class="docutils literal notranslate"><span class="pre">pull</span></code> is the subcommand specifying the operation you want Git to perform. These subcommands are often accompanied by options, which are indicated with hyphens (-) or double hyphens (–), such as <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span></code>.</p>
-<p>These terms and others, like <code class="docutils literal notranslate"><span class="pre">push</span></code> and <code class="docutils literal notranslate"><span class="pre">pull</span></code>, will become clearer as you continue learning. Refer back to this glossary as needed to reinforce your understanding while you work through the module.</p>
-</section>
-<section id="installing-git">
-<h2><span class="section-number">1.2.9. </span>Installing <code class="docutils literal notranslate"><span class="pre">git</span></code><a class="headerlink" href="#installing-git" title="Link to this heading">#</a></h2>
-<div class="tab-set docutils">
-<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Linux</label><div class="tab-content docutils">
-<p><code class="docutils literal notranslate"><span class="pre">git</span></code> comes default in Linux systems. In a terminal try out</p>
-<div class="highlight-tcsh notranslate"><div class="highlight"><pre><span></span>git --version
+<section id="initialize-a-new-local-git-repository">
+<h2><span class="section-number">2.1.2. </span>Initialize a new local <code class="docutils literal notranslate"><span class="pre">git</span></code> repository<a class="headerlink" href="#initialize-a-new-local-git-repository" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In your terminal, let us create new directory</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>my-first-git-repo
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">git</span></code> is not installed by default, then open a terminal and try to install <code class="docutils literal notranslate"><span class="pre">git</span></code> as</p>
 <ul class="simple">
-<li><p>If Debian/Ubuntu based distributions <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span> <span class="pre">&amp;&amp;</span> <span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">git</span></code></p></li>
-<li><p>If Fedora based distributions <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dnf</span> <span class="pre">install</span> <span class="pre">git</span></code></p></li>
-<li><p>If Arch based distributions <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pacman</span> <span class="pre">-S</span> <span class="pre">git</span></code></p></li>
+<li><p>To align with GitHub naming scheme, the default branch is named as <code class="docutils literal notranslate"><span class="pre">main</span></code>. Hence, lets configure it.</p></li>
 </ul>
-</div>
-<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">macOS</label><div class="tab-content docutils">
-<p>git comes installed by default in MacOs systems. In a termnial try out</p>
-<div class="highlight-zsh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>--version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">git</span></code> is not installed by default, then open a terminal and try to install <code class="docutils literal notranslate"><span class="pre">git</span></code> as</p>
 <ul class="simple">
-<li><p>Installing using <code class="docutils literal notranslate"><span class="pre">brew</span></code> installer <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">git</span></code>.</p></li>
-<li><p>Alternatively, you can install using Xcode command line tools as <code class="docutils literal notranslate"><span class="pre">xcode-select</span> <span class="pre">--install</span></code></p></li>
+<li><p>Initialize a <code class="docutils literal notranslate"><span class="pre">git</span></code> repository. This should create a directory named <code class="docutils literal notranslate"><span class="pre">.git</span></code> within this folder.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>init
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This should initialize a empty repo with branch name <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p></li>
+</ul>
+<div class="warning admonition">
+<p class="admonition-title">Try this</p>
+<ul class="simple">
+<li><p>Check out the status of the <code class="docutils literal notranslate"><span class="pre">git</span></code> repo using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p></li>
+<li><p>Check out the commit log by using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code></p></li>
 </ul>
 </div>
-<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--3">Windows</label><div class="tab-content docutils">
-<ul class="simple">
-<li><p>Download the executable from <a class="reference external" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></p></li>
-<li><p>Run the installer and follow the on-screen instructions.</p></li>
-<li><p>Use the default settings unless you have specific requirements.</p></li>
-<li><p>Once installed open <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> and check out the version <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">--version</span></code></p></li>
-</ul>
-</div>
-</div>
-<p>Great… Congratulations !!! Now you have git installed in your system.</p>
 </section>
+<section id="add-remote-origin">
+<h2><span class="section-number">2.1.3. </span>Add remote origin<a class="headerlink" href="#add-remote-origin" title="Link to this heading">#</a></h2>
+<p>As mentioned earlier, GitHub provides additional capabilities to git versioning system and allows to collaborate among various developers. Let us link the remote repo at GitHub that we have created in <a class="reference internal" href="#git-ex-create-repo"><span class="std std-ref">step-1</span></a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>https://github.com/username/my-first-git-repo.git
+</pre></div>
+</div>
+<p>This creates a remote repo named origin which points to <code class="docutils literal notranslate"><span class="pre">https://github.com/username/my-first-git-repo.git</span></code></p>
+</section>
+<section id="add-contents-to-the-local-repo">
+<h2><span class="section-number">2.1.4. </span>Add contents to the local repo<a class="headerlink" href="#add-contents-to-the-local-repo" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Let us add contents to the repo and stage it for a commit.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, Git My Name is </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">!&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>first_file.txt
+git<span class="w"> </span>add<span class="w"> </span>first_file.txt
+</pre></div>
+</div>
+</li>
+</ul>
+<p>you can also specific a directory to be included as well. Also, you can include all the files by specifying the option <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code>, to list down a complete usage of <code class="docutils literal notranslate"><span class="pre">add</span></code> try out <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">--help</span></code></p>
+<ul class="simple">
+<li><p>Let us commit this file to be pushed into the repo. This commit will now update the records in git that there has been a commit (or change) that had happended. This is like recording the history. The -m flag allows you to add a commit message directly from the command line. Commit messages should be concise yet descriptive.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;My first commit message. Commit message has to short and meaningful&quot;</span>
+</pre></div>
+</div>
+<p>If you have not authenticated before it will ask you to authenticate yourself with username and email. Try out the steps we did during configuring <code class="docutils literal notranslate"><span class="pre">git</span></code>. Note that this is because, the <code class="docutils literal notranslate"><span class="pre">.git</span></code> will record this as to who had made this commit.</p>
+<ul class="simple">
+<li><p>Now push the commit to the remote repository to sync the remote and local repo.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+<p>This may once again prompt for authentication of your GitHub credentials. The command pushes the commit to origin in the branch main. Note, that if the branch name is not in the remote repository, then, it will create the branch in the remote repository as well.</p>
+<p>You can post a screenshot or your push action below in the comment section.</p>
+<script
+   type="text/javascript"
+   src="https://utteranc.es/client.js"
+   async="async"
+   repo="aid2e/boot-camp-2024"
+   issue-term="pathname"
+   theme="github-dark"
+   label="💬 git-ex-1"
+   crossorigin="anonymous"
+/></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -627,20 +596,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="VCS.html"
+       href="git_exercises.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.1. </span>Version Control System (VCS)</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></p>
       </div>
     </a>
     <a class="right-next"
-       href="git_configure.html"
+       href="Exercise-2.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Exercise 2: Commits, push and branches</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -660,15 +629,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-tree">1.2.1. <strong>Working Tree</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-repo">1.2.2. <strong>Repository (Repo)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hash">1.2.3. <strong>Hash</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object">1.2.4. <strong>Object</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commit">1.2.5. <strong>Commit</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branch">1.2.6. <strong>Branch</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote">1.2.7. <strong>Remote</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commands-subcommands-and-options">1.2.8. <strong>Commands, Subcommands, and Options</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-git">1.2.9. Installing <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-repository-on-github">2.1.1. Create a New Repository on GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-a-new-local-git-repository">2.1.2. Initialize a new local <code class="docutils literal notranslate"><span class="pre">git</span></code> repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-remote-origin">2.1.3. Add remote origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-contents-to-the-local-repo">2.1.4. Add contents to the local repo</a></li>
 </ul>
   </nav></div>
 

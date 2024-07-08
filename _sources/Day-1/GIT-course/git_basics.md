@@ -66,7 +66,7 @@ If `git` is not installed by default, then open a terminal and try to install `g
 * If Fedora based distributions `sudo dnf install git`
 * If Arch based distributions `sudo pacman -S git`
 ````
-````{tab} MacOs
+````{tab} macOS
 git comes installed by default in MacOs systems. In a termnial try out 
 ```zsh
 git --version
