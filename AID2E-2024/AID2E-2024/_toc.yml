@@ -3,11 +3,13 @@
 
 root: intro
 format: jb-book
+
 parts:
 - caption: Schedule
   chapters:
     - file: schedule
 - caption: Introduction to git
+  numbered: true
   chapters:
     - file: Day-1/GIT-course/intro_to_git
       sections:

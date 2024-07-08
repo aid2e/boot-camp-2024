@@ -7,6 +7,30 @@ A Version Control System (VCS) is a powerful tool that helps you manage changes 
 One of the primary goals of a VCS is to facilitate collaborative work. Imagine a team of developers working on the same project, perhaps even the same files, simultaneously. Without a VCS, their changes could easily conflict, leading to confusion and potential loss of work. A VCS allows multiple team members to collaborate seamlessly, ensuring that each person’s contributions are preserved and integrated without affecting others’ work.
 
 Another term often used interchangeably with VCS is Software Configuration Management (SCM) system. While version control is a critical component of SCM, SCM encompasses a broader range of practices and tools. Git, one of the most popular VCS tools, highlights this interchangeability in its official documentation, which can be found at git-scm.com. Although VCSs are predominantly used for software projects, their utility extends to other types of projects, such as books and online tutorials.
+````{div} full-width
+```{mermaid}
+:zoom:
+graph TD
+    subgraph Local VCS
+        A[Local Repository]
+    end
+
+    subgraph Centralized VCS
+        B[Central Repository]
+    end
+
+    subgraph Distributed VCS
+        C[Remote Repository 1]
+        D[Remote Repository 2]
+        E[Remote Repository 3]
+    end
+
+    A --> B
+    B --> C
+    B --> D
+    B --> E
+```
+````
 
 With a VCS, you gain several powerful capabilities:
 
@@ -21,3 +45,31 @@ With a VCS, you gain several powerful capabilities:
 5. **Tagging**: Attach tags to specific versions, such as marking a new release. Tags provide an easy way to identify and reference significant points in your project's history.
 
 By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.
+````{div} full-width
+```{mermaid}
+:zoom:
+graph LR
+    VCS(Version Control System)
+    VCS --> CT(Change Tracking)
+    VCS --> DC(Descriptive Changes)
+    VCS --> VR(Version Retrieval)
+    VCS --> BM(Branching and Merging)
+    VCS --> T(Tagging)
+    CT --> C1{See all changes}
+    C1 --> C2(When they were made)
+    C1 --> C3(Who made them)
+    DC --> D1{Each change can include a message}
+    D1 --> D2(Explaining the reasoning)
+    VR --> V1{Retrieve past versions}
+    V1 --> V2(Of the entire project)
+    V1 --> V3(Of individual files)
+    BM --> B1{Create branches to experiment}
+    B1 --> B2(Multiple sets of changes)
+    B2 --> B3(New features)
+    B2 --> B4(Bug fixes)
+    B1 --> B5{Once changes are tested and validated}
+    B5 --> B6(Merge back into the main branch)
+    T --> T1{Attach tags to specific versions}
+    T1 --> T2(Marking a new release)
+```
+````

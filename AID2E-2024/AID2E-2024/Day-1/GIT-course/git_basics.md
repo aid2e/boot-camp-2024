@@ -4,6 +4,26 @@ Git was created by Linus Torvalds in 2005, the same individual who developed the
 
 To navigate the world of Git, it’s essential to familiarize yourself with its unique terminology. Here’s a concise glossary of terms that you’ll encounter frequently as you delve into Git. Don’t worry about grasping all the details immediately; these terms will become second nature as you progress through the exercises in this book.
 
+
+```{mermaid} 
+:zoom:
+:caption: Example Git diagram
+:align: center
+    gitGraph LR:
+       commit
+       commit
+       branch develop
+       commit
+       commit
+       checkout main
+       commit
+       commit
+       merge develop
+       commit
+       commit
+```
+
+
 ## **Working Tree**
 The working tree consists of the nested directories and files that make up the project you are currently working on. Think of it as the active workspace where all your changes and edits occur.
 
@@ -21,19 +41,18 @@ In a Git repository, there are four types of objects, each identified by a uniqu
 - **Tag**: A name attached to a commit, marking it for reference.
 
 ## **Commit**
-To commit, in Git terminology, means to create a commit object. This action is akin to committing changes to a database; it records your changes so that others can eventually see them.
+To commit, in Git terminology, means to create a commit object. This action is akin to committing changes to a database; it records your changes so that others can eventually see them. A commit in Git is a fundamental concept that represents a snapshot of your repository at a specific point in time. Each commit records changes to the files in your repository and includes metadata such as the author, date, and a commit message. Each commit has a unique identifier (SHA-1 hash)
 
 ## **Branch**
 A branch is a named series of linked commits. The most recent commit in a branch is known as the head. When you initialize a repository, Git creates a default branch called `main`, though it is often named `master`. The head of the current branch is named `HEAD`. Branches enable developers to work independently (or collaboratively) on separate lines of development and later merge their changes into the main branch.
 
 ## **Remote**
-A remote is a named reference to another Git repository. When you create a repo, Git sets up a default remote named `origin` for push and pull operations.
+A remote is a named reference to another Git repository. When you create a repo, Git sets up a default remote named `origin` for push and pull operations. This can be changed as well. 
 
 ## **Commands, Subcommands, and Options**
 Git operations are executed through commands like `git push` and `git pull`. Here, `git` is the command, and `push` or `pull` is the subcommand specifying the operation you want Git to perform. These subcommands are often accompanied by options, which are indicated with hyphens (-) or double hyphens (--), such as `git reset --hard`.
 
 These terms and others, like `push` and `pull`, will become clearer as you continue learning. Refer back to this glossary as needed to reinforce your understanding while you work through the module.
-
 
 ## Installing `git`
 
@@ -62,3 +81,5 @@ If `git` is not installed by default, then open a terminal and try to install `g
 * Use the default settings unless you have specific requirements.
 * Once installed open `cmd.exe` and check out the version `git --version`
 ````
+Great.... Congratulations !!! Now you have git installed in your system.
+
