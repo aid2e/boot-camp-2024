@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2. Exercises on git &#8212; AID2E-Boot-Camp-2024</title>
+    <title>2.4. GitHub Actions and Workflow Tutorial &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -94,12 +94,12 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-1/GIT-course/git_exercises';</script>
-    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/git_exercises.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-1/GIT-course/Exercise-4';</script>
+    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/Exercise-4.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2.1. Exercise 1: Basic Git Commands" href="Exercise-1.html" />
-    <link rel="prev" title="1.3. Configuring your git" href="git_configure.html" />
+    <link rel="next" title="3. Introduction to High Perforamance Computing" href="../HPC-course/intro_to_HPC_HTC.html" />
+    <link rel="prev" title="2.3. Advanced exercises" href="Exercise-3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -235,11 +235,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2"><a class="reference internal" href="git_configure.html">1.3. Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="git_exercises.html">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Exercise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Exercise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Exercise-3.html">2.3. Advanced exercises</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Exercise-4.html">2.4. GitHub Actions and Workflow Tutorial</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.4. GitHub Actions and Workflow Tutorial</a></li>
 </ul>
 </details></li>
 </ul>
@@ -333,7 +333,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/edit/main/webpage/Day-1/GIT-course/git_exercises.md" target="_blank"
+      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/edit/main/webpage/Day-1/GIT-course/Exercise-4.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +350,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-1/GIT-course/git_exercises.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-1/GIT-course/Exercise-4.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +380,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="../../_sources/Day-1/GIT-course/git_exercises.md" target="_blank"
+      <li><a href="../../_sources/Day-1/GIT-course/Exercise-4.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -451,7 +451,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -462,11 +464,23 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises on git</h1>
+    <h1>GitHub Actions and Workflow Tutorial</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-github-actions">2.4.1. Introduction to GitHub Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-workflows">2.4.2. Understanding Workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-workflow">2.4.3. Creating a Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triggering-the-workflow">2.4.4. Triggering the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.4.5. Conclusion</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -476,17 +490,53 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises-on-git">
-<h1><span class="section-number">2. </span>Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code><a class="headerlink" href="#exercises-on-git" title="Link to this heading">#</a></h1>
-<p>We will have three distinct exercises for this chapter</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="Exercise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Exercise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Exercise-3.html">2.3. Advanced exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Exercise-4.html">2.4. GitHub Actions and Workflow Tutorial</a></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="github-actions-and-workflow-tutorial">
+<h1><span class="section-number">2.4. </span>GitHub Actions and Workflow Tutorial<a class="headerlink" href="#github-actions-and-workflow-tutorial" title="Link to this heading">#</a></h1>
+<p>In this tutorial, we will explore GitHub Actions and Workflow, and learn how to create automated workflows for your projects.</p>
+<section id="introduction-to-github-actions">
+<h2><span class="section-number">2.4.1. </span>Introduction to GitHub Actions<a class="headerlink" href="#introduction-to-github-actions" title="Link to this heading">#</a></h2>
+<p>GitHub Actions is a powerful feature that allows you to automate tasks, build, test, and deploy your code directly from your GitHub repository. It provides a flexible and customizable way to streamline your development process.</p>
+</section>
+<section id="understanding-workflows">
+<h2><span class="section-number">2.4.2. </span>Understanding Workflows<a class="headerlink" href="#understanding-workflows" title="Link to this heading">#</a></h2>
+<p>Workflows in GitHub Actions are defined using YAML files. A workflow is a series of steps that are executed when certain events occur, such as a push to a repository or the creation of a pull request.</p>
+</section>
+<section id="creating-a-workflow">
+<h2><span class="section-number">2.4.3. </span>Creating a Workflow<a class="headerlink" href="#creating-a-workflow" title="Link to this heading">#</a></h2>
+<p>To create a workflow, you need to define a YAML file in the <code class="docutils literal notranslate"><span class="pre">.github/workflows</span></code> directory of your repository. Let’s create a simple workflow that gets triggered whenever a push event occurs.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+
+<span class="w">        </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout repository</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Running tests and building</span>
+<span class="w">                </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                    </span><span class="no">echo &quot;Hello I am going to run something here and check the contents&quot;</span>
+<span class="w">                    </span><span class="no">ls </span>
+<span class="w">                    </span><span class="no">echo $HOSTNAME</span>
+</pre></div>
 </div>
+<p>In the above example, we have defined a workflow named “CI” that runs on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch whenever a push event occurs. The workflow consists of a single job named “build” that runs on an Ubuntu environment.</p>
+<p>The steps within the job define the actions to be performed. In this case, we have two steps: “Checkout repository” and “Build and test”. You can customize these steps based on your project requirements.</p>
+</section>
+<section id="triggering-the-workflow">
+<h2><span class="section-number">2.4.4. </span>Triggering the Workflow<a class="headerlink" href="#triggering-the-workflow" title="Link to this heading">#</a></h2>
+<p>Once you have defined the workflow, it will automatically be triggered whenever a push event occurs on the specified branch. You can also manually trigger the workflow from the Actions tab in your repository.</p>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">2.4.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>GitHub Actions and Workflow provide a powerful way to automate your development process. By defining workflows, you can streamline your build, test, and deployment tasks, saving time and effort. Experiment with different actions and customize your workflows to suit your project needs. More on <a class="reference external" href="https://github.com/features/actions">GitHub actions</a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -520,20 +570,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="git_configure.html"
+       href="Exercise-3.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.3. </span>Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>Advanced exercises</p>
       </div>
     </a>
     <a class="right-next"
-       href="Exercise-1.html"
+       href="../HPC-course/intro_to_HPC_HTC.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.1. </span>Exercise 1: Basic Git Commands</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Introduction to High Perforamance Computing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -543,6 +593,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-github-actions">2.4.1. Introduction to GitHub Actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-workflows">2.4.2. Understanding Workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-workflow">2.4.3. Creating a Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triggering-the-workflow">2.4.4. Triggering the Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.4.5. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

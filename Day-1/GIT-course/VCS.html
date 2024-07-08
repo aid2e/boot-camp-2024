@@ -99,7 +99,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
     <script>
                 window.addEventListener("load", function () {
-                  var svgs = d3.selectAll(".mermaid#id-ccc968b7-1ece-432f-a398-2ad86a5d209a svg, .mermaid#id-161344c7-edb3-4c86-be2f-a74a41d741a9 svg");
+                  var svgs = d3.selectAll(".mermaid#id-39299d83-85bd-4b4c-b701-b2ff9f5c7a7f svg, .mermaid#id-84522238-f651-484b-adae-c1c97e7422a2 svg");
                   svgs.each(function() {
                     var svg = d3.select(this);
                     svg.html("<g>" + svg.html() + "</g>");
@@ -256,6 +256,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2"><a class="reference internal" href="Exercise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Exercise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Exercise-3.html">2.3. Advanced exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Exercise-4.html">2.4. GitHub Actions and Workflow Tutorial</a></li>
 </ul>
 </details></li>
 </ul>
@@ -499,7 +500,7 @@ document.write(`
 <p>One of the primary goals of a VCS is to facilitate collaborative work. Imagine a team of developers working on the same project, perhaps even the same files, simultaneously. Without a VCS, their changes could easily conflict, leading to confusion and potential loss of work. A VCS allows multiple team members to collaborate seamlessly, ensuring that each person’s contributions are preserved and integrated without affecting others’ work.</p>
 <p>Another term often used interchangeably with VCS is Software Configuration Management (SCM) system. While version control is a critical component of SCM, SCM encompasses a broader range of practices and tools. Git, one of the most popular VCS tools, highlights this interchangeability in its official documentation, which can be found at <a class="reference external" href="http://git-scm.com">git-scm.com</a>. Although VCSs are predominantly used for software projects, their utility extends to other types of projects, such as books and online tutorials.</p>
 <div class="full-width docutils">
-<div id="id-ccc968b7-1ece-432f-a398-2ad86a5d209a" class="mermaid">
+<div id="id-39299d83-85bd-4b4c-b701-b2ff9f5c7a7f" class="mermaid">
             graph TD
     subgraph Local VCS
         A[Local Repository]
@@ -531,7 +532,7 @@ document.write(`
 </ol>
 <p>By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.</p>
 <div class="full-width docutils">
-<div id="id-161344c7-edb3-4c86-be2f-a74a41d741a9" class="mermaid">
+<div id="id-84522238-f651-484b-adae-c1c97e7422a2" class="mermaid">
             graph LR
     VCS(Version Control System)
     VCS --&gt; CT(Change Tracking)
