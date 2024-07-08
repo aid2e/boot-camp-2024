@@ -29,5 +29,3 @@ salloc: Nodes compute-node-01 are ready for job
 
 Navigate to the git repo, and add a new text file `third_file.txt` to it, and push it to a new branch named `slurm-branch`
 ```
-
-## 
