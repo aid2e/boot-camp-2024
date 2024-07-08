@@ -8,6 +8,10 @@ parts:
 - caption: Schedule
   chapters:
     - file: schedule
+    - url: https://docs.google.com/presentation/d/1VZAreeSnm4UlclDWmTxmNFoyjgeNEyKqagiV0HgBrR4/edit#slide=id.g2ead0cea83b_0_95
+      title: "Welcome and Intro by Prof. C.Fanelli"
+    - url: https://docs.google.com/presentation/d/1tX2W2Da_BaM49ca3nh4lWQOfEdUpRFapFDqD3EWLNME/edit?usp=sharing
+      title: "Introduction to AID2E Boot Camp 2024"
 - caption: Introduction to git
   numbered: true
   chapters:
@@ -21,9 +25,6 @@ parts:
         - file: Day-1/GIT-course/Exercise-1
         - file: Day-1/GIT-course/Exercise-2
         - file: Day-1/GIT-course/Exercise-3
-- caption: Using VS-Code
-  chapters:
-    - file: Day-1/VS-code
 - caption: "Introduction to High Performance Computing (HPC)"
   numbered: true
   chapters:
@@ -33,7 +34,9 @@ parts:
         - file: Day-1/HPC-course/ssh_login
         - file: Day-1/HPC-course/file_systems_WM
         - file: Day-1/HPC-course/SLURM_commands
-
+- caption: Using VS-Code
+  chapters:
+    - file: Day-1/VS-code
 - caption: "Day 2 - Introduction to Optimization"
   chapters:
     - file: Day-2/intro_to_python
