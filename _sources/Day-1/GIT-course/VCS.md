@@ -21,3 +21,16 @@ With a VCS, you gain several powerful capabilities:
 5. **Tagging**: Attach tags to specific versions, such as marking a new release. Tags provide an easy way to identify and reference significant points in your project's history.
 
 By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.
+
+```{mermaid}
+graph TB
+    VCS(Version Control System)
+    VCS --> LVCS(Local VCS)
+    VCS --> CVCS(Centralized VCS)
+    VCS --> DVCS(Distributed VCS)
+    LVCS --> RCS(Revision Control System)
+    CVCS --> SVN(Subversion)
+    CVCS --> CVS(Concurrent Versions System)
+    DVCS --> Git
+    DVCS --> Mercurial
+```

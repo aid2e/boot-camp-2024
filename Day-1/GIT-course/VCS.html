@@ -94,6 +94,8 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Day-1/GIT-course/VCS';</script>
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/GIT-course/VCS.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -474,7 +476,18 @@ document.write(`
 <li><p><strong>Tagging</strong>: Attach tags to specific versions, such as marking a new release. Tags provide an easy way to identify and reference significant points in your project’s history.</p></li>
 </ol>
 <p>By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.</p>
-</section>
+<div class="mermaid">
+            graph TB
+    VCS(Version Control System)
+    VCS --&gt; LVCS(Local VCS)
+    VCS --&gt; CVCS(Centralized VCS)
+    VCS --&gt; DVCS(Distributed VCS)
+    LVCS --&gt; RCS(Revision Control System)
+    CVCS --&gt; SVN(Subversion)
+    CVCS --&gt; CVS(Concurrent Versions System)
+    DVCS --&gt; Git
+    DVCS --&gt; Mercurial
+        </div></section>
 
     <script type="text/x-thebe-config">
     {
