@@ -520,21 +520,26 @@ salloc:<span class="w"> </span>Nodes<span class="w"> </span>compute-node-01<span
 <section id="submitting-jobs-through-sbatch">
 <h2><span class="section-number">3.4.2. </span>Submitting jobs through <code class="docutils literal notranslate"><span class="pre">sbatch</span></code><a class="headerlink" href="#submitting-jobs-through-sbatch" title="Link to this heading">#</a></h2>
 <p>Once you have written your script or executable file, you can submit it as a job to be executed on the SLURM cluster using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command. This allows you to run your code in a batch mode, without the need for an interactive session.</p>
-<p>To submit a job using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, you need to create a submission script that specifies the necessary resources and commands for your job. Here’s an example of a submission script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<p>To submit a job using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, you need to create a submission script that specifies the necessary resources and commands for your job. Here’s an example of a submission script, you can name it <code class="docutils literal notranslate"><span class="pre">run_job.csh</span></code>, ofcourse we need to modify some info here:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/tcsh</span>
 <span class="c1">#SBATCH --job-name=myjob           # Job name</span>
 <span class="c1">#SBATCH --output=&lt;path/to/output/output.log&gt;        # Output file</span>
 <span class="c1">#SBATCH --error=&lt;path/to/output/error.log&gt;       # Error file</span>
-<span class="c1">#SBATCH --ntasks=4                 # Number of tasks (CPUs) to allocate</span>
-<span class="c1">#SBATCH --mem=8G                   # Memory per node</span>
+<span class="c1">#SBATCH --ntasks=1                 # Number of tasks (CPUs) to allocate</span>
+<span class="c1">#SBATCH --mem=1G                   # Memory per node</span>
 <span class="c1">#SBATCH --time=01:00:00            # Walltime limit</span>
 
 <span class="c1"># Load any necessary modules</span>
-module<span class="w"> </span>load<span class="w"> </span>
+module<span class="w"> </span>load<span class="w"> </span>python/3.8
 
 <span class="c1"># Run your executable or script or ANYTHING YOU WANT</span>
-
-sleep<span class="w"> </span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I am going to sleep for 10s&quot;</span>
+sleep<span class="w"> </span>10s
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;print (1+3+4+5)&quot;</span>
+sleep<span class="w"> </span>15s
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I am going run something that does not exist&quot;</span>
+AID2E_IS_AWESOME
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I am going to gracefully end this job&quot;</span>
 </pre></div>
 </div>
 <p>Let’s break down the different parts of the submission script:</p>

@@ -35,23 +35,29 @@ Navigate to the git repo, and add a new text file `third_file.txt` to it, and pu
 
 Once you have written your script or executable file, you can submit it as a job to be executed on the SLURM cluster using the `sbatch` command. This allows you to run your code in a batch mode, without the need for an interactive session.
 
-To submit a job using `sbatch`, you need to create a submission script that specifies the necessary resources and commands for your job. Here's an example of a submission script:
+To submit a job using `sbatch`, you need to create a submission script that specifies the necessary resources and commands for your job. Here's an example of a submission script, you can name it `run_job.csh`, ofcourse we need to modify some info here:
 
 ```bash
-#!/bin/bash
+#!/bin/tcsh
 #SBATCH --job-name=myjob           # Job name
 #SBATCH --output=<path/to/output/output.log>        # Output file
 #SBATCH --error=<path/to/output/error.log>       # Error file
-#SBATCH --ntasks=4                 # Number of tasks (CPUs) to allocate
-#SBATCH --mem=8G                   # Memory per node
+#SBATCH --ntasks=1                 # Number of tasks (CPUs) to allocate
+#SBATCH --mem=1G                   # Memory per node
 #SBATCH --time=01:00:00            # Walltime limit
 
 # Load any necessary modules
-module load 
+module load python/3.8
 
 # Run your executable or script or ANYTHING YOU WANT
+echo "I am going to sleep for 10s"
+sleep 10s
+python -c "print (1+3+4+5)"
+sleep 15s
+echo "I am going run something that does not exist"
+AID2E_IS_AWESOME
+echo "I am going to gracefully end this job"
 
-sleep 
 
 ```
 
