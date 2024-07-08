@@ -99,7 +99,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
     <script>
                 window.addEventListener("load", function () {
-                  var svgs = d3.selectAll(".mermaid#id-c0bc718a-4d39-46bf-bd35-c98442447732 svg, .mermaid#id-69d02a5a-83a8-42b0-a80d-eca0c7ff24b0 svg");
+                  var svgs = d3.selectAll(".mermaid#id-ccc968b7-1ece-432f-a398-2ad86a5d209a svg, .mermaid#id-161344c7-edb3-4c86-be2f-a74a41d741a9 svg");
                   svgs.each(function() {
                     var svg = d3.select(this);
                     svg.html("<g>" + svg.html() + "</g>");
@@ -240,6 +240,9 @@ commentsRunWhenDOMLoaded(addUtterances);
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Schedule</a></li>
+
+
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1tX2W2Da_BaM49ca3nh4lWQOfEdUpRFapFDqD3EWLNME/edit?usp=sharing">Introduction to AID2E Boot Camp 2024</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to git</span></p>
 <ul class="current nav bd-sidenav">
@@ -256,12 +259,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using VS-Code</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../VS-code.html">Installing Visual Studio Code</a></li>
-
-
-</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to High Performance Computing (HPC)</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../HPC-course/intro_to_HPC_HTC.html">3. Introduction to High Perforamance Computing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -271,6 +268,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2"><a class="reference internal" href="../HPC-course/SLURM_commands.html">3.4. Introduction to SLURM</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using VS-Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../VS-code.html">Installing Visual Studio Code</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Optimization</span></p>
 <ul class="nav bd-sidenav">
@@ -496,7 +499,7 @@ document.write(`
 <p>One of the primary goals of a VCS is to facilitate collaborative work. Imagine a team of developers working on the same project, perhaps even the same files, simultaneously. Without a VCS, their changes could easily conflict, leading to confusion and potential loss of work. A VCS allows multiple team members to collaborate seamlessly, ensuring that each person’s contributions are preserved and integrated without affecting others’ work.</p>
 <p>Another term often used interchangeably with VCS is Software Configuration Management (SCM) system. While version control is a critical component of SCM, SCM encompasses a broader range of practices and tools. Git, one of the most popular VCS tools, highlights this interchangeability in its official documentation, which can be found at <a class="reference external" href="http://git-scm.com">git-scm.com</a>. Although VCSs are predominantly used for software projects, their utility extends to other types of projects, such as books and online tutorials.</p>
 <div class="full-width docutils">
-<div id="id-c0bc718a-4d39-46bf-bd35-c98442447732" class="mermaid">
+<div id="id-ccc968b7-1ece-432f-a398-2ad86a5d209a" class="mermaid">
             graph TD
     subgraph Local VCS
         A[Local Repository]
@@ -528,7 +531,7 @@ document.write(`
 </ol>
 <p>By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.</p>
 <div class="full-width docutils">
-<div id="id-69d02a5a-83a8-42b0-a80d-eca0c7ff24b0" class="mermaid">
+<div id="id-161344c7-edb3-4c86-be2f-a74a41d741a9" class="mermaid">
             graph LR
     VCS(Version Control System)
     VCS --&gt; CT(Change Tracking)

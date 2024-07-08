@@ -98,7 +98,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-1/HPC-course/SLURM_commands.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction to Optimization" href="../../Day-2/intro_to_python.html" />
+    <link rel="next" title="Installing Visual Studio Code" href="../VS-code.html" />
     <link rel="prev" title="3.3. William &amp; Mary Research Computing: File Systems Tutorial" href="file_systems_WM.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -223,6 +223,8 @@ commentsRunWhenDOMLoaded(addUtterances);
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Schedule</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../schedule.html">Schedule</a></li>
+
+
 <li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1tX2W2Da_BaM49ca3nh4lWQOfEdUpRFapFDqD3EWLNME/edit?usp=sharing">Introduction to AID2E Boot Camp 2024</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to git</span></p>
@@ -240,12 +242,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </details></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using VS-Code</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../VS-code.html">Installing Visual Studio Code</a></li>
-
-
-</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to High Performance Computing (HPC)</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_HPC_HTC.html">3. Introduction to High Perforamance Computing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -255,6 +251,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">3.4. Introduction to SLURM</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using VS-Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../VS-code.html">Installing Visual Studio Code</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Optimization</span></p>
 <ul class="nav bd-sidenav">
@@ -475,6 +477,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#booking-resources-with-salloc">3.4.1.1. Booking Resources with <code class="docutils literal notranslate"><span class="pre">salloc</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-jobs-through-sbatch">3.4.2. Submitting jobs through <code class="docutils literal notranslate"><span class="pre">sbatch</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -513,6 +516,45 @@ salloc:<span class="w"> </span>Nodes<span class="w"> </span>compute-node-01<span
 <p>Navigate to the git repo, and add a new text file <code class="docutils literal notranslate"><span class="pre">third_file.txt</span></code> to it, and push it to a new branch named <code class="docutils literal notranslate"><span class="pre">slurm-branch</span></code></p>
 </div>
 </section>
+</section>
+<section id="submitting-jobs-through-sbatch">
+<h2><span class="section-number">3.4.2. </span>Submitting jobs through <code class="docutils literal notranslate"><span class="pre">sbatch</span></code><a class="headerlink" href="#submitting-jobs-through-sbatch" title="Link to this heading">#</a></h2>
+<p>Once you have written your script or executable file, you can submit it as a job to be executed on the SLURM cluster using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command. This allows you to run your code in a batch mode, without the need for an interactive session.</p>
+<p>To submit a job using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, you need to create a submission script that specifies the necessary resources and commands for your job. Here’s an example of a submission script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=myjob           # Job name</span>
+<span class="c1">#SBATCH --output=&lt;path/to/output/output.log&gt;        # Output file</span>
+<span class="c1">#SBATCH --error=&lt;path/to/output/error.log&gt;       # Error file</span>
+<span class="c1">#SBATCH --ntasks=4                 # Number of tasks (CPUs) to allocate</span>
+<span class="c1">#SBATCH --mem=8G                   # Memory per node</span>
+<span class="c1">#SBATCH --time=01:00:00            # Walltime limit</span>
+
+<span class="c1"># Load any necessary modules</span>
+module<span class="w"> </span>load<span class="w"> </span>
+
+<span class="c1"># Run your executable or script or ANYTHING YOU WANT</span>
+
+sleep<span class="w"> </span>
+</pre></div>
+</div>
+<p>Let’s break down the different parts of the submission script:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#!/bin/bash</span></code>: This line specifies the interpreter to be used for the script (in this case, Bash).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--job-name=myjob</span></code>: This line sets the name of your job. You can choose any name you like.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--output=output.log</span></code>: This line specifies the file where the standard output of your job will be written.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--error=error.log</span></code>: This line specifies the file where the standard error of your job will be written.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--ntasks=4</span></code>: This line specifies the number of tasks (CPUs) to allocate for your job. You can adjust this number based on the requirements of your code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--mem=8G</span></code>: This line specifies the amount of memory to allocate per node for your job. Again, you can adjust this based on your code’s memory requirements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--time=01:00:00</span></code>: This line sets the walltime limit for your job. It specifies the maximum amount of time your job can run.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">mymodule</span></code>: This line loads any necessary modules that your code depends on. Replace <code class="docutils literal notranslate"><span class="pre">mymodule</span></code> with the name of the module you need to load.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./myexecutable</span></code>: This line runs your executable or script. Replace <code class="docutils literal notranslate"><span class="pre">myexecutable</span></code> with the name of your executable or script file.</p></li>
+</ul>
+<p>To submit your job, save the submission script to a file (e.g., <code class="docutils literal notranslate"><span class="pre">myscript.sh</span></code>) and use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>myscript.sh
+</pre></div>
+</div>
+<p>This will submit your job to the SLURM cluster, and you will receive a job ID as output. You can use this job ID to monitor the status of your job using the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command.</p>
+<p>That’s it! You have successfully submitted a job using SLURM. Now you can sit back and let SLURM manage the execution of your code on the cluster.</p>
 </section>
 </section>
 
@@ -556,11 +598,11 @@ salloc:<span class="w"> </span>Nodes<span class="w"> </span>compute-node-01<span
       </div>
     </a>
     <a class="right-next"
-       href="../../Day-2/intro_to_python.html"
+       href="../VS-code.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Optimization</p>
+        <p class="prev-next-title">Installing Visual Studio Code</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -584,6 +626,7 @@ salloc:<span class="w"> </span>Nodes<span class="w"> </span>compute-node-01<span
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#booking-resources-with-salloc">3.4.1.1. Booking Resources with <code class="docutils literal notranslate"><span class="pre">salloc</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-jobs-through-sbatch">3.4.2. Submitting jobs through <code class="docutils literal notranslate"><span class="pre">sbatch</span></code></a></li>
 </ul>
   </nav></div>
 
