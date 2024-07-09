@@ -73,3 +73,24 @@ graph LR
     T1 --> T2(Marking a new release)
 ```
 ````
+
+
+### An example documentation 
+
+### Installing GitHub Copilot in your Terminal
+
+To install GitHub Copilot in your terminal, follow these steps:
+
+1. Open your terminal application. The steps to open the terminal may vary depending on your operating system. For example, on macOS, you can use the Spotlight search or navigate to the "Applications" folder and open the "Terminal" application.
+
+2. Ensure that you have a compatible code editor installed on your system. GitHub Copilot currently supports popular code editors such as Visual Studio Code, Atom, and JetBrains IDEs. If you don't have a compatible code editor installed, visit the official website of your preferred code editor and follow the installation instructions.
+
+3. Install the GitHub Copilot extension for your code editor. Open your code editor and navigate to the extension marketplace. Search for "GitHub Copilot" and locate the official extension. Click on the "Install" button to begin the installation process. Follow any additional prompts or instructions provided by your code editor to complete the installation.
+
+4. Once the installation is complete, restart your code editor to ensure that the GitHub Copilot extension is properly activated.
+
+5. Configure GitHub Copilot. After restarting your code editor, you may need to configure GitHub Copilot with your GitHub account. Follow the prompts or instructions provided by the extension to authenticate with your GitHub account. This step is necessary to enable the full functionality of GitHub Copilot, including accessing code suggestions and completing code snippets.
+
+6. Start using GitHub Copilot. With the extension installed and configured, you can now start using GitHub Copilot in your code editor. As you write code, GitHub Copilot will provide intelligent code suggestions and auto-completions based on the context of your code. Simply accept the suggestions or use the provided snippets to speed up your coding workflow.
+
+Congratulations! You have successfully installed GitHub Copilot in your terminal and can now take advantage of its powerful code generation capabilities. Happy coding!
