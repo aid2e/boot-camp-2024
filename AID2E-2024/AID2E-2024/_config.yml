@@ -87,9 +87,9 @@ launch_buttons:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/karthik18495/AID2E-Boot-Camp-2024  # Online location of your book
+  url: https://github.com/aid2e/boot-camp-2024  # Online location of your book
   path_to_book: webpage  # Optional path to your book, relative to the repository root
-  branch: main  # Which branch of the repository should be used when creating links (optional)
+  branch: webpage-src  # Which branch of the repository should be used when creating links (optional)
 
   #######################################################################################
 # Advanced and power-user settings
