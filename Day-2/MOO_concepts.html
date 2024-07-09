@@ -539,6 +539,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-have-an-isight-on-how-to-go-about-a-n-d-case">4.1.3.3. 3. Can you have an isight on how to go about a <code class="docutils literal notranslate"><span class="pre">N-D</span></code> case?</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-hyper-volume">4.1.4. Computing Hyper Volume</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypervolume">4.1.4.1. Hypervolume</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence-tracking">4.1.4.2. Convergence Tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-convergence-with-hypervolume">4.1.4.3. Tracking Convergence with Hypervolume</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -567,18 +573,16 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (3.9.1)
 Requirement already satisfied: contourpy&gt;=1.0.1 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (1.2.1)
 Requirement already satisfied: cycler&gt;=0.10 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (0.12.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: fonttools&gt;=4.22.0 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (4.53.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (4.53.1)
 Requirement already satisfied: kiwisolver&gt;=1.3.1 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (1.4.5)
 Requirement already satisfied: numpy&gt;=1.23 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (2.0.0)
 Requirement already satisfied: packaging&gt;=20.0 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (24.1)
 Requirement already satisfied: pillow&gt;=8 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (10.4.0)
 Requirement already satisfied: pyparsing&gt;=2.3.1 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (3.1.2)
-Requirement already satisfied: python-dateutil&gt;=2.7 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (2.9.0.post0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.7 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -613,7 +617,7 @@ Requirement already satisfied: python-dateutil&gt;=2.7 in /home/pavi/anaconda3/e
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0ba640dd7783cee738880310720474616e8c8f60896cd811d7995e3fa3436dea.png" src="../_images/0ba640dd7783cee738880310720474616e8c8f60896cd811d7995e3fa3436dea.png" />
+<img alt="../_images/a8bafbbf07b5cf88711c8cf6537d8b9c3c3fe1e16b67b186154ef828d9c8f80a.png" src="../_images/a8bafbbf07b5cf88711c8cf6537d8b9c3c3fe1e16b67b186154ef828d9c8f80a.png" />
 </div>
 </div>
 </section>
@@ -718,10 +722,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.20066987280225634, -0.9239277740399423), (-0.4783186445230523, -0.7862870432617451), (-0.4576719870196641, -0.8273526941408291), (-0.7966091442571277, -0.30472057166856864), (-0.7012540928781595, -0.6296142943803207), (-0.9059293136761359, -0.2588142703737538), (-0.24774166515031268, -0.846134418314767), (-0.5865875451102981, -0.7685325476032772), (-0.7403972932705636, -0.4068062888981697), (-0.09913987441912805, -0.9240944145639048), (-0.2940722082185295, -0.8372087147338165), (-0.709711637167147, -0.4799441319546234)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.5405735859632183, -0.7724151548021548), (-0.9074878540214173, -0.014571538999476701), (-0.5038727643469487, -0.7933553216243836), (-0.17707959692012015, -0.9512585162785446), (-0.8630560575436502, -0.10228478831704291), (-0.8444975398104009, -0.5022430595080558), (-0.6382798321073309, -0.7214791515159792), (-0.7877101722980715, -0.5119689631258026), (-0.2418232475158472, -0.8566784650488022), (-0.1874024090487115, -0.9404324695971421), (-0.7377966240337251, -0.5427539543133774)]
 </pre></div>
 </div>
-<img alt="../_images/1456ad7006ed43d9b0efdcf7ed333ad637102d0938feda8005e933f274054738.png" src="../_images/1456ad7006ed43d9b0efdcf7ed333ad637102d0938feda8005e933f274054738.png" />
+<img alt="../_images/836443de3461820f04d62cb154dece08ee3ade8a480cf247f7d5d9a264af3212.png" src="../_images/836443de3461820f04d62cb154dece08ee3ade8a480cf247f7d5d9a264af3212.png" />
 </div>
 </div>
 </section>
@@ -736,6 +740,109 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </section>
 <section id="can-you-have-an-isight-on-how-to-go-about-a-n-d-case">
 <h3><span class="section-number">4.1.3.3. </span>3. Can you have an isight on how to go about a <code class="docutils literal notranslate"><span class="pre">N-D</span></code> case?<a class="headerlink" href="#can-you-have-an-isight-on-how-to-go-about-a-n-d-case" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="computing-hyper-volume">
+<h2><span class="section-number">4.1.4. </span>Computing Hyper Volume<a class="headerlink" href="#computing-hyper-volume" title="Link to this heading">#</a></h2>
+<p>Let us remind ourself about MOO and what hypervolume is</p>
+<p><img alt="image.png" src="../_images/hv_recap.png" /></p>
+<p>In multi-objective optimization (MOO), the goal is to find a set of solutions that represents the trade-off between multiple conflicting objectives. One way to evaluate the quality of these solutions is by using a metric called hypervolume.</p>
+<section id="hypervolume">
+<h3><span class="section-number">4.1.4.1. </span>Hypervolume<a class="headerlink" href="#hypervolume" title="Link to this heading">#</a></h3>
+<p>Hypervolume is a measure of the dominated space in the objective space. It quantifies the extent of the Pareto-optimal front, which represents the best possible trade-off between the objectives. The hypervolume metric considers both the spread and density of solutions in the objective space.</p>
+<p>The hypervolume is calculated by defining a reference point, which represents the ideal values for each objective. The hypervolume is then computed as the volume of the dominated space between the Pareto-optimal front and the reference point.</p>
+</section>
+<section id="convergence-tracking">
+<h3><span class="section-number">4.1.4.2. </span>Convergence Tracking<a class="headerlink" href="#convergence-tracking" title="Link to this heading">#</a></h3>
+<p>Convergence tracking is an important aspect of MOO algorithms. It helps us understand how well the algorithm is progressing towards finding the Pareto-optimal front. Hypervolume is a useful tool for tracking convergence because it provides a quantitative measure of the quality of the obtained solutions.</p>
+<p>As the MOO algorithm iteratively improves the solutions, the hypervolume should increase. A higher hypervolume indicates a larger dominated space, which means that the algorithm is finding better solutions that are closer to the true Pareto-optimal front.</p>
+<p>By monitoring the hypervolume over iterations, we can assess the convergence behavior of the algorithm. If the hypervolume increases rapidly and then plateaus, it may indicate that the algorithm has reached a local optimum. On the other hand, if the hypervolume continues to increase steadily, it suggests that the algorithm is exploring the solution space effectively and converging towards the true Pareto-optimal front.</p>
+</section>
+<section id="tracking-convergence-with-hypervolume">
+<h3><span class="section-number">4.1.4.3. </span>Tracking Convergence with Hypervolume<a class="headerlink" href="#tracking-convergence-with-hypervolume" title="Link to this heading">#</a></h3>
+<p>To track convergence using hypervolume, we can calculate the hypervolume at each iteration of the MOO algorithm and plot it over time. This allows us to visualize the progress of the algorithm and make informed decisions about when to stop the optimization process.</p>
+<p>By analyzing the hypervolume plot, we can gain insights into the convergence behavior of the MOO algorithm. If the hypervolume increases steadily and reaches a plateau, it suggests that the algorithm has converged. On the other hand, if the hypervolume fluctuates or decreases, it indicates that the algorithm is not converging effectively and may require further adjustments.</p>
+<p>Tracking convergence using hypervolume provides a quantitative measure of the optimization progress and helps in making informed decisions during the MOO process.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Can you think on how can you compute this hypervolume for a 2D case?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">compute_hypervolume</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the hypervolume from a given set of 2D points which are non-dominating solutions.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        points (list): List of 2D points representing non-dominating solutions.</span>
+<span class="sd">        reference_point (tuple): Reference point as a 2D point.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The hypervolume of the non-dominating solutions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sort the points based on the x-coordinate in ascending order</span>
+    <span class="n">sorted_points</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="c1"># Initialize the hypervolume to 0</span>
+    <span class="n">hypervolume</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Initialize the previous y-coordinate to the maximum y-coordinate</span>
+    <span class="n">prev_y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sorted_points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Iterate over the sorted points</span>
+    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">sorted_points</span><span class="p">:</span>
+        <span class="c1"># Calculate the width of the rectangle</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># Calculate the height of the rectangle</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
+        
+        <span class="c1"># Update the hypervolume</span>
+        <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+        
+        <span class="c1"># Update the previous y-coordinate</span>
+        <span class="n">prev_y</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate the width of the last rectangle</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate the height of the last rectangle</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
+    
+    <span class="c1"># Update the hypervolume with the last rectangle</span>
+    <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+    
+    <span class="k">return</span> <span class="n">hypervolume</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_points</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">r_points</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#0 - 1</span>
+<span class="n">th_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#circle</span>
+
+<span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">th_points</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th_points</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span>
+
+<span class="n">pareto_front</span> <span class="o">=</span> <span class="n">non_dominated_solutions</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">hypervolume</span> <span class="o">=</span> <span class="n">compute_hypervolume</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hypervolume:&quot;</span><span class="p">,</span> <span class="n">hypervolume</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 1.8709116856182324
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -804,6 +911,12 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-implement-the-same-function-but-for-maximization">4.1.3.1. 1. Can you implement the same function but for maximization?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-implement-the-same-function-but-for-3d-points">4.1.3.2. 2. Can you implement the same function but for 3D points?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-have-an-isight-on-how-to-go-about-a-n-d-case">4.1.3.3. 3. Can you have an isight on how to go about a <code class="docutils literal notranslate"><span class="pre">N-D</span></code> case?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-hyper-volume">4.1.4. Computing Hyper Volume</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypervolume">4.1.4.1. Hypervolume</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence-tracking">4.1.4.2. Convergence Tracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-convergence-with-hypervolume">4.1.4.3. Tracking Convergence with Hypervolume</a></li>
 </ul>
 </li>
 </ul>
