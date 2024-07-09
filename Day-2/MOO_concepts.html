@@ -609,7 +609,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d8ea501aa7428ae6887955c5e4f3ff4f51a552c827d65e6ba3e0da3eacff5079.png" src="../_images/d8ea501aa7428ae6887955c5e4f3ff4f51a552c827d65e6ba3e0da3eacff5079.png" />
+<img alt="../_images/50b5fec3d2b49d611c70a88e5ee894195d65613186eb5227b056eb07ed233e3c.png" src="../_images/50b5fec3d2b49d611c70a88e5ee894195d65613186eb5227b056eb07ed233e3c.png" />
 </div>
 </div>
 </section>
@@ -714,10 +714,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.23934569561927466, -0.9654427228929184), (-0.7372468022361083, -0.4982146958984378), (-0.7630919767384738, -0.3498194524940982), (-0.39634114956135313, -0.7456133287245018), (-0.6997090399300587, -0.6577050730130185), (-0.34705392357768133, -0.8004716383768274), (-0.10902327080658715, -0.9710072639470714), (-0.9504232881324159, -0.11977442894520592), (-0.49947523517002496, -0.7347618145191878), (-0.9907669389909911, -0.1033701093372689), (-0.9153393368289872, -0.3483551621137482)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.602382103705319, -0.6786652370457431), (-0.8964349012962677, -0.24345075491382956), (-0.2876611521627822, -0.9567904131455467), (-0.3784458077532098, -0.8124129359060178), (-0.8581967174943781, -0.39694168843137634), (-0.6766445281485166, -0.6622781626659896), (-0.9373603710276928, -0.06305673298059382), (-0.32277738596689814, -0.889952320577748), (-0.9086703222985886, -0.18544380936407442), (-0.540640136872129, -0.7692614971854815)]
 </pre></div>
 </div>
-<img alt="../_images/78ac9a11fb2c3c3ae616fde64f4cd3530922b83e79b8c40040e0da9b2438ee8f.png" src="../_images/78ac9a11fb2c3c3ae616fde64f4cd3530922b83e79b8c40040e0da9b2438ee8f.png" />
+<img alt="../_images/890bb432158ca9bd37c8cfa9bb9c8c311e57b84fad8fabe85a648d1778d4852d.png" src="../_images/890bb432158ca9bd37c8cfa9bb9c8c311e57b84fad8fabe85a648d1778d4852d.png" />
 </div>
 </div>
 </section>
@@ -855,8 +855,6 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
     <span class="c1"># Show the plot</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
-    <span class="n">draw_hypervolume</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -875,13 +873,15 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 
 <span class="n">hypervolume</span> <span class="o">=</span> <span class="n">compute_hypervolume</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hypervolume:&quot;</span><span class="p">,</span> <span class="n">hypervolume</span><span class="p">)</span>
+<span class="n">draw_hypervolume</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 0.6717270600051147
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 1.0392293978507974
 </pre></div>
 </div>
+<img alt="../_images/8616904b5e6a9cc99914a7de644abf30b9302ba56438dc13820521d15385663e.png" src="../_images/8616904b5e6a9cc99914a7de644abf30b9302ba56438dc13820521d15385663e.png" />
 </div>
 </div>
 </section>
