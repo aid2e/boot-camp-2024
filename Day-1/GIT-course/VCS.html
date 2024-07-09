@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
@@ -99,7 +99,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
     <script>
                 window.addEventListener("load", function () {
-                  var svgs = d3.selectAll(".mermaid#id-39299d83-85bd-4b4c-b701-b2ff9f5c7a7f svg, .mermaid#id-84522238-f651-484b-adae-c1c97e7422a2 svg");
+                  var svgs = d3.selectAll(".mermaid#id-eed97d12-572b-4566-a1f5-89bd44d071f1 svg, .mermaid#id-248631df-84dd-463e-9fb5-be93a1df5332 svg");
                   svgs.each(function() {
                     var svg = d3.select(this);
                     svg.html("<g>" + svg.html() + "</g>");
@@ -278,7 +278,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Optimization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Day-2/intro_to_python.html">Introduction to Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Day-2/intro_to_optimization.html">Introduction to Optimization Theory</a></li>
 </ul>
 
     </div>
@@ -500,7 +500,7 @@ document.write(`
 <p>One of the primary goals of a VCS is to facilitate collaborative work. Imagine a team of developers working on the same project, perhaps even the same files, simultaneously. Without a VCS, their changes could easily conflict, leading to confusion and potential loss of work. A VCS allows multiple team members to collaborate seamlessly, ensuring that each person’s contributions are preserved and integrated without affecting others’ work.</p>
 <p>Another term often used interchangeably with VCS is Software Configuration Management (SCM) system. While version control is a critical component of SCM, SCM encompasses a broader range of practices and tools. Git, one of the most popular VCS tools, highlights this interchangeability in its official documentation, which can be found at <a class="reference external" href="http://git-scm.com">git-scm.com</a>. Although VCSs are predominantly used for software projects, their utility extends to other types of projects, such as books and online tutorials.</p>
 <div class="full-width docutils">
-<div id="id-39299d83-85bd-4b4c-b701-b2ff9f5c7a7f" class="mermaid">
+<div id="id-eed97d12-572b-4566-a1f5-89bd44d071f1" class="mermaid">
             graph TD
     subgraph Local VCS
         A[Local Repository]
@@ -532,7 +532,7 @@ document.write(`
 </ol>
 <p>By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.</p>
 <div class="full-width docutils">
-<div id="id-84522238-f651-484b-adae-c1c97e7422a2" class="mermaid">
+<div id="id-248631df-84dd-463e-9fb5-be93a1df5332" class="mermaid">
             graph LR
     VCS(Version Control System)
     VCS --&gt; CT(Change Tracking)

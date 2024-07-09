@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>High Performance Computing &#8212; AID2E-Boot-Camp-2024</title>
+    <title>4. Introduction to Optimization Theory &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -18,41 +18,41 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=4c969af8" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script src="_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
     <script kind="utterances">
 
@@ -89,15 +89,18 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro_to_HPC';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Brief course on git" href="intro_to_git.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-2/intro_to_optimization';</script>
+    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-2/intro_to_optimization.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Installing Visual Studio Code" href="../Day-1/VS-code.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -129,7 +132,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="search.html"
+      action="../search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -181,7 +184,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="../intro.html">
   
   
   
@@ -192,8 +195,8 @@ commentsRunWhenDOMLoaded(addUtterances);
       
     
     
-    <img src="_static/AID2E-logo.png" class="logo__image only-light" alt="AID2E-Boot-Camp-2024 - Home"/>
-    <script>document.write(`<img src="_static/AID2E-logo.png" class="logo__image only-dark" alt="AID2E-Boot-Camp-2024 - Home"/>`);</script>
+    <img src="../_static/AID2E-logo.png" class="logo__image only-light" alt="AID2E-Boot-Camp-2024 - Home"/>
+    <script>document.write(`<img src="../_static/AID2E-logo.png" class="logo__image only-dark" alt="AID2E-Boot-Camp-2024 - Home"/>`);</script>
   
   
 </a></div>
@@ -213,15 +216,56 @@ commentsRunWhenDOMLoaded(addUtterances);
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
+                <a class="reference internal" href="../intro.html">
                     Welcome to AID2E Boot Camp 2024
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="intro_to_git.html">Brief course on <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">High Performance Computing</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Schedule</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">Schedule</a></li>
+
+
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1tX2W2Da_BaM49ca3nh4lWQOfEdUpRFapFDqD3EWLNME/edit?usp=sharing">Introduction to AID2E Boot Camp 2024</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to git</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-1/GIT-course/intro_to_git.html">1. Brief course on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/VCS.html">1.1. Version Control System (VCS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/git_basics.html">1.2. What is Git?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/git_configure.html">1.3. Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-1/GIT-course/git_exercises.html">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-3.html">2.3. Advanced exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-4.html">2.4. GitHub Actions and Workflow Tutorial</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to High Performance Computing (HPC)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-1/HPC-course/intro_to_HPC_HTC.html">3. Introduction to High Perforamance Computing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/intro_to_HPC.html">3.1. High Performance Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/ssh_login.html">3.2. SSH into a Front-End Node Using Proxy Jump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/file_systems_WM.html">3.3. William &amp; Mary Research Computing: File Systems Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/SLURM_commands.html">3.4. Introduction to SLURM</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using VS-Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Day-1/VS-code.html">Installing Visual Studio Code</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Optimization</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Introduction to Optimization Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing">https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -293,7 +337,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/edit/main/webpage/intro_to_HPC.md" target="_blank"
+      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/edit/main/webpage/Day-2/intro_to_optimization.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -310,7 +354,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/issues/new?title=Issue%20on%20page%20%2Fintro_to_HPC.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/karthik18495/AID2E-Boot-Camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-2/intro_to_optimization.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -340,7 +384,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="_sources/intro_to_HPC.md" target="_blank"
+      <li><a href="../_sources/Day-2/intro_to_optimization.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,9 +455,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -424,20 +466,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>High Performance Computing</h1>
+    <h1>Introduction to Optimization Theory</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm">SLURM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs">PBS</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -447,14 +480,29 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="high-performance-computing">
-<h1>High Performance Computing<a class="headerlink" href="#high-performance-computing" title="Link to this heading">#</a></h1>
-<section id="slurm">
-<h2>SLURM<a class="headerlink" href="#slurm" title="Link to this heading">#</a></h2>
-</section>
-<section id="pbs">
-<h2>PBS<a class="headerlink" href="#pbs" title="Link to this heading">#</a></h2>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-optimization-theory">
+<h1><span class="section-number">4. </span>Introduction to Optimization Theory<a class="headerlink" href="#introduction-to-optimization-theory" title="Link to this heading">#</a></h1>
+<p>Optimization is a mathematical discipline that focuses on finding the most efficient solution to a problem, given a set of constraints and objectives. It involves the selection of the best element from some set of available alternatives. In the context of mathematics and computer science, optimization can help in finding the minimum or maximum of a function within a given domain.</p>
+<p>In optimization theory, we can formulate the problem using mathematical equations. Let’s consider a generic optimization problem with the following components:</p>
+<ol class="arabic simple">
+<li><p>Design Variables: These are the variables that we can manipulate or control in order to find the optimal solution. They represent the decision variables in the problem. We typically denote them as x = (x1, x2, …, xn).</p></li>
+<li><p>Objectives: The objectives define what we want to optimize or maximize/minimize. They represent the quantities that we aim to improve or minimize. We can have single or multiple objectives, depending on the problem. We typically denote the objective function as f(x).</p></li>
+<li><p>Constraints: Constraints are the conditions or limitations that must be satisfied in order to find a feasible solution. They represent the restrictions on the design variables. Constraints can be equality constraints (e.g., x1 + x2 = 10) or inequality constraints (e.g., x1 &gt;= 0, x2 &lt;= 5). We typically denote the constraints as g(x) &lt;= 0 or h(x) = 0.</p></li>
+</ol>
+<p>With these components, we can formulate an optimization problem as follows:</p>
+<div class="math notranslate nohighlight" id="equation-fig-optim-deg">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-fig-optim-deg" title="Link to this equation">#</a></span>\[\begin{split}\text{Minimize/Maximize: } f(x) \\
+\text{Subject to: } g(x) \leq 0 \\
+h(x) = 0 \\
+lb \leq x \leq ub \\\end{split}\]</div>
+<p>Here, lb and ub represent the lower and upper bounds on the design variables, respectively.</p>
+<p>By solving this optimization problem, we aim to find the values of the design variables (x) that minimize or maximize the objective function (f(x)), while satisfying the constraints (g(x) &lt;= 0 and h(x) = 0).</p>
+<p>Optimization theory provides various algorithms and techniques to solve these optimization problems and find the optimal solution. These techniques include linear programming, nonlinear programming, integer programming, and many more.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing">https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing</a></li>
+</ul>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -470,7 +518,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./."
+            path: "./Day-2"
         },
         predefinedOutput: true
     }
@@ -488,12 +536,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro_to_git.html"
+       href="../Day-1/VS-code.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Brief course on <code class="docutils literal notranslate"><span class="pre">git</span></code></p>
+        <p class="prev-next-title">Installing Visual Studio Code</p>
       </div>
     </a>
 </div>
@@ -502,22 +550,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm">SLURM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pbs">PBS</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
@@ -565,8 +597,8 @@ By Karthik Suresh
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
