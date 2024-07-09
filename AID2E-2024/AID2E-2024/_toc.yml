@@ -46,3 +46,5 @@ parts:
         - url: https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing
           title: "Optimization Theory"
         - file: Day-2/MOO_concepts.ipynb
+        - file: Day-2/MC_integration.ipynb
+        
