@@ -39,5 +39,10 @@ parts:
   chapters:
     - file: Day-1/VS-code
 - caption: "Day 2 - Introduction to Optimization"
+  numbered: true
   chapters:
-    - file: Day-2/intro_to_python
+    - file: Day-2/intro_to_optimization
+      sections:
+        - url: https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing
+          title: "Optimization Theory"
+        - file: Day-2/MOO_concepts.ipynb
