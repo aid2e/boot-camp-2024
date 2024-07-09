@@ -545,6 +545,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-convergence-with-hypervolume">4.1.4.3. Tracking Convergence with Hypervolume</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1.5. Excersise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#could-you-perhaps-check-if-hv-is-monotonic-as-you-go-through-different-fronts-should-it-increase-or-decrease">4.1.5.1. 0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-identify-the-computational-complexity-of-this-function">4.1.5.2. 1. Can you identify the computational complexity of this function?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">4.1.5.3. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -579,10 +585,10 @@ Requirement already satisfied: numpy&gt;=1.23 in /home/pavi/anaconda3/envs/env_b
 Requirement already satisfied: packaging&gt;=20.0 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (24.1)
 Requirement already satisfied: pillow&gt;=8 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (10.4.0)
 Requirement already satisfied: pyparsing&gt;=2.3.1 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (3.1.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (2.9.0.post0)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: python-dateutil&gt;=2.7 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from matplotlib) (2.9.0.post0)
-Requirement already satisfied: six&gt;=1.5 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: six&gt;=1.5 in /home/pavi/anaconda3/envs/env_bootcamp2024/lib/python3.12/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -617,7 +623,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/pavi/anaconda3/envs/env_boot
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a8bafbbf07b5cf88711c8cf6537d8b9c3c3fe1e16b67b186154ef828d9c8f80a.png" src="../_images/a8bafbbf07b5cf88711c8cf6537d8b9c3c3fe1e16b67b186154ef828d9c8f80a.png" />
+<img alt="../_images/4d5b51c5270a29cef41c2c3458fd1cf434b27b0018390c7f9c73589a473b5375.png" src="../_images/4d5b51c5270a29cef41c2c3458fd1cf434b27b0018390c7f9c73589a473b5375.png" />
 </div>
 </div>
 </section>
@@ -722,10 +728,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.5405735859632183, -0.7724151548021548), (-0.9074878540214173, -0.014571538999476701), (-0.5038727643469487, -0.7933553216243836), (-0.17707959692012015, -0.9512585162785446), (-0.8630560575436502, -0.10228478831704291), (-0.8444975398104009, -0.5022430595080558), (-0.6382798321073309, -0.7214791515159792), (-0.7877101722980715, -0.5119689631258026), (-0.2418232475158472, -0.8566784650488022), (-0.1874024090487115, -0.9404324695971421), (-0.7377966240337251, -0.5427539543133774)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.8147771573007564, -0.5237475414184081), (-0.8758841886313181, -0.15803534742805483), (-0.09998796763511705, -0.9558754797008752), (-0.625126900740764, -0.7803794690339536), (-0.18277418596610012, -0.8529270854487041), (-0.7141035521160883, -0.6008139586199175), (-0.14844683088353341, -0.8920017591006537), (-0.4877347293476616, -0.7853609664526238), (-0.4761548173518251, -0.8228010698914413)]
 </pre></div>
 </div>
-<img alt="../_images/836443de3461820f04d62cb154dece08ee3ade8a480cf247f7d5d9a264af3212.png" src="../_images/836443de3461820f04d62cb154dece08ee3ade8a480cf247f7d5d9a264af3212.png" />
+<img alt="../_images/3558abe91a5b95de437d2bc5d477643d63b4d6cb60229802f284d30596125ff2.png" src="../_images/3558abe91a5b95de437d2bc5d477643d63b4d6cb60229802f284d30596125ff2.png" />
 </div>
 </div>
 </section>
@@ -838,11 +844,23 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 1.8709116856182324
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 1.8734928879378046
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="id1">
+<h2><span class="section-number">4.1.5. </span>Excersise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="could-you-perhaps-check-if-hv-is-monotonic-as-you-go-through-different-fronts-should-it-increase-or-decrease">
+<h3><span class="section-number">4.1.5.1. </span>0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?<a class="headerlink" href="#could-you-perhaps-check-if-hv-is-monotonic-as-you-go-through-different-fronts-should-it-increase-or-decrease" title="Link to this heading">#</a></h3>
+</section>
+<section id="can-you-identify-the-computational-complexity-of-this-function">
+<h3><span class="section-number">4.1.5.2. </span>1. Can you identify the computational complexity of this function?<a class="headerlink" href="#can-you-identify-the-computational-complexity-of-this-function" title="Link to this heading">#</a></h3>
+</section>
+<section id="can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">
+<h3><span class="section-number">4.1.5.3. </span>2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?<a class="headerlink" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -917,6 +935,12 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypervolume">4.1.4.1. Hypervolume</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence-tracking">4.1.4.2. Convergence Tracking</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracking-convergence-with-hypervolume">4.1.4.3. Tracking Convergence with Hypervolume</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1.5. Excersise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#could-you-perhaps-check-if-hv-is-monotonic-as-you-go-through-different-fronts-should-it-increase-or-decrease">4.1.5.1. 0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-identify-the-computational-complexity-of-this-function">4.1.5.2. 1. Can you identify the computational complexity of this function?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">4.1.5.3. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
 </ul>
 </li>
 </ul>
