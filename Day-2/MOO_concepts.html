@@ -100,6 +100,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-2/MOO_concepts.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.2. Montecarlo based integration methods and applications" href="MC_integration.html" />
     <link rel="prev" title="4. Introduction to Optimization Theory" href="intro_to_optimization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -225,7 +226,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../schedule.html">Schedule</a></li>
 
-
 <li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1tX2W2Da_BaM49ca3nh4lWQOfEdUpRFapFDqD3EWLNME/edit?usp=sharing">Introduction to AID2E Boot Camp 2024</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to git</span></p>
@@ -265,6 +265,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_optimization.html">4. Introduction to Optimization Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference external" href="https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing">Optimization Theory</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">4.1. Concepts in MOO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MC_integration.html">4.2. Montecarlo based integration methods and applications</a></li>
 </ul>
 </details></li>
 </ul>
@@ -549,8 +550,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#could-you-perhaps-check-if-hv-is-monotonic-as-you-go-through-different-fronts-should-it-increase-or-decrease">4.1.5.1. 0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-identify-the-computational-complexity-of-this-function">4.1.5.2. 1. Can you identify the computational complexity of this function?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">4.1.5.3. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch">4.1.5.4. 3. This way of computing hypervolume can result in having smaller non monotonic functions. How can one circumvent that (Thanks and Credits to Shannon Zelitch)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#food-for-thought">4.1.6. Food for thought</a></li>
 </ul>
             </nav>
         </div>
@@ -606,7 +609,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d06f0492acafd12a1f98889c0cf7b7b0369540448dfaf663cf947b774dcaab30.png" src="../_images/d06f0492acafd12a1f98889c0cf7b7b0369540448dfaf663cf947b774dcaab30.png" />
+<img alt="../_images/d8ea501aa7428ae6887955c5e4f3ff4f51a552c827d65e6ba3e0da3eacff5079.png" src="../_images/d8ea501aa7428ae6887955c5e4f3ff4f51a552c827d65e6ba3e0da3eacff5079.png" />
 </div>
 </div>
 </section>
@@ -711,10 +714,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.14064143985143865, -0.9826225290037197), (-0.35377487609855207, -0.844703826836102), (-0.8671358140355534, -0.4311894869641887), (-0.49155982457668296, -0.7672571662641781), (-0.642769650378069, -0.7245836153494882), (-0.3548004901637711, -0.811697320435676), (-0.19552022753187132, -0.9219020120685589), (-0.9163689874512992, -0.3132285771918087), (-0.7197719326001001, -0.5835915751582532), (-0.9530906427804079, -0.19661157011696717)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.23934569561927466, -0.9654427228929184), (-0.7372468022361083, -0.4982146958984378), (-0.7630919767384738, -0.3498194524940982), (-0.39634114956135313, -0.7456133287245018), (-0.6997090399300587, -0.6577050730130185), (-0.34705392357768133, -0.8004716383768274), (-0.10902327080658715, -0.9710072639470714), (-0.9504232881324159, -0.11977442894520592), (-0.49947523517002496, -0.7347618145191878), (-0.9907669389909911, -0.1033701093372689), (-0.9153393368289872, -0.3483551621137482)]
 </pre></div>
 </div>
-<img alt="../_images/51ce59272836cee6e9645937cd35d72e0d7b15b5645d8eaf62c0f9a04db6e179.png" src="../_images/51ce59272836cee6e9645937cd35d72e0d7b15b5645d8eaf62c0f9a04db6e179.png" />
+<img alt="../_images/78ac9a11fb2c3c3ae616fde64f4cd3530922b83e79b8c40040e0da9b2438ee8f.png" src="../_images/78ac9a11fb2c3c3ae616fde64f4cd3530922b83e79b8c40040e0da9b2438ee8f.png" />
 </div>
 </div>
 </section>
@@ -778,33 +781,82 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
     <span class="c1"># Initialize the hypervolume to 0</span>
     <span class="n">hypervolume</span> <span class="o">=</span> <span class="mi">0</span>
     
-    <span class="c1"># Initialize the previous y-coordinate to the maximum y-coordinate</span>
-    <span class="n">prev_y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sorted_points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
     
     <span class="c1"># Iterate over the sorted points</span>
-    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">sorted_points</span><span class="p">:</span>
-        <span class="c1"># Calculate the width of the rectangle</span>
-        <span class="n">width</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-        
-        <span class="c1"># Calculate the height of the rectangle</span>
-        <span class="n">height</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_points</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         
         <span class="c1"># Update the hypervolume</span>
-        <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
-        
-        <span class="c1"># Update the previous y-coordinate</span>
-        <span class="n">prev_y</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    
-    <span class="c1"># Calculate the width of the last rectangle</span>
-    <span class="n">width</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    
-    <span class="c1"># Calculate the height of the last rectangle</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
-    
-    <span class="c1"># Update the hypervolume with the last rectangle</span>
-    <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+        <span class="c1"># x1, y1 = reference_point</span>
+        <span class="c1"># x2, y2 = point</span>
+        <span class="c1"># x3, y3 = point[i+1]</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">reference_point</span>
+        <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">sorted_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">x3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">sorted_points</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="n">x2</span> <span class="ow">or</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="n">x3</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hypervolume</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y3</span><span class="p">)</span> <span class="o">+</span> <span class="n">x2</span><span class="o">*</span><span class="p">(</span><span class="n">y3</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span> <span class="o">+</span> <span class="n">x3</span><span class="o">*</span><span class="p">(</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">)))</span>
     
     <span class="k">return</span> <span class="n">hypervolume</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># draw the hypervolume</span>
+
+<span class="k">def</span> <span class="nf">draw_hypervolume</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Draw the hypervolume from a given set of 2D points which are non-dominating solutions.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        points (list): List of 2D points representing non-dominating solutions.</span>
+<span class="sd">        reference_point (tuple): Reference point as a 2D point.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sort the points based on the x-coordinate in ascending order</span>
+    <span class="n">sorted_points</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="c1"># Initialize the hypervolume to 0</span>
+    <span class="n">hypervolume</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Initialize the plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    
+    <span class="c1"># Iterate over the sorted points</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_points</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        
+        <span class="c1"># Update the hypervolume</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">reference_point</span>
+        <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">sorted_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">x3</span><span class="p">,</span> <span class="n">y3</span> <span class="o">=</span> <span class="n">sorted_points</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="n">x2</span> <span class="ow">or</span> <span class="n">x1</span> <span class="o">&lt;</span> <span class="n">x3</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hypervolume</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="p">(</span><span class="n">y2</span><span class="o">-</span><span class="n">y3</span><span class="p">)</span> <span class="o">+</span> <span class="n">x2</span><span class="o">*</span><span class="p">(</span><span class="n">y3</span><span class="o">-</span><span class="n">y1</span><span class="p">)</span> <span class="o">+</span> <span class="n">x3</span><span class="o">*</span><span class="p">(</span><span class="n">y1</span><span class="o">-</span><span class="n">y2</span><span class="p">)))</span>
+        
+        <span class="c1"># Plot the hypervolume</span>
+        <span class="n">polygon</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Polygon</span><span class="p">([</span><span class="n">reference_point</span><span class="p">,</span> <span class="n">sorted_points</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sorted_points</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+    
+    <span class="c1"># Plot the points</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All points&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Plot the reference point</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">reference_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reference point&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Set the labels</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Set the title</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hypervolume: </span><span class="si">{</span><span class="n">hypervolume</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Show the plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="n">draw_hypervolume</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -827,7 +879,7 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 1.821647329894361
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 0.6717270600051147
 </pre></div>
 </div>
 </div>
@@ -845,6 +897,13 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <section id="can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">
 <h3><span class="section-number">4.1.5.3. </span>2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?<a class="headerlink" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives" title="Link to this heading">#</a></h3>
 </section>
+<section id="this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch">
+<h3><span class="section-number">4.1.5.4. </span>3. This way of computing hypervolume can result in having smaller non monotonic functions. How can one circumvent that (Thanks and Credits to Shannon Zelitch)<a class="headerlink" href="#this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="food-for-thought">
+<h2><span class="section-number">4.1.6. </span>Food for thought<a class="headerlink" href="#food-for-thought" title="Link to this heading">#</a></h2>
+<p>Could you comment on the accuracy of computing hypervolumes by this method</p>
 </section>
 </section>
 
@@ -887,6 +946,15 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
         <p class="prev-next-title"><span class="section-number">4. </span>Introduction to Optimization Theory</p>
       </div>
     </a>
+    <a class="right-next"
+       href="MC_integration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.2. </span>Montecarlo based integration methods and applications</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -924,8 +992,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#could-you-perhaps-check-if-hv-is-monotonic-as-you-go-through-different-fronts-should-it-increase-or-decrease">4.1.5.1. 0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-identify-the-computational-complexity-of-this-function">4.1.5.2. 1. Can you identify the computational complexity of this function?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">4.1.5.3. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch">4.1.5.4. 3. This way of computing hypervolume can result in having smaller non monotonic functions. How can one circumvent that (Thanks and Credits to Shannon Zelitch)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#food-for-thought">4.1.6. Food for thought</a></li>
 </ul>
   </nav></div>
 
