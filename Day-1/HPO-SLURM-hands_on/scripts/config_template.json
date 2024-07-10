@@ -1,7 +1,7 @@
 {
     "unique_identifier": 0,
     "train_ratio": 0.8,
-    "hidden_layer_sizes": [],
+    "hidden_layer_sizes": [[100, 50]],
     "activation": "relu",
     "solver": "adam",
     "alpha": 0.0001,

@@ -27,6 +27,7 @@ Before running the scripts, ensure that you have the following prerequisites ins
     ```bash
     module load anaconda3
     ```
+    If using another make sure to have conda installed or run `bash ../install_conda` from command line. 
 4. Install pip 
     ```bash
     conda install pip

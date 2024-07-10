@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# Parse command line arguments
+while getopts ":c:" opt; do
+    case $opt in
+        c)
+            # User provided a custom path
+            install_path=$OPTARG
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+    esac
+done
+
+# If custom path is not provided, use current directory
+if [ -z "$install_path" ]; then
+    install_path=$(pwd)
+fi
+
+# Detect the operating system
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    download_url="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
+    download_command="curl -o \"$install_path/Miniconda3-latest-MacOSX-x86_64.sh\" \"$download_url\""
+    install_command="bash \"$install_path/Miniconda3-latest-MacOSX-x86_64.sh\""
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+    # Windows
+    download_url="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe"
+    download_command="Invoke-WebRequest -Uri \"$download_url\" -OutFile \"$install_path/Miniconda3-latest-Windows-x86_64.exe\""
+    install_command="Start-Process -Wait -FilePath \"$install_path/Miniconda3-latest-Windows-x86_64.exe\""
+else
+    # Linux
+    download_url="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+    download_command="wget \"$download_url\" -P \"$install_path\""
+    install_command="bash \"$install_path/Miniconda3-latest-Linux-x86_64.sh\""
+fi
+
+
+# Download Miniconda installer
+eval $download_command
+
+echo "Installing Miniconda..."
+echo $install_command
+# Install Miniconda
+eval $install_command
+
+# Cleanup
+rm "$install_path/Miniconda3-latest-Windows-x86_64.exe" "$install_path/Miniconda3-latest-MacOSX-x86_64.sh" "$install_path/Miniconda3-latest-Linux-x86_64.sh"
+
+
+# Add conda to PATH
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+    # Windows
+    conda_path="$install_path/Miniconda3/Scripts"
+    [System.Environment]::SetEnvironmentVariable('PATH', "$env:PATH;$conda_path", [System.EnvironmentVariableTarget]::Machine)
+else
+    # macOS and Linux
+    conda_path="$install_path/Miniconda3/bin"
+    echo "export PATH=\"$conda_path:\$PATH\"" >> ~/.bashrc
+    source ~/.bashrc
+fi
+
+# Verify installation
+conda --version
+
+echo "Miniconda installed successfully!"
+
+# Load conda
+source "$conda_path/activate"
+
+# Ask user for environment name
+read -p "Enter the name of the environment to be created (env-hpo): " env_name
+env_name=${env_name:-"env-hpo"}
+
+# Ask user for Python version
+read -p "Enter the Python version (default is 3.8): " python_version
+python_version=${python_version:-3.8}
+
+# Create conda environment
+conda create -n "$env_name" python="$python_version"
+
+echo "Conda environment '$env_name' created successfully!"
