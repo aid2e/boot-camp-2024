@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. MOEA &#8212; AID2E-Boot-Camp-2024</title>
+    <title>11. MOEA &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -99,7 +99,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-3/Design_MOEA.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="5. MOEA of a test problem" href="TestProblem_MOEA.html" />
+    <link rel="prev" title="10. Toy tracker problem" href="problem_description.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -275,7 +275,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. MOEA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="problem_description.html">10. Toy tracker problem</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. MOEA</a></li>
 </ul>
 
     </div>
@@ -537,15 +538,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">10.1. Create detector geometry and simulate tracks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-parameters">10.1.1. LIST OF PARAMETERS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">11.1. Create detector geometry and simulate tracks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-parameters">11.1.1. LIST OF PARAMETERS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-objectives">10.2. Define Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-objective-optimization">10.3. Multi-Objective Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">10.4. Creation of Problem and choice of optimization algorithm.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-results">10.5. Analysis of Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">10.6. Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-objectives">11.2. Define Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-objective-optimization">11.3. Multi-Objective Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">11.4. Creation of Problem and choice of optimization algorithm.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-results">11.5. Analysis of Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">11.6. Exercise</a></li>
 </ul>
             </nav>
         </div>
@@ -558,7 +559,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="moea">
-<h1><span class="section-number">10. </span>MOEA<a class="headerlink" href="#moea" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>MOEA<a class="headerlink" href="#moea" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span><span class="p">;</span> <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
@@ -622,14 +623,14 @@ detector2.py.2      100%[===================&gt;]   7.79K  --.-KB/s    in 0.01s
 </div>
 </div>
 <section id="create-detector-geometry-and-simulate-tracks">
-<h2><span class="section-number">10.1. </span>Create detector geometry and simulate tracks<a class="headerlink" href="#create-detector-geometry-and-simulate-tracks" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Create detector geometry and simulate tracks<a class="headerlink" href="#create-detector-geometry-and-simulate-tracks" title="Link to this heading">#</a></h2>
 <p>The module detector creates a simple 2D geometry of a wire based tracker made by 4 planes.</p>
 <p>The adjustable parameters are the radius of each wire, the pitch (along the y axis), and the shift along y and z of a plane with respect to the previous one.</p>
 <p>A total of 8 parameters can be tuned.</p>
 <p>The goal of this toy model, is to tune the detector design so to optimize the efficiency (fraction of tracks which are detected) as well as the cost for its realization. As a proxy for the cost, we use the material/volume (the surface in 2D) of the detector. For a track to be detetected, in the efficiency definition we require at least two wires hit by the track.</p>
 <p>So we want to maximize the efficiency (defined in <a class="reference external" href="http://detector.py">detector.py</a>) and minimize the cost.</p>
 <section id="list-of-parameters">
-<h3><span class="section-number">10.1.1. </span>LIST OF PARAMETERS<a class="headerlink" href="#list-of-parameters" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.1.1. </span>LIST OF PARAMETERS<a class="headerlink" href="#list-of-parameters" title="Link to this heading">#</a></h3>
 <p>(baseline values)</p>
 <ul class="simple">
 <li><p>R = .5   [cm]</p></li>
@@ -708,7 +709,7 @@ resolution:  0.23594329069824552
 </section>
 <hr class="docutils" />
 <section id="define-objectives">
-<h2><span class="section-number">10.2. </span>Define Objectives<a class="headerlink" href="#define-objectives" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Define Objectives<a class="headerlink" href="#define-objectives" title="Link to this heading">#</a></h2>
 <p>Defines a class for the objectives of the problem that can be used in the MOO.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,7 +785,7 @@ resolution:  0.23594329069824552
 </section>
 <hr class="docutils" />
 <section id="multi-objective-optimization">
-<h2><span class="section-number">10.3. </span>Multi-Objective Optimization<a class="headerlink" href="#multi-objective-optimization" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Multi-Objective Optimization<a class="headerlink" href="#multi-objective-optimization" title="Link to this heading">#</a></h2>
 <p>We will be using pymoo (<a class="reference external" href="https://pymoo.org/getting_started.html">https://pymoo.org/getting_started.html</a>).</p>
 <ul class="simple">
 <li><p>In the constructor method we specify number of variables N, objectives M, and constraint functions, as well as the lower and upper boundaries of each variable. In our toy model, these boundaries are taken in such a way that all solutions are feasible and no constraint function is needed. You can try to change this and introduce some constraint.</p></li>
@@ -820,7 +821,7 @@ resolution:  0.23594329069824552
 </div>
 </section>
 <section id="creation-of-problem-and-choice-of-optimization-algorithm">
-<h2><span class="section-number">10.4. </span>Creation of Problem and choice of optimization algorithm.<a class="headerlink" href="#creation-of-problem-and-choice-of-optimization-algorithm" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Creation of Problem and choice of optimization algorithm.<a class="headerlink" href="#creation-of-problem-and-choice-of-optimization-algorithm" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We will use NSGA-II, as explained in the lectures. You can decide the population size and the number of offsprings, based on what we discussed.</p></li>
 <li><p>Pymoo offers different algorithms that can be used which are highly customizable and can be easily extended.
@@ -1015,7 +1016,7 @@ n_gen  |  n_eval  | n_nds  |      eps      |   indicator
 </div>
 </section>
 <section id="analysis-of-results">
-<h2><span class="section-number">10.5. </span>Analysis of Results<a class="headerlink" href="#analysis-of-results" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>Analysis of Results<a class="headerlink" href="#analysis-of-results" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
@@ -1118,7 +1119,7 @@ if (outputEl) {{
 </section>
 <hr class="docutils" />
 <section id="exercise">
-<h2><span class="section-number">10.6. </span>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Can you plot the hypervolume metric to see if the convergence is reached</p></li>
 <li><p>Can you implement a termination criterion</p></li>
@@ -1160,12 +1161,12 @@ if (outputEl) {{
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="TestProblem_MOEA.html"
+       href="problem_description.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>MOEA of a test problem</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Toy tracker problem</p>
       </div>
     </a>
 </div>
@@ -1184,15 +1185,15 @@ if (outputEl) {{
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">10.1. Create detector geometry and simulate tracks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-parameters">10.1.1. LIST OF PARAMETERS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">11.1. Create detector geometry and simulate tracks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-parameters">11.1.1. LIST OF PARAMETERS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-objectives">10.2. Define Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-objective-optimization">10.3. Multi-Objective Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">10.4. Creation of Problem and choice of optimization algorithm.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-results">10.5. Analysis of Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">10.6. Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-objectives">11.2. Define Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-objective-optimization">11.3. Multi-Objective Optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creation-of-problem-and-choice-of-optimization-algorithm">11.4. Creation of Problem and choice of optimization algorithm.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-of-results">11.5. Analysis of Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">11.6. Exercise</a></li>
 </ul>
   </nav></div>
 
