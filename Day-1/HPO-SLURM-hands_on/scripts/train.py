@@ -41,12 +41,17 @@ def runTraining(args):
     # Evaluate the model
     accuracy = model.score(X_test, y_test)
     print(f"Accuracy: {accuracy}")
+    
+    # Compute the complexity of the model 
+    n_params = sum(np.prod(layer.shape) for layer in model.coefs_)
+    print (f"Number of parameters: {n_params}")
 
     # Save the trained model
     dump(model, 'trained_model.pkl')
 
     with open("results.json", "w") as f:
         json.dump({"accuracy": accuracy}, f)
+        json.dump({"n_params": n_params}, f)
 if __name__ == '__main__':
     
     # Parse command line arguments

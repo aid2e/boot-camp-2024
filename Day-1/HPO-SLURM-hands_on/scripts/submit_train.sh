@@ -5,8 +5,6 @@
 #SBATCH --ntasks=1                # Number of tasks (CPUs) to allocate
 #SBATCH --mem=2G                  # Memory per node
 #SBATCH --time=01:00:00           # Walltime limit
-#SBATCH --mail-type=END,FAIL      # Email notification: BEGIN, END, FAIL, ALL
-#SBATCH --mail-user=USEREMAIL     # Email address to send notifications
 
 # Load any necessary modules
 module load anaconda3
