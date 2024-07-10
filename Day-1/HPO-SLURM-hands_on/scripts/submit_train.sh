@@ -16,3 +16,5 @@ cd OUTPUT_DIR
 echo "I am running in ${PWD}"
 # Run your executable or script or ANYTHING YOU WANT
 python train.py --config config.json
+
+
