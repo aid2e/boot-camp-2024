@@ -1,0 +1,146 @@
+Traceback (most recent call last):
+  File "/home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+%load_ext autoreload
+%autoreload 2
+
+
+import numpy as np
+from matplotlib import pyplot as plt
+from pymoo.core.problem import ElementwiseProblem
+
+class MyProblem(ElementwiseProblem):
+
+    def __init__(self, n_var=2, n_obj=2, n_constr=2, xl=np.array([-2,-2]), xu=np.array([2,2])):
+        super().__init__(n_var=n_var, n_obj=n_obj, n_ieq_constr=n_constr, xl=xl, xu=xu)
+
+    def _evaluate(self, x, out, *args, **kwargs):
+        f1 = 100 * (x[0]**2 + x[1]**2)
+        f2 = (x[0]-1)**2 + x[1]**2
+
+        g1 = 2*(x[0]-0.1) * (x[0]-0.9) / 0.18
+        g2 = - 20*(x[0]-0.4) * (x[0]-0.6) / 4.8
+
+        out["F"] = [f1, f2]
+        out["G"] = [g1, g2]
+
+n_var = 2 # number of variables
+xl = np.array([-2,-2]) # lower bounds of x1 and x2
+xu = np.array([2,2]) # upper bounds of x1 and x2
+n_obj = 2 # number of objectives
+n_constr = 2 # number of constraints
+problem = MyProblem(n_var=n_var, n_obj=n_obj, n_constr=n_constr, xl=xl, xu=xu)
+
+# Lets run some points and plkot it, 
+
+from pymoo.operators.sampling.rnd import FloatRandomSampling
+from pymoo.util import plotting
+
+sampling = FloatRandomSampling()
+
+samples = sampling(problem, 200)
+X = samples.get("X")
+F = problem.evaluate(X, return_values_of=["F"])
+plt.figure(figsize=(5,5))
+fig = plotting.plot(X, show=False, no_fill=True)
+plt.xlabel("$x_1$", fontsize=18)
+plt.ylabel("$x_2$", fontsize=18)
+plt.title("Random Samples in design space")
+plt.show()
+
+plt.figure(figsize=(5,5))
+fig2 = plotting.plot(F, show=False, no_fill=False)
+plt.xlabel("$f_1$", fontsize=18)
+plt.ylabel("$f_2$", fontsize=18)
+plt.title("Random Samples in objective space")
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [0;32mIn[2], line 7[0m
+[1;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m [38;5;28;01mimport[39;00m pyplot [38;5;28;01mas[39;00m plt
+[0;32m----> 7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpymoo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01mproblem[39;00m [38;5;28;01mimport[39;00m ElementwiseProblem
+[1;32m      9[0m [38;5;28;01mclass[39;00m [38;5;21;01mMyProblem[39;00m(ElementwiseProblem):
+[1;32m     11[0m     [38;5;28;01mdef[39;00m [38;5;21m__init__[39m([38;5;28mself[39m, n_var[38;5;241m=[39m[38;5;241m2[39m, n_obj[38;5;241m=[39m[38;5;241m2[39m, n_constr[38;5;241m=[39m[38;5;241m2[39m, xl[38;5;241m=[39mnp[38;5;241m.[39marray([[38;5;241m-[39m[38;5;241m2[39m,[38;5;241m-[39m[38;5;241m2[39m]), xu[38;5;241m=[39mnp[38;5;241m.[39marray([[38;5;241m2[39m,[38;5;241m2[39m])):
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/pymoo/core/problem.py:5[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mabc[39;00m [38;5;28;01mimport[39;00m abstractmethod
+[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m----> 5[0m [38;5;28;01mimport[39;00m [38;5;21;01mpymoo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgradient[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtoolbox[39;00m [38;5;28;01mas[39;00m [38;5;21;01manp[39;00m
+[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpymoo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcache[39;00m [38;5;28;01mimport[39;00m Cache
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpymoo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmisc[39;00m [38;5;28;01mimport[39;00m at_least_2d_array
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/pymoo/gradient/toolbox/__init__.py:6[0m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01msys[39;00m
+[1;32m      4[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpymoo[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgradient[39;00m [38;5;28;01mimport[39;00m TOOLBOX
+[0;32m----> 6[0m sys[38;5;241m.[39mmodules[[38;5;18m__name__[39m] [38;5;241m=[39m [43mimportlib[49m[38;5;241;43m.[39;49m[43mimport_module[49m[43m([49m[43mTOOLBOX[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/importlib/__init__.py:90[0m, in [0;36mimport_module[0;34m(name, package)[0m
+[1;32m     88[0m             [38;5;28;01mbreak[39;00m
+[1;32m     89[0m         level [38;5;241m+[39m[38;5;241m=[39m [38;5;241m1[39m
+[0;32m---> 90[0m [38;5;28;01mreturn[39;00m [43m_bootstrap[49m[38;5;241;43m.[39;49m[43m_gcd_import[49m[43m([49m[43mname[49m[43m[[49m[43mlevel[49m[43m:[49m[43m][49m[43m,[49m[43m [49m[43mpackage[49m[43m,[49m[43m [49m[43mlevel[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/autograd/__init__.py:2[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01m__future__[39;00m [38;5;28;01mimport[39;00m absolute_import
+[0;32m----> 2[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mdifferential_operators[39;00m [38;5;28;01mimport[39;00m (
+[1;32m      3[0m     make_vjp, grad, multigrad_dict, elementwise_grad, value_and_grad,
+[1;32m      4[0m     grad_and_aux, hessian_tensor_product, hessian_vector_product, hessian,
+[1;32m      5[0m     jacobian, tensor_jacobian_product, vector_jacobian_product, grad_named,
+[1;32m      6[0m     checkpoint, make_hvp, make_jvp, make_ggnvp, deriv, holomorphic_grad)
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mbuiltins[39;00m [38;5;28;01mimport[39;00m [38;5;28misinstance[39m, [38;5;28mtype[39m, [38;5;28mtuple[39m, [38;5;28mlist[39m, [38;5;28mdict[39m
+[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01mautograd[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m primitive_with_deprecation_warnings [38;5;28;01mas[39;00m primitive
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/autograd/differential_operators.py:16[0m
+[1;32m     13[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m make_vjp [38;5;28;01mas[39;00m _make_vjp, make_jvp [38;5;28;01mas[39;00m _make_jvp
+[1;32m     14[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mextend[39;00m [38;5;28;01mimport[39;00m primitive, defvjp_argnum, vspace
+[0;32m---> 16[0m [38;5;28;01mimport[39;00m [38;5;21;01mautograd[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[1;32m     18[0m make_vjp [38;5;241m=[39m unary_to_nary(_make_vjp)
+[1;32m     19[0m make_jvp [38;5;241m=[39m unary_to_nary(_make_jvp)
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/autograd/numpy/__init__.py:5[0m
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m numpy_boxes
+[1;32m      4[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m numpy_vspaces
+[0;32m----> 5[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m numpy_vjps
+[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m numpy_jvps
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m linalg
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/autograd/numpy/numpy_vjps.py:563[0m
+[1;32m    561[0m     [38;5;28;01mreturn[39;00m [38;5;28;01mlambda[39;00m g: unpermuter(g, sort_perm)
+[1;32m    562[0m defvjp(anp[38;5;241m.[39msort, grad_sort)
+[0;32m--> 563[0m defvjp([43manp[49m[38;5;241;43m.[39;49m[43mmsort[49m, grad_sort)  [38;5;66;03m# Until multi-D is allowed, these are the same.[39;00m
+[1;32m    565[0m [38;5;28;01mdef[39;00m [38;5;21mgrad_partition[39m(ans, x, kth, axis[38;5;241m=[39m[38;5;241m-[39m[38;5;241m1[39m, kind[38;5;241m=[39m[38;5;124m'[39m[38;5;124mintroselect[39m[38;5;124m'[39m, order[38;5;241m=[39m[38;5;28;01mNone[39;00m):
+[1;32m    566[0m     [38;5;66;03m#TODO: Cast input with np.asanyarray()[39;00m
+[1;32m    567[0m     [38;5;28;01mif[39;00m [38;5;28mlen[39m(x[38;5;241m.[39mshape) [38;5;241m>[39m [38;5;241m1[39m:
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/autograd/tracer.py:48[0m, in [0;36mprimitive.<locals>.f_wrapped[0;34m(*args, **kwargs)[0m
+[1;32m     46[0m     [38;5;28;01mreturn[39;00m new_box(ans, trace, node)
+[1;32m     47[0m [38;5;28;01melse[39;00m:
+[0;32m---> 48[0m     [38;5;28;01mreturn[39;00m [43mf_raw[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages/numpy/__init__.py:410[0m, in [0;36m__getattr__[0;34m(attr)[0m
+[1;32m    407[0m     [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mchar[39;00m [38;5;28;01mas[39;00m [38;5;21;01mchar[39;00m
+[1;32m    408[0m     [38;5;28;01mreturn[39;00m char[38;5;241m.[39mchararray
+[0;32m--> 410[0m [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m([38;5;124m"[39m[38;5;124mmodule [39m[38;5;132;01m{!r}[39;00m[38;5;124m has no attribute [39m[38;5;124m"[39m
+[1;32m    411[0m                      [38;5;124m"[39m[38;5;132;01m{!r}[39;00m[38;5;124m"[39m[38;5;241m.[39mformat([38;5;18m__name__[39m, attr))
+
+[0;31mAttributeError[0m: module 'numpy' has no attribute 'msort'
+

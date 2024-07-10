@@ -97,6 +97,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Day-2/MOO_concepts';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-2/MOO_concepts.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -268,6 +269,16 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2"><a class="reference internal" href="MC_integration.html">4.2. Montecarlo based integration methods and applications</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 3 - Multi Objective Evolutionary Algorithm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/19ptTXZaTtMGgB7DfTX-0T-6_72H31itSdtbuR7dQiJs/edit?usp=sharing">https://docs.google.com/presentation/d/19ptTXZaTtMGgB7DfTX-0T-6_72H31itSdtbuR7dQiJs/edit?usp=sharing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Day-3/TestProblem_MOEA.html">5. MOEA of a test problem</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Day-3/Design_MOEA.html">10. MOEA</a></li>
 </ul>
 
     </div>
@@ -551,9 +562,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-identify-the-computational-complexity-of-this-function">4.1.5.2. 1. Can you identify the computational complexity of this function?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">4.1.5.3. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch">4.1.5.4. 3. This way of computing hypervolume can result in having smaller non monotonic functions. How can one circumvent that (Thanks and Credits to Shannon Zelitch)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1.5.5. 0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.5.6. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#food-for-thought">4.1.6. Food for thought</a></li>
 </ul>
             </nav>
         </div>
@@ -574,7 +586,22 @@ document.write(`
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: matplotlib in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (3.9.1)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (1.2.1)
+Requirement already satisfied: cycler&gt;=0.10 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (4.53.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (1.4.5)
+Requirement already satisfied: numpy&gt;=1.23 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (2.0.0)
+Requirement already satisfied: packaging&gt;=20.0 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (24.1)
+Requirement already satisfied: pillow&gt;=8 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (10.4.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (3.1.2)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from matplotlib) (2.9.0.post0)
+Requirement already satisfied: six&gt;=1.5 in /home/ksuresh/miniconda3/envs/env_jupyter-book/lib/python3.12/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -609,7 +636,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/50b5fec3d2b49d611c70a88e5ee894195d65613186eb5227b056eb07ed233e3c.png" src="../_images/50b5fec3d2b49d611c70a88e5ee894195d65613186eb5227b056eb07ed233e3c.png" />
+<img alt="../_images/f96da24259f915be1e316aa0e3329c7306a87b944765b383399098694a6ce72a.png" src="../_images/f96da24259f915be1e316aa0e3329c7306a87b944765b383399098694a6ce72a.png" />
 </div>
 </div>
 </section>
@@ -714,10 +741,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.602382103705319, -0.6786652370457431), (-0.8964349012962677, -0.24345075491382956), (-0.2876611521627822, -0.9567904131455467), (-0.3784458077532098, -0.8124129359060178), (-0.8581967174943781, -0.39694168843137634), (-0.6766445281485166, -0.6622781626659896), (-0.9373603710276928, -0.06305673298059382), (-0.32277738596689814, -0.889952320577748), (-0.9086703222985886, -0.18544380936407442), (-0.540640136872129, -0.7692614971854815)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.09676379681866248, -0.9553806067701416), (-0.5117974398510517, -0.7031760273411101), (-0.8158186848182191, -0.5165419084313226), (-0.5904123883075125, -0.5865480895269028), (-0.573098607513865, -0.6925197023102118), (-0.8355484588095629, -0.16109942723013831), (-0.4085392301659479, -0.882716216855052), (-0.3567279409792068, -0.909257444054572), (-0.9860305671983675, -0.10139295706907155)]
 </pre></div>
 </div>
-<img alt="../_images/890bb432158ca9bd37c8cfa9bb9c8c311e57b84fad8fabe85a648d1778d4852d.png" src="../_images/890bb432158ca9bd37c8cfa9bb9c8c311e57b84fad8fabe85a648d1778d4852d.png" />
+<img alt="../_images/705b2fa45d79d14678c87c58ad923fa6abf2720bccd585bef330909009417d09.png" src="../_images/705b2fa45d79d14678c87c58ad923fa6abf2720bccd585bef330909009417d09.png" />
 </div>
 </div>
 </section>
@@ -726,14 +753,167 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <h2><span class="section-number">4.1.3. </span>Excersise:<a class="headerlink" href="#excersise" title="Link to this heading">#</a></h2>
 <section id="can-you-implement-the-same-function-but-for-maximization">
 <h3><span class="section-number">4.1.3.1. </span>1. Can you implement the same function but for maximization?<a class="headerlink" href="#can-you-implement-the-same-function-but-for-maximization" title="Link to this heading">#</a></h3>
+<p>All we have to do is reverse the condition for checking in the <code class="docutils literal notranslate"><span class="pre">dominates</span></code> function which we will rename as <code class="docutils literal notranslate"><span class="pre">dominates_max</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### 1. Can you implement the same function but for maximization?</span>
+
+
+<span class="k">def</span> <span class="nf">dominates_max</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Check if point1 dominates point2 based on two criteria (maximization). &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">p1</span> <span class="o">&gt;=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">epsilon</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">p1</span> <span class="o">&gt;</span> <span class="n">p2</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">non_dominated_solutions_max</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Find non-dominated solutions (Pareto front) from a list of points. &quot;&quot;&quot;</span>
+    <span class="n">dominated</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">pareto_front</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dominated</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">pareto_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">point2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">dominates_max</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+                <span class="n">dominated</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">dominates_max</span><span class="p">(</span><span class="n">point2</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+                <span class="n">pareto_front</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">pareto_front</span>
+
+<span class="n">pareto_front_max</span> <span class="o">=</span> <span class="n">non_dominated_solutions_max</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Non-dominated solutions (Pareto front):&quot;</span><span class="p">,</span> <span class="n">pareto_front_max</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pareto_front_max</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pareto_front_max</span><span class="p">],</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Nondominated points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-1.105930824760222e-05, -1.8573612026052515e-05, -0.0013778235202420222), (-0.00034035104544824333, -0.0002536689241251127, -5.548986617222313e-06)]
+</pre></div>
+</div>
+<img alt="../_images/6cbb50a88bbfa1ea947dbd8d393c6bac41884ecbc715ddb84252513fb293deb6.png" src="../_images/6cbb50a88bbfa1ea947dbd8d393c6bac41884ecbc715ddb84252513fb293deb6.png" />
+</div>
+</div>
 </section>
 <section id="can-you-implement-the-same-function-but-for-3d-points">
 <h3><span class="section-number">4.1.3.2. </span>2. Can you implement the same function but for 3D points?<a class="headerlink" href="#can-you-implement-the-same-function-but-for-3d-points" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### 2. Can you implement the same function but for 3D points?</span>
+
+<span class="n">n_points</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">r_points</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#0 - 1</span>
+<span class="n">th_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#circle</span>
+<span class="n">phi_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#sphere</span>
+
+<span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">th_points</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_points</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th_points</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_points</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_points</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span>
+
+<span class="c1"># Print the results.</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All points&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/85f3473644348eb15c2b3c62d7ae8054d3610b520249de72de5dcd5a21841371.png" src="../_images/85f3473644348eb15c2b3c62d7ae8054d3610b520249de72de5dcd5a21841371.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dominates_3d</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Check if point1 dominates point2 based on three criteria (minimization). &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">p2</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">epsilon</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">non_dominated_solutions_3d</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Find non-dominated solutions (Pareto front) from a list of points. &quot;&quot;&quot;</span>
+    <span class="n">dominated</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">pareto_front</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dominated</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">pareto_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">point2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">dominates_3d</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+                <span class="n">dominated</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">dominates_3d</span><span class="p">(</span><span class="n">point2</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+                <span class="n">pareto_front</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">pareto_front</span>
+
+<span class="n">pareto_front_3d</span> <span class="o">=</span> <span class="n">non_dominated_solutions_3d</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Non-dominated solutions (Pareto front):&quot;</span><span class="p">,</span> <span class="n">pareto_front_3d</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All points&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pareto_front_3d</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pareto_front_3d</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pareto_front_3d</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Nondominated points&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Non-dominated solutions (Pareto front): [(-0.4711494960914555, -0.03280412382989566, -0.8087017144838647), (-0.10521106213075945, -0.05243209811668072, -0.9308992474820867), (-0.11341875697361008, -0.1714778796784776, -0.9217319117640743), (-0.15110270310817106, -0.8175149324635373, -0.4435783346636459), (-0.179552691921969, -0.6810295303255397, -0.36626627138967766), (-0.023369416669509747, -0.7030823159513367, -0.4803387611307129), (-0.8931082978803174, -0.1954611576723414, -0.24582123036924156), (-0.5464066126106423, -0.5340872760805806, -0.6405963992946936), (-0.4007825522672473, -0.21759152346234623, -0.8268683820135337), (-0.8437482457792418, -0.3298938991021348, -0.2831924788342274), (-0.7978669089329151, -0.3429411991217389, -0.015941090113372303), (-0.2818984498862414, -0.7082816164408218, -0.30637492531136923), (-0.768065610701401, -0.48462788888364583, -0.05685226394412791), (-0.13624168266641054, -0.9584437951517359, -0.044875187943089076), (-0.056903644806693514, -0.32769105892553607, -0.8248631389499478), (-0.41070692700609557, -0.4083400112482499, -0.7646712355933492), (-0.30235097591824145, -0.6136204661219998, -0.488188613837117), (-0.5063735070200795, -0.0007195311379880111, -0.7157694065003615)]
+</pre></div>
+</div>
+<img alt="../_images/f2861599ca2112195977ec924f5fd822ab509f0157e195e3fc925220f2b7329b.png" src="../_images/f2861599ca2112195977ec924f5fd822ab509f0157e195e3fc925220f2b7329b.png" />
+</div>
+</div>
 </section>
 <section id="can-you-have-an-isight-on-how-to-go-about-a-n-d-case">
 <h3><span class="section-number">4.1.3.3. </span>3. Can you have an isight on how to go about a <code class="docutils literal notranslate"><span class="pre">N-D</span></code> case?<a class="headerlink" href="#can-you-have-an-isight-on-how-to-go-about-a-n-d-case" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### 3. Can you have an isight on how to go about a `N-D` case?</span>
+
+<span class="c1"># Even the 2D case the way it is written checks this by default. Hence, Domainated sorting is not a big issue</span>
+
+<span class="k">def</span> <span class="nf">dominates_nd</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Check if point1 dominates point2 based on N criteria (minimization). &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">p2</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">epsilon</span> <span class="k">for</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">non_dominated_solutions_nd</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Find non-dominated solutions (Pareto front) from a list of points. &quot;&quot;&quot;</span>
+    <span class="n">dominated</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">pareto_front</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">point1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">dominated</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">pareto_front</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">point1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">point2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">start</span><span class="o">=</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">dominates_nd</span><span class="p">(</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+                <span class="n">dominated</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">dominates_nd</span><span class="p">(</span><span class="n">point2</span><span class="p">,</span> <span class="n">point1</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+                <span class="n">pareto_front</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">pareto_front</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
+<hr class="docutils" />
 <section id="computing-hyper-volume">
 <h2><span class="section-number">4.1.4. </span>Computing Hyper Volume<a class="headerlink" href="#computing-hyper-volume" title="Link to this heading">#</a></h2>
 <p>Let us remind ourself about MOO and what hypervolume is</p>
@@ -764,9 +944,63 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
+<span class="k">def</span> <span class="nf">compute_hypervolume_old</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the hypervolume from a given set of 2D points which are non-dominating solutions.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        points (list): List of 2D points representing non-dominating solutions.</span>
+<span class="sd">        reference_point (tuple): Reference point as a 2D point.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The hypervolume of the non-dominating solutions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sort the points based on the x-coordinate in ascending order</span>
+    <span class="n">sorted_points</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="c1"># Initialize the hypervolume to 0</span>
+    <span class="n">hypervolume</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Initialize the previous y-coordinate to the maximum y-coordinate</span>
+    <span class="n">prev_y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sorted_points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Iterate over the sorted points</span>
+    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">sorted_points</span><span class="p">:</span>
+        <span class="c1"># Calculate the width of the rectangle</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># Calculate the height of the rectangle</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
+        
+        <span class="c1"># Update the hypervolume</span>
+        <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+        
+        <span class="c1"># Update the previous y-coordinate</span>
+        <span class="n">prev_y</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate the width of the last rectangle</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate the height of the last rectangle</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
+    
+    <span class="c1"># Update the hypervolume with the last rectangle</span>
+    <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span>
+    
+    <span class="k">return</span> <span class="n">hypervolume</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="k">def</span> <span class="nf">compute_hypervolume</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the hypervolume from a given set of 2D points which are non-dominating solutions.</span>
+<span class="sd">    This method does </span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
 <span class="sd">        points (list): List of 2D points representing non-dominating solutions.</span>
@@ -869,7 +1103,7 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 
 <span class="n">pareto_front</span> <span class="o">=</span> <span class="n">non_dominated_solutions</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 
-<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
 
 <span class="n">hypervolume</span> <span class="o">=</span> <span class="n">compute_hypervolume</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hypervolume:&quot;</span><span class="p">,</span> <span class="n">hypervolume</span><span class="p">)</span>
@@ -878,10 +1112,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 1.0392293978507974
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume: 0.647175261766771
 </pre></div>
 </div>
-<img alt="../_images/8616904b5e6a9cc99914a7de644abf30b9302ba56438dc13820521d15385663e.png" src="../_images/8616904b5e6a9cc99914a7de644abf30b9302ba56438dc13820521d15385663e.png" />
+<img alt="../_images/ef8c16ba4a4cf7cfd663a09814e768aeb6e293589beff8d8621550036da09af8.png" src="../_images/ef8c16ba4a4cf7cfd663a09814e768aeb6e293589beff8d8621550036da09af8.png" />
 </div>
 </div>
 </section>
@@ -900,10 +1134,164 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <section id="this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch">
 <h3><span class="section-number">4.1.5.4. </span>3. This way of computing hypervolume can result in having smaller non monotonic functions. How can one circumvent that (Thanks and Credits to Shannon Zelitch)<a class="headerlink" href="#this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch" title="Link to this heading">#</a></h3>
 </section>
+<section id="id2">
+<h3><span class="section-number">4.1.5.5. </span>0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### 0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?</span>
+
+<span class="n">hv_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">points_cpy</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="k">while</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points_cpy</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">pareto_front</span> <span class="o">=</span> <span class="n">non_dominated_solutions</span><span class="p">(</span><span class="n">points_cpy</span><span class="p">)</span>
+    <span class="n">hv</span> <span class="o">=</span> <span class="n">compute_hypervolume</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
+    <span class="n">hv_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hv</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pareto_front</span><span class="p">:</span>
+        <span class="n">points_cpy</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hv_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Iterations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hv_list</span><span class="p">)),</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hv_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Hypervolume&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a7cdc3e397e9780ce8902925e3d280b4823741dbce9f232795116c254caa50f7.png" src="../_images/a7cdc3e397e9780ce8902925e3d280b4823741dbce9f232795116c254caa50f7.png" />
+</div>
+</div>
 </section>
-<section id="food-for-thought">
-<h2><span class="section-number">4.1.6. </span>Food for thought<a class="headerlink" href="#food-for-thought" title="Link to this heading">#</a></h2>
-<p>Could you comment on the accuracy of computing hypervolumes by this method</p>
+<hr class="docutils" />
+<section id="id3">
+<h3><span class="section-number">4.1.5.6. </span>2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### 2. 3D</span>
+
+<span class="k">def</span> <span class="nf">compute_hypervolume_3d</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the hypervolume from a given set of 3D points which are non-dominating solutions.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        points (list): List of 3D points representing non-dominating solutions.</span>
+<span class="sd">        reference_point (tuple): Reference point as a 3D point.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: The hypervolume of the non-dominating solutions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Sort the points based on the x-coordinate in ascending order</span>
+    <span class="n">sorted_points</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    
+    <span class="c1"># Initialize the hypervolume to 0</span>
+    <span class="n">hypervolume</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># Initialize the previous y-coordinate to the maximum y-coordinate</span>
+    <span class="n">prev_y</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sorted_points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Initialize the previous z-coordinate to the maximum z-coordinate</span>
+    <span class="n">prev_z</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">sorted_points</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">])[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="c1"># Iterate over the sorted points</span>
+    <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">sorted_points</span><span class="p">:</span>
+        <span class="c1"># Calculate the width of the rectangle</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># Calculate the height of the rectangle</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
+        
+        <span class="c1"># Calculate the depth of the rectangle</span>
+        <span class="n">depth</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_z</span>
+        
+        <span class="c1"># Update the hypervolume</span>
+        <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">depth</span>
+        
+        <span class="c1"># Update the previous y-coordinate</span>
+        <span class="n">prev_y</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="c1"># Update the previous z-coordinate</span>
+        <span class="n">prev_z</span> <span class="o">=</span> <span class="n">point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate the width of the last rectangle</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sorted_points</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="c1"># Calculate the height of the last rectangle</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_y</span>
+    
+    <span class="c1"># Calculate the depth of the last rectangle</span>
+    <span class="n">depth</span> <span class="o">=</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">prev_z</span>
+    
+    <span class="c1"># Update the hypervolume with the last rectangle</span>
+    <span class="n">hypervolume</span> <span class="o">+=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">depth</span>
+    
+    <span class="k">return</span> <span class="n">hypervolume</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_points</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">r_points</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="o">*</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#0 - 1</span>
+<span class="n">th_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#circle</span>
+<span class="n">phi_points</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span> <span class="c1">#sphere</span>
+
+<span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">th_points</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_points</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th_points</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_points</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">r_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_points</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_points</span><span class="p">)]</span>
+
+<span class="n">pareto_front</span> <span class="o">=</span> <span class="n">non_dominated_solutions_3d</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+
+<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the results.</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;All points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pareto_front</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pareto_front</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Nondominated points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0196e7c5015b74d00203cfa160e27034f9b62f278ba1fb106751ad6a49433498.png" src="../_images/0196e7c5015b74d00203cfa160e27034f9b62f278ba1fb106751ad6a49433498.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## compute hv trend</span>
+
+<span class="n">hv_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">points_cpy</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">)</span>
+<span class="k">while</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">points_cpy</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">pareto_front</span> <span class="o">=</span> <span class="n">non_dominated_solutions_3d</span><span class="p">(</span><span class="n">points_cpy</span><span class="p">)</span>
+    <span class="n">hv</span> <span class="o">=</span> <span class="n">compute_hypervolume_3d</span><span class="p">(</span><span class="n">pareto_front</span><span class="p">,</span> <span class="n">reference_point</span><span class="p">)</span>
+    <span class="n">hv_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hv</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pareto_front</span><span class="p">:</span>
+        <span class="n">points_cpy</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hv_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Iterations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hv_list</span><span class="p">)),</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hv_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Hypervolume&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Hypervolume&#39;)
+</pre></div>
+</div>
+<img alt="../_images/d6d7587dbec6f62a9b10eda128bfbbc173c04c779fb9a96a88316089e9c3c029.png" src="../_images/d6d7587dbec6f62a9b10eda128bfbbc173c04c779fb9a96a88316089e9c3c029.png" />
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -993,9 +1381,10 @@ In the worst case, both can grow up to nn in size, resulting in <span class="mat
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-identify-the-computational-complexity-of-this-function">4.1.5.2. 1. Can you identify the computational complexity of this function?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-extend-this-to-3d-and-how-would-you-generalize-this-to-n-d-objectives">4.1.5.3. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#this-way-of-computing-hypervolume-can-result-in-having-smaller-non-monotonic-functions-how-can-one-circumvent-that-thanks-and-credits-to-shannon-zelitch">4.1.5.4. 3. This way of computing hypervolume can result in having smaller non monotonic functions. How can one circumvent that (Thanks and Credits to Shannon Zelitch)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1.5.5. 0. Could you perhaps check if HV is monotonic as you go through different fronts? Should it increase or decrease?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.5.6. 2. Can you extend this to 3D and how would you generalize this to <code class="docutils literal notranslate"><span class="pre">n-D</span></code> objectives?</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#food-for-thought">4.1.6. Food for thought</a></li>
 </ul>
   </nav></div>
 
