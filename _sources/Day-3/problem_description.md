@@ -12,9 +12,6 @@ Consider a toy wire based tracker {numref}`fig-toy-tracker`. the toy wire based 
 Toy Tracker Problem
 ```
 
-![alt text](toy_tracker.png)
-
-
 A total of 8 parameters can be tuned. The adjustable parameters are the radius of the wire, the pitch (along the y-axis), and the shift along y and z of a plane with respect to the previous one.
 
 
