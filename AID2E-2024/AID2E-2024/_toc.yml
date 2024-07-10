@@ -47,4 +47,14 @@ parts:
           title: "Optimization Theory"
         - file: Day-2/MOO_concepts.ipynb
         - file: Day-2/MC_integration.ipynb
+- caption: "Day 3 - Multi Objective Evolutionary Algorithm"
+  numbered: true
+  chapters:
+    - file: Day-3/intro
+      sections:
+        - url: https://docs.google.com/presentation/d/19ptTXZaTtMGgB7DfTX-0T-6_72H31itSdtbuR7dQiJs/edit?usp=sharing
+          title: "Introduction to MOEA"
+        - file: Day-3/TestProblem_MOEA.ipynb
+        - file: Day-3/problem_description
+        - file: Day-3/Design_MOEA.ipynb
         

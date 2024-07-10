@@ -10,13 +10,13 @@ author                      : Karthik Suresh  # The author of the book
 copyright                   : "2024"  # Copyright year to be placed in the footer
 logo                        : images/AID2E-logo.png  # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
-exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints", "**detector.py"]
 # Auto-exclude files not in the toc
 only_build_toc_files        : true
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: false
   cache: ".jupyter_cache"
   exclude_patterns: []
   timeout: 30
@@ -99,4 +99,5 @@ sphinx:
   recursive_update          : false # A boolean indicating whether to overwrite the Sphinx config (true) or recursively update (false)
   config                    : 
                               mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js # key-value pairs to directly over-ride the Sphinx configuration
-  
+                              html_js_files: https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
+                              suppress_warnings: ["mystnb.unknown_mime_type"]
