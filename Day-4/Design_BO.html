@@ -1,0 +1,1262 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12.1. Bayesian Optimization &#8212; AID2E-Boot-Camp-2024</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "aid2e/boot-camp-2024");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-4/Design_BO';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-4/Design_BO.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="12. Bayesian Optimization" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+<aside class="bd-header-announcement" aria-label="Announcement">
+  <div class="bd-header-announcement__content">This page is being updated</div>
+</aside>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/AID2E-logo.png" class="logo__image only-light" alt="AID2E-Boot-Camp-2024 - Home"/>
+    <script>document.write(`<img src="../_static/AID2E-logo.png" class="logo__image only-dark" alt="AID2E-Boot-Camp-2024 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to AID2E Boot Camp 2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Schedule</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../schedule.html">Schedule</a></li>
+
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/1tX2W2Da_BaM49ca3nh4lWQOfEdUpRFapFDqD3EWLNME/edit?usp=sharing">Introduction to AID2E Boot Camp 2024</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to git</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-1/GIT-course/intro_to_git.html">1. Brief course on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/VCS.html">1.1. Version Control System (VCS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/git_basics.html">1.2. What is Git?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/git_configure.html">1.3. Configuring your <code class="docutils literal notranslate"><span class="pre">git</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-1/GIT-course/git_exercises.html">2. Exercises on <code class="docutils literal notranslate"><span class="pre">git</span></code></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-1.html">2.1. Exercise 1: Basic Git Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-2.html">2.2. Exercise 2: Commits, push and branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-3.html">2.3. Advanced exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/GIT-course/Exercise-4.html">2.4. GitHub Actions and Workflow Tutorial</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to High Performance Computing (HPC)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-1/HPC-course/intro_to_HPC_HTC.html">3. Introduction to High Perforamance Computing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/intro_to_HPC.html">3.1. High Performance Computing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/ssh_login.html">3.2. SSH into a Front-End Node Using Proxy Jump</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/file_systems_WM.html">3.3. William &amp; Mary Research Computing: File Systems Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-1/HPC-course/SLURM_commands.html">3.4. Introduction to SLURM</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using VS-Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Day-1/VS-code.html">Installing Visual Studio Code</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-2/intro_to_optimization.html">4. Introduction to Optimization Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference external" href="https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing">Optimization Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-2/MOO_concepts.html">4.1. Concepts in MOO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-2/MC_integration.html">4.2. Montecarlo based integration methods and applications</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 3 - Multi Objective Evolutionary Algorithm</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://docs.google.com/presentation/d/19ptTXZaTtMGgB7DfTX-0T-6_72H31itSdtbuR7dQiJs/edit?usp=sharing">Introduction to MOEA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Day-3/TestProblem_MOEA.html">5. MOEA of a test problem</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Day-3/problem_description.html">10. Toy tracker problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Day-3/Design_MOEA.html">11. MOEA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 4 - Bayesian Optimization</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro.html">12. Bayesian Optimization</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference external" href="https://docs.google.com/presentation/d/1wwgS_6ehIZy7XXEZDdEq24s-2fXEzD7SsXo68QkDoHc/edit?usp=sharing">Introduction to Bayesian Optimization</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">12.1. Bayesian Optimization</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/aid2e/boot-camp-2024/blob/webpage-src/AID2E-2024/AID2E-2024/Day-4/Design_BO.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aid2e/boot-camp-2024" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aid2e/boot-camp-2024/edit/webpage-src/AID2E-2024/AID2E-2024/Day-4/Design_BO.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aid2e/boot-camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-4/Design_BO.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Day-4/Design_BO.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bayesian Optimization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">12.1.1. Create detector geometry and simulate tracks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-parameters">12.1.1.1. LIST OF PARAMETERS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-objectives">12.1.2. Define Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-optimization-of-the-detector-geometry">12.1.3. Bayesian Optimization of the Detector Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-optimization-with-gaussian-processes">12.1.4. Bayesian Optimization with Gaussian Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-from-bo-gp">12.1.4.1. Results from BO(GP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">12.1.4.2. Convergence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-geometry">12.1.4.3. Optimal Geometry</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-optimization-with-gbrt">12.1.5. Bayesian Optimization with GBRT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-search">12.1.6. Random Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-results">12.1.7. Visualization of Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">12.1.8. Solution 1</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="bayesian-optimization">
+<h1><span class="section-number">12.1. </span>Bayesian Optimization<a class="headerlink" href="#bayesian-optimization" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!git clone https://github.com/cfteach/modules.git
+!pip install scikit-optimize
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cloning into &#39;modules&#39;...
+remote: Enumerating objects: 21, done.
+remote: Counting objects: 100% (21/21), done.
+remote: Compressing objects: 100% (20/20), done.
+remote: Total 21 (delta 3), reused 9 (delta 0), pack-reused 0
+Unpacking objects: 100% (21/21), done.
+Collecting scikit-optimize
+  Downloading scikit_optimize-0.9.0-py2.py3-none-any.whl (100 kB)
+     |████████████████████████████████| 100 kB 4.3 MB/s 
+?25hRequirement already satisfied: scikit-learn&gt;=0.20.0 in /usr/local/lib/python3.7/dist-packages (from scikit-optimize) (1.0.1)
+Collecting pyaml&gt;=16.9
+  Downloading pyaml-21.10.1-py2.py3-none-any.whl (24 kB)
+Requirement already satisfied: scipy&gt;=0.19.1 in /usr/local/lib/python3.7/dist-packages (from scikit-optimize) (1.4.1)
+Requirement already satisfied: joblib&gt;=0.11 in /usr/local/lib/python3.7/dist-packages (from scikit-optimize) (1.1.0)
+Requirement already satisfied: numpy&gt;=1.13.3 in /usr/local/lib/python3.7/dist-packages (from scikit-optimize) (1.19.5)
+Requirement already satisfied: PyYAML in /usr/local/lib/python3.7/dist-packages (from pyaml&gt;=16.9-&gt;scikit-optimize) (3.13)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from scikit-learn&gt;=0.20.0-&gt;scikit-optimize) (3.0.0)
+Installing collected packages: pyaml, scikit-optimize
+Successfully installed pyaml-21.10.1 scikit-optimize-0.9.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%load_ext autoreload
+%autoreload 2
+
+from IPython.display import display, Math, Latex
+
+
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+#import AI4NP_detector_opt.sol2.detector2 as detector2
+import modules.detector2 as detector2
+import re
+</pre></div>
+</div>
+</div>
+</div>
+<section id="create-detector-geometry-and-simulate-tracks">
+<h2><span class="section-number">12.1.1. </span>Create detector geometry and simulate tracks<a class="headerlink" href="#create-detector-geometry-and-simulate-tracks" title="Link to this heading">#</a></h2>
+<p>The module detector creates a simple 2D geometry of a wire based tracker made by 4 planes.</p>
+<p>The adjustable parameters are the radius of each wire, the pitch (along the y axis), and the shift along y and z of a plane with respect to the previous one.</p>
+<p>A total of 8 parameters can be tuned.</p>
+<p>The goal of this toy model, is to tune the detector design so to optimize the efficiency (fraction of tracks which are detected) as well as the cost for its realization. As a proxy for the cost, we use the material/volume (the surface in 2D) of the detector. For a track to be detetected, in the efficiency definition we require at least two wires hit by the track.</p>
+<p>So we want to maximize the efficiency (defined in <a class="reference external" href="http://detector.py">detector.py</a>) and minimize the cost.</p>
+<section id="list-of-parameters">
+<h3><span class="section-number">12.1.1.1. </span>LIST OF PARAMETERS<a class="headerlink" href="#list-of-parameters" title="Link to this heading">#</a></h3>
+<p>(baseline values)</p>
+<ul class="simple">
+<li><p>R = .5   [cm]</p></li>
+<li><p>pitch = 4.0  [cm]</p></li>
+<li><p>y1 = 0.0, y2 = 0.0, y3 = 0.0, z1 = 2.0, z2 = 4.0, z3 = 6.0 [cm]</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># CONSTANT PARAMETERS
+#------ define mother region ------#
+y_min=-10.1
+y_max=10.1
+N_tracks = 1000
+
+
+print(&quot;::::: BASELINE PARAMETERS :::::&quot;)
+R = 0.5 #.5
+pitch = 4.0 #10.0
+y1 = 0.0
+y2 = 0.0
+y3 = 0.0
+z1 = 2.0
+z2 = 4.0
+z3 = 6.0
+
+print(&quot;R, pitch, y1, y2, y3, z1, z2, z3: &quot;, R, pitch, y1, y2, y3, z1, z2, z3,&quot;\n&quot;)
+
+
+#------------- GEOMETRY ---------------#
+print(&quot;:::: INITIAL GEOMETRY ::::&quot;)
+tr = detector2.Tracker(R, pitch, y1, y2, y3, z1, z2, z3)
+Z, Y = tr.create_geometry()
+num_wires = detector2.calculate_wires(Y, y_min, y_max)
+
+
+detector2.geometry_display(Z, Y, R, y_min=y_min, y_max=y_max,block=False,pause=5) #5
+
+print(&quot;# of wires: &quot;, num_wires)
+
+#------------- TRACK GENERATION -----------#
+print(&quot;:::: TRACK GENERATION ::::&quot;)
+t = detector2.Tracks(b_min= y_min, b_max=y_max, alpha_mean=0, alpha_std=0.2) #b_min=-100, b_max=100
+tracks = t.generate(N_tracks)
+
+detector2.geometry_display(Z, Y, R, y_min=y_min, y_max=y_max,block=False, pause=-1)
+detector2.tracks_display(tracks, Z,block=False,pause=-1)
+
+ #a track is detected if at least two wires have been hit
+score = detector2.get_score(Z, Y, tracks, R)
+frac_detected = score[0]
+print(&quot;fraction of tracks detected: &quot;,frac_detected)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>::::: BASELINE PARAMETERS :::::
+R, pitch, y1, y2, y3, z1, z2, z3:  0.5 4.0 0.0 0.0 0.0 2.0 4.0 6.0 
+
+:::: INITIAL GEOMETRY ::::
+# of wires:  20
+:::: TRACK GENERATION ::::
+</pre></div>
+</div>
+<img alt="../_images/58858194d870a7efa98114f8ca3ad84b918aaa91097db909c5a96a4ebe3c1a38.png" src="../_images/58858194d870a7efa98114f8ca3ad84b918aaa91097db909c5a96a4ebe3c1a38.png" />
+<img alt="../_images/3dbd996c34ce34eb172ab73101838a4d3416f43016ee6380c92e8973b7a488ef.png" src="../_images/3dbd996c34ce34eb172ab73101838a4d3416f43016ee6380c92e8973b7a488ef.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fraction of tracks detected:  0.264
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="define-objectives">
+<h2><span class="section-number">12.1.2. </span>Define Objectives<a class="headerlink" href="#define-objectives" title="Link to this heading">#</a></h2>
+<p>Defines the objective function of the problem that can be used in the Bayesian Optimization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#------------- OBJECTIVE FUNCTION ---------------#
+
+class Obj:
+
+  def __init__(self,R=0.5,pitch=4.0):
+    self.R = R
+    self.pitch = pitch
+
+  def update_pars(self,r,p):
+    self.R = r
+    self.pitch = p
+
+
+  def objective(self,x):
+
+    #you have to upack R, pitch if included in the BO
+    y1, y2, y3, z1, z2, z3 = x
+    Z, Y = detector2.Tracker(self.R, self.pitch, y1, y2, y3, z1, z2, z3).create_geometry()
+    #a track is detected if at least two wires have been hit
+    val = detector2.get_score(Z, Y, tracks, self.R)[0]
+    #print(self.R, self.pitch)
+
+    return 1. - val  # the smaller, the better.
+
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="bayesian-optimization-of-the-detector-geometry">
+<h2><span class="section-number">12.1.3. </span>Bayesian Optimization of the Detector Geometry<a class="headerlink" href="#bayesian-optimization-of-the-detector-geometry" title="Link to this heading">#</a></h2>
+<p>You can find different options for the optimization.</p>
+<p>We refer to sklearn optimization package:
+<a class="reference external" href="https://scikit-optimize.github.io/stable/">https://scikit-optimize.github.io/stable/</a></p>
+<p>Different approaches for the regression part.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from skopt import gp_minimize, gbrt_minimize, dummy_minimize
+
+# You can change values within pre-defined ranges
+# Below we are considering only the shifts along y and z
+# (of each plane with respect to the previous plane)
+
+y1_min, y1_max = [0., 4.]
+y2_min, y2_max = [0., 4.]
+y3_min, y3_max = [0., 4.]
+z1_min, z1_max = [2., 10.]
+z2_min, z2_max = [2., 10.]
+z3_min, z3_max = [2., 10.]
+
+dims = [(y1_min, y1_max),(y2_min, y2_max), (y3_min, y3_max),
+        (z1_min, z1_max), (z2_min, z2_max),(z3_min, z3_max)]
+
+ncalls = 100
+rand_st = 1717 #for reproducibility
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bayesian-optimization-with-gaussian-processes">
+<h2><span class="section-number">12.1.4. </span>Bayesian Optimization with Gaussian Processes<a class="headerlink" href="#bayesian-optimization-with-gaussian-processes" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>obj_fun = Obj()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># https://scikit-optimize.github.io/stable/modules/generated/skopt.gp_minimize.html
+
+
+res_gp = gp_minimize(
+    func=obj_fun.objective,  # the function to minimize
+    dimensions=dims,  # the bounds on each dimension of x
+    acq_func=&quot;gp_hedge&quot;, #&quot;gp_hedge&quot;,  # the acquisition function EI
+    n_calls= ncalls,  # the number of evaluations of f
+    n_random_starts=15,  # the number of random initialization points
+    #noise=0.01**2,  # the noise level (optional)
+    random_state=rand_st,  # the random seed, use same for reproducibility
+    #kappa=kappa,  # the adjustable parameter of LCB; control variance
+    #xi = xi, # adjustable parameter of either EI, PI: controls improvement
+    verbose=False)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="results-from-bo-gp">
+<h3><span class="section-number">12.1.4.1. </span>Results from BO(GP)<a class="headerlink" href="#results-from-bo-gp" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+print(&quot;-------------------------------&quot;)
+print(&quot;------RESULT FROM BO(GP)-------&quot;)
+print(&quot;-------------------------------&quot;)
+
+print(&quot;Objective optimum = &quot;, res_gp.fun)
+print(&quot;Best score (efficiency) = &quot;, 1-res_gp.fun)
+
+# get found optimal geometry #R, pitch,
+[y1, y2, y3, z1, z2, z3] = res_gp.x
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------------------------
+------RESULT FROM BO(GP)-------
+-------------------------------
+Objective optimum =  0.585
+Best score (efficiency) =  0.41500000000000004
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convergence">
+<h3><span class="section-number">12.1.4.2. </span>Convergence<a class="headerlink" href="#convergence" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;....plotting convergence&quot;)
+from skopt.plots import plot_convergence
+plot_convergence((&quot;BO: GP&quot;, res_gp))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>....plotting convergence
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0de9cb0c90&gt;
+</pre></div>
+</div>
+<img alt="../_images/fe9dde581acef5d1e292f2635f1fe4c38276319b8ec962da04167a6529a2936d.png" src="../_images/fe9dde581acef5d1e292f2635f1fe4c38276319b8ec962da04167a6529a2936d.png" />
+</div>
+</div>
+</section>
+<section id="optimal-geometry">
+<h3><span class="section-number">12.1.4.3. </span>Optimal Geometry<a class="headerlink" href="#optimal-geometry" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>
+#------------- GEOMETRY ---------------#
+print(&quot;:::: OPTIMAL GEOMETRY ::::&quot;)
+
+tr = detector2.Tracker(R, pitch, y1, y2, y3, z1, z2, z3)
+Z, Y = tr.create_geometry()
+num_wires = detector2.calculate_wires(Y, y_min, y_max)
+print(&quot;num_wires: &quot;, num_wires)
+
+detector2.geometry_display(Z, Y, R, y_min=y_min, y_max=y_max,block=False, pause=-1)
+detector2.tracks_display(tracks, Z,block=False,pause=-1)
+
+#a track is detected if at least two wires have been hit
+score = detector2.get_score(Z, Y, tracks, R)
+frac_detected = score[0]
+print(&quot;fraction of tracks detected: &quot;,frac_detected)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:::: OPTIMAL GEOMETRY ::::
+num_wires:  20
+</pre></div>
+</div>
+<img alt="../_images/bb4002f0177abf221c8e16b22e6304ea2a019c360a9958fa226fb27543cba3d9.png" src="../_images/bb4002f0177abf221c8e16b22e6304ea2a019c360a9958fa226fb27543cba3d9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fraction of tracks detected:  0.415
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bayesian-optimization-with-gbrt">
+<h2><span class="section-number">12.1.5. </span>Bayesian Optimization with GBRT<a class="headerlink" href="#bayesian-optimization-with-gbrt" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>res_gbrt = gbrt_minimize(
+    func=obj_fun.objective,  # the function to minimize
+    dimensions=dims,  # the bounds on each dimension of x
+    acq_func=&quot;EI&quot;,  # the acquisition function EI
+    n_calls= ncalls,  # the number of evaluations of f
+    n_random_starts=15,  # the number of random initialization points
+    random_state=rand_st,  # the random seed, use same for reproducibility
+    #kappa=kappa,  # the adjustable parameter of LCB; control variance
+    #xi = xi, # adjustable parameter of either EI, PI: controls improvement
+    verbose=False)
+
+print(&quot;-------------------------------&quot;)
+print(&quot;-----RESULT FROM BO(GBRT)------&quot;)
+print(&quot;-------------------------------&quot;)
+
+print(&quot;Objective optimum = &quot;, res_gbrt.fun)
+print(&quot;Best score = &quot;, 1-res_gbrt.fun)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------------------------
+-----RESULT FROM BO(GBRT)------
+-------------------------------
+Objective optimum =  0.622
+Best score =  0.378
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-search">
+<h2><span class="section-number">12.1.6. </span>Random Search<a class="headerlink" href="#random-search" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>res_rand = dummy_minimize(
+    func=obj_fun.objective,  # the function to minimize
+    dimensions=dims,  # the bounds on each dimension of x
+    n_calls= ncalls,  # the number of evaluations of f
+    random_state=rand_st,  # the random seed
+    verbose=False)
+
+print(&quot;-------------------------------&quot;)
+print(&quot;------  RESULT FROM RS  -------&quot;)
+print(&quot;-------------------------------&quot;)
+
+print(&quot;Objective optimum = &quot;, res_rand.fun)
+print(&quot;Best score = &quot;, 1-res_rand.fun)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------------------------
+------  RESULT FROM RS  -------
+-------------------------------
+Objective optimum =  0.669
+Best score =  0.33099999999999996
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualization-of-results">
+<h2><span class="section-number">12.1.7. </span>Visualization of Results<a class="headerlink" href="#visualization-of-results" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;....plotting convergence&quot;)
+from skopt.plots import plot_convergence
+plot_convergence((&quot;BO: GP&quot;, res_gp),(&quot;BO: GBRT&quot;, res_gbrt),(&quot;random search&quot;, res_rand))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>....plotting convergence
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0dc912c550&gt;
+</pre></div>
+</div>
+<img alt="../_images/db5a99f1c917bf71db3b6b2b3f2e34072b6e373e34fff6b83cd4aa79129a5f37.png" src="../_images/db5a99f1c917bf71db3b6b2b3f2e34072b6e373e34fff6b83cd4aa79129a5f37.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>list_str = [&quot;y1&quot;, &quot;y2&quot;, &quot;y3&quot;, &quot;z1&quot;, &quot;z2&quot;, &quot;z3&quot;] #----&quot;R&quot;, &quot;pitch&quot;
+
+from skopt.plots import plot_objective
+_ = plot_objective(res_gp,dimensions=list_str)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bc2ddb5c07ea8af36570054c87e8d70cec60968d0e3b1d43428336831cf0d617.png" src="../_images/bc2ddb5c07ea8af36570054c87e8d70cec60968d0e3b1d43428336831cf0d617.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="solution-1">
+<h2><span class="section-number">12.1.8. </span>Solution 1<a class="headerlink" href="#solution-1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Increase radius to 1.0 and compare convergence plots of GP and RS with before.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>R, pitch = 1.0, 4.0 #to update final plot of optimal geometry
+
+obj_fun.update_pars(R, pitch)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>res_gp_largeR = gp_minimize(
+    func=obj_fun.objective,  # the function to minimize
+    dimensions=dims,  # the bounds on each dimension of x
+    acq_func=&quot;gp_hedge&quot;, #&quot;gp_hedge&quot;,  # the acquisition function EI
+    n_calls= ncalls,  # the number of evaluations of f
+    n_random_starts=15,  # the number of random initialization points
+    random_state=rand_st,  # the random seed, use same for reproducibility
+    verbose=False)
+
+print(&quot;-------------------------------&quot;)
+print(&quot;------  RESULT FROM GP  -------&quot;)
+print(&quot;-------------------------------&quot;)
+
+print(&quot;Objective optimum = &quot;, res_gp_largeR.fun)
+print(&quot;Best score = &quot;, 1-res_gp_largeR.fun)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------------------------
+------  RESULT FROM GP  -------
+-------------------------------
+Objective optimum =  0.11299999999999999
+Best score =  0.887
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>res_rand_largeR = dummy_minimize(
+    func=obj_fun.objective,  # the function to minimize
+    dimensions=dims,  # the bounds on each dimension of x
+    n_calls= ncalls,  # the number of evaluations of f
+    random_state=rand_st,  # the random seed
+    verbose=False)
+
+print(&quot;-------------------------------&quot;)
+print(&quot;------  RESULT FROM RS  -------&quot;)
+print(&quot;-------------------------------&quot;)
+
+print(&quot;Objective optimum = &quot;, res_rand_largeR.fun)
+print(&quot;Best score = &quot;, 1-res_rand_largeR.fun)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------------------------
+------  RESULT FROM RS  -------
+-------------------------------
+Objective optimum =  0.20399999999999996
+Best score =  0.796
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&quot;....plotting convergence&quot;)
+from skopt.plots import plot_convergence
+plot_convergence((&quot;BO: GP, R=0.5&quot;, res_gp),(&quot;BO: GP, R=1.0&quot;, res_gp_largeR),(&quot;random search, R=0.5&quot;, res_rand),(&quot;random search, R=1.0&quot;, res_rand_largeR))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>....plotting convergence
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f0de9b1bd10&gt;
+</pre></div>
+</div>
+<img alt="../_images/e4704e232ac442a37669ee658485069e20c39447ca965d904fdf670013322f99.png" src="../_images/e4704e232ac442a37669ee658485069e20c39447ca965d904fdf670013322f99.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(res_gp_largeR.fun)
+print(res_gp.fun)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.11299999999999999
+0.585
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[y1, y2, y3, z1, z2, z3] = res_gp_largeR.x
+
+#------------- GEOMETRY ---------------#
+print(&quot;:::: OPTIMAL GEOMETRY ::::&quot;)
+
+tr = detector2.Tracker(R, pitch, y1, y2, y3, z1, z2, z3)
+Z, Y = tr.create_geometry()
+num_wires = detector2.calculate_wires(Y, y_min, y_max)
+print(&quot;num_wires: &quot;, num_wires)
+
+detector2.geometry_display(Z, Y, R, y_min=y_min, y_max=y_max,block=False, pause=-1)
+detector2.tracks_display(tracks, Z,block=False,pause=-1)
+
+#a track is detected if at least two wires have been hit
+score = detector2.get_score(Z, Y, tracks, R)
+frac_detected = score[0]
+print(&quot;fraction of tracks detected: &quot;,frac_detected)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:::: OPTIMAL GEOMETRY ::::
+num_wires:  21
+</pre></div>
+</div>
+<img alt="../_images/79446cdadf96e9ba9eb81897030992e74a1144a9f3499d22cb6d7bec0990484c.png" src="../_images/79446cdadf96e9ba9eb81897030992e74a1144a9f3499d22cb6d7bec0990484c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fraction of tracks detected:  0.887
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aid2e/boot-camp-2024",
+            ref: "webpage-src",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Day-4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Bayesian Optimization</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-detector-geometry-and-simulate-tracks">12.1.1. Create detector geometry and simulate tracks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-parameters">12.1.1.1. LIST OF PARAMETERS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-objectives">12.1.2. Define Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-optimization-of-the-detector-geometry">12.1.3. Bayesian Optimization of the Detector Geometry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-optimization-with-gaussian-processes">12.1.4. Bayesian Optimization with Gaussian Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-from-bo-gp">12.1.4.1. Results from BO(GP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">12.1.4.2. Convergence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-geometry">12.1.4.3. Optimal Geometry</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayesian-optimization-with-gbrt">12.1.5. Bayesian Optimization with GBRT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-search">12.1.6. Random Search</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-results">12.1.7. Visualization of Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1">12.1.8. Solution 1</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Karthik Suresh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  AID2E Boot Camp 2024
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
