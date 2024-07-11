@@ -57,4 +57,12 @@ parts:
         - file: Day-3/TestProblem_MOEA.ipynb
         - file: Day-3/problem_description
         - file: Day-3/Design_MOEA.ipynb
+- caption: "Day 4 - Bayesian Optimization"
+  numbered: true
+  chapters:
+    - file: Day-4/intro
+      sections:
+        - url: https://docs.google.com/presentation/d/1wwgS_6ehIZy7XXEZDdEq24s-2fXEzD7SsXo68QkDoHc/edit?usp=sharing
+          title: "Introduction to Bayesian Optimization"
+        - file: Day-4/Design_BO.ipynb
         
