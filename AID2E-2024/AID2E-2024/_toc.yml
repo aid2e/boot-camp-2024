@@ -65,4 +65,5 @@ parts:
         - url: https://docs.google.com/presentation/d/1wwgS_6ehIZy7XXEZDdEq24s-2fXEzD7SsXo68QkDoHc/edit?usp=sharing
           title: "Introduction to Bayesian Optimization"
         - file: Day-4/Design_BO.ipynb
+        - file: Day-4/Design_MOBO2.ipynb
         
