@@ -66,4 +66,11 @@ parts:
           title: "Introduction to Bayesian Optimization"
         - file: Day-4/Design_BO.ipynb
         - file: Day-4/Design_MOBO2.ipynb
+- caption: "Day 5 - Introduction EIC software framework"
+  numbered: true
+  chapters:
+  - file: Day-5/intro_EIC-software
+    sections:
+    - file: Day-5/pre_requisities
+    - file: Day-5/eic-shell
         
