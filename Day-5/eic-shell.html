@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>4.2. Montecarlo based integration methods and applications &#8212; AID2E-Boot-Camp-2024</title>
+    <title>13.2. EIC installation and geometry &#8212; AID2E-Boot-Camp-2024</title>
   
   
   
@@ -94,13 +94,12 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-2/MC_integration';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Day-5/eic-shell';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-2/MC_integration.html" />
+    <link rel="canonical" href="https://aid2e.github.io/boot-camp-2024/Day-5/eic-shell.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="../Day-3/intro.html" />
-    <link rel="prev" title="4.1. Concepts in MOO" href="MOO_concepts.html" />
+    <link rel="prev" title="13.1. Prerequisities" href="pre_requisities.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -260,11 +259,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 2 - Introduction to Optimization</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_to_optimization.html">4. Introduction to Optimization Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Day-2/intro_to_optimization.html">4. Introduction to Optimization Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference external" href="https://docs.google.com/presentation/d/1OnpTlpBe1f4drPrxcwOtPvsSgdYvCnwvGVohH9kKbR8/edit?usp=sharing">Optimization Theory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MOO_concepts.html">4.1. Concepts in MOO</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2. Montecarlo based integration methods and applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-2/MOO_concepts.html">4.1. Concepts in MOO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Day-2/MC_integration.html">4.2. Montecarlo based integration methods and applications</a></li>
 </ul>
 </details></li>
 </ul>
@@ -289,10 +288,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 5 - Introduction EIC software framework</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Day-5/intro_EIC-software.html">13. Introduction to EIC Software stack.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Day-5/pre_requisities.html">14. Prerequisities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Day-5/eic-shell.html">15. EIC installation and geometry</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="intro_EIC-software.html">13. Introduction to EIC Software stack.</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pre_requisities.html">13.1. Prerequisities</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">13.2. EIC installation and geometry</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -339,55 +340,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 
 
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/aid2e/boot-camp-2024/blob/webpage-src/AID2E-2024/AID2E-2024/Day-2/MC_integration.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Colab logo" src="../_static/images/logo_colab.png">
-  </span>
-<span class="btn__text-container">Colab</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="initThebeSBT()"
-  class="btn btn-sm btn-launch-thebe dropdown-item"
-  title="Launch Thebe"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="btn__text-container">Live Code</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -413,7 +365,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/aid2e/boot-camp-2024/edit/webpage-src/AID2E-2024/AID2E-2024/Day-2/MC_integration.ipynb" target="_blank"
+      <li><a href="https://github.com/aid2e/boot-camp-2024/edit/webpage-src/AID2E-2024/AID2E-2024/Day-5/eic-shell.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -430,7 +382,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/aid2e/boot-camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-2/MC_integration.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/aid2e/boot-camp-2024/issues/new?title=Issue%20on%20page%20%2FDay-5/eic-shell.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -460,7 +412,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="../_sources/Day-2/MC_integration.ipynb" target="_blank"
+      <li><a href="../_sources/Day-5/eic-shell.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -470,7 +422,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -544,7 +496,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Montecarlo based integration methods and applications</h1>
+    <h1>EIC installation and geometry</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -554,11 +506,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-value-of-pi-using-mc-methods">4.2.1. Computing value of <code class="docutils literal notranslate"><span class="pre">pi</span></code> using MC methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">4.2.2. Exercise</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-now-generalize-this-to-any-a-lower-and-upper-limit">4.2.2.1. 1. Can you now generalize this to any a lower and upper limit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-study-the-effects-of-n-on-computational-accuracy-of-pi">4.2.2.2. 2. Can you study the effects of <code class="docutils literal notranslate"><span class="pre">n</span></code> on computational accuracy of <code class="docutils literal notranslate"><span class="pre">pi</span></code>?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-you-find-the-area-of-the-circle-from-here-how-is-it-related-to-hv-calculation">4.2.2.3. 3. How can you find the area of the circle from here? How is it related to HV calculation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eic-shell">13.2.1. eic-shell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dd4hep">13.2.2. dd4hep</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">13.2.2.1. Exercise</a></li>
 </ul>
 </li>
 </ul>
@@ -572,86 +522,35 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="montecarlo-based-integration-methods-and-applications">
-<h1><span class="section-number">4.2. </span>Montecarlo based integration methods and applications<a class="headerlink" href="#montecarlo-based-integration-methods-and-applications" title="Link to this heading">#</a></h1>
-<p>Introduction:
-In the field of mathematics and computational science, integration plays a crucial role in various applications. It involves finding the area under a curve or the volume of a solid, which helps in solving real-world problems. However, analytical integration methods may not always be feasible or efficient, especially when dealing with complex functions or high-dimensional spaces. In such cases, Monte Carlo (MC) based integration methods provide a powerful alternative. This essay explores MC-based integration methods and their applications.</p>
-<p>Monte Carlo Integration:
-Monte Carlo integration is a numerical technique that uses random sampling to estimate the value of an integral. It is based on the law of large numbers, which states that as the number of samples increases, the average of the samples converges to the true value of the integral. The basic idea behind MC integration is to generate random points within the integration domain and evaluate the function at these points. The average of the function evaluations multiplied by the size of the integration domain gives an estimate of the integral.</p>
-<p>Applications of MC-Based Integration Methods:</p>
-<ol class="arabic simple">
-<li><p>Numerical Integration: MC-based integration methods are widely used for numerical integration in various fields such as physics, finance, and engineering. They can handle complex functions and high-dimensional spaces where analytical integration methods may fail. MC integration is particularly useful when dealing with stochastic processes or when the integrand is not well-behaved.</p></li>
-<li><p>Bayesian Inference: MC-based integration methods are extensively used in Bayesian inference, which is a statistical framework for updating beliefs based on new evidence. In Bayesian inference, the posterior distribution is obtained by integrating the likelihood function with respect to the prior distribution. MC integration techniques, such as Markov Chain Monte Carlo (MCMC), provide efficient ways to approximate the posterior distribution and perform inference.</p></li>
-<li><p>Optimization: MC-based integration methods are employed in optimization problems, where the objective function involves an integral. By approximating the integral using MC integration, optimization algorithms can search for the optimal solution efficiently. This is particularly useful in cases where the objective function is expensive to evaluate or when the search space is high-dimensional.</p></li>
-<li><p>Physics Simulations: MC-based integration methods are extensively used in physics simulations, such as molecular dynamics and Monte Carlo simulations. These simulations involve computing ensemble averages, which require integrating over the phase space of the system. MC integration techniques provide a powerful tool to estimate these averages and simulate complex physical systems.</p></li>
-</ol>
-<section id="computing-value-of-pi-using-mc-methods">
-<h2><span class="section-number">4.2.1. </span>Computing value of <code class="docutils literal notranslate"><span class="pre">pi</span></code> using MC methods<a class="headerlink" href="#computing-value-of-pi-using-mc-methods" title="Link to this heading">#</a></h2>
-<p>This section illustrates how to compute value of <code class="docutils literal notranslate"><span class="pre">pi</span></code> using MC integration method.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### MC BASED INTEGRATION</span>
-<span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="k">def</span> <span class="nf">check_in_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">r</span>
-
-<span class="k">def</span> <span class="nf">mc_pi</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">in_circle</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">check_in_circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-            <span class="n">in_circle</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">in_circle</span> <span class="o">/</span> <span class="n">n</span>
-
-<span class="k">def</span> <span class="nf">mc_pi_error</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">pi</span> <span class="o">=</span> <span class="n">mc_pi</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">pi</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-
-<span class="n">n</span> <span class="o">=</span> <span class="mi">10_000</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mc_pi</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mc_pi_error</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1388
-0.024007346410206853
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="n">check_in_circle</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MC Integration&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/4ea44ccc66500d174f7d77e51be38a349e05e999502749738a1d8e8782f10bf6.png" src="../_images/4ea44ccc66500d174f7d77e51be38a349e05e999502749738a1d8e8782f10bf6.png" />
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="eic-installation-and-geometry">
+<h1><span class="section-number">13.2. </span>EIC installation and geometry<a class="headerlink" href="#eic-installation-and-geometry" title="Link to this heading">#</a></h1>
+<section id="eic-shell">
+<h2><span class="section-number">13.2.1. </span>eic-shell<a class="headerlink" href="#eic-shell" title="Link to this heading">#</a></h2>
+<p>Please check out <a class="reference external" href="https://eic.github.io/tutorial-setting-up-environment/">here</a> for the tutorials from EIC ePIC collaboration.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">$EIC_PROJECT_DIR/eic</span> <span class="pre">&amp;&amp;</span> <span class="pre">cd</span> <span class="pre">$EIC_PROJECT_DIR/eic</span></code></p></li>
+<li><p>Download the install file – <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">--output-document</span> <span class="pre">install.sh</span> <span class="pre">https://get.epic-eic.org</span></code></p></li>
+<li><p>install the file – <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">install.sh</span></code></p></li>
+<li><p>Check your installation – <code class="docutils literal notranslate"><span class="pre">eic-shell</span></code> and should load the container.</p></li>
+<li><p>With HPC systems that have <code class="docutils literal notranslate"><span class="pre">cvfms</span></code> (CernVM File System), the containers with variety of versons are shipped. if needed a different version to be loaded. If not one has to download versions seperately using <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">pull</span></code></p></li>
+</ul>
 </section>
+<section id="dd4hep">
+<h2><span class="section-number">13.2.2. </span>dd4hep<a class="headerlink" href="#dd4hep" title="Link to this heading">#</a></h2>
+<p>Please check out <a class="reference external" href="https://eic.github.io/tutorial-geometry-development-using-dd4hep//">here</a> for the tutorials from EIC ePIC collaboration.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/opt/detector/epic-main/bin/thisepic.sh</span></code> – sources all the necessary environment variables to identify the detector xml files.</p></li>
+<li><p>look into a few variables – <code class="docutils literal notranslate"><span class="pre">$DETECTOR_PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">$DETECTOR</span></code>, <code class="docutils literal notranslate"><span class="pre">$DETECTOR_CONFIG</span></code></p></li>
+<li><p>Look into the xml file – <code class="docutils literal notranslate"><span class="pre">vim</span> <span class="pre">${DETECTOR_PATH}/${DETECTOR}.xml</span></code></p></li>
+<li><p>Visualize the geometry by – <code class="docutils literal notranslate"><span class="pre">dd_web_display</span> <span class="pre">/path/to/xml</span></code></p></li>
+<li><p>run overlap checks to see if any geometries are overlapping by – ``</p></li>
+</ul>
 <section id="exercise">
-<h2><span class="section-number">4.2.2. </span>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
-<section id="can-you-now-generalize-this-to-any-a-lower-and-upper-limit">
-<h3><span class="section-number">4.2.2.1. </span>1. Can you now generalize this to any a lower and upper limit<a class="headerlink" href="#can-you-now-generalize-this-to-any-a-lower-and-upper-limit" title="Link to this heading">#</a></h3>
-</section>
-<section id="can-you-study-the-effects-of-n-on-computational-accuracy-of-pi">
-<h3><span class="section-number">4.2.2.2. </span>2. Can you study the effects of <code class="docutils literal notranslate"><span class="pre">n</span></code> on computational accuracy of <code class="docutils literal notranslate"><span class="pre">pi</span></code>?<a class="headerlink" href="#can-you-study-the-effects-of-n-on-computational-accuracy-of-pi" title="Link to this heading">#</a></h3>
-</section>
-<section id="how-can-you-find-the-area-of-the-circle-from-here-how-is-it-related-to-hv-calculation">
-<h3><span class="section-number">4.2.2.3. </span>3. How can you find the area of the circle from here? How is it related to HV calculation.<a class="headerlink" href="#how-can-you-find-the-area-of-the-circle-from-here-how-is-it-related-to-hv-calculation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.2.1. </span>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Visualize the geometry files for <code class="docutils literal notranslate"><span class="pre">far</span> <span class="pre">forward</span></code>, <code class="docutils literal notranslate"><span class="pre">dRICH</span></code> and <code class="docutils literal notranslate"><span class="pre">inner</span></code> detectors.</p></li>
+<li><p>Modify the increase radius of the cylindrical central trackers and check for</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -669,7 +568,7 @@ Monte Carlo integration is a numerical technique that uses random sampling to es
         },
         kernelOptions: {
             name: "python3",
-            path: "./Day-2"
+            path: "./Day-5"
         },
         predefinedOutput: true
     }
@@ -687,22 +586,13 @@ Monte Carlo integration is a numerical technique that uses random sampling to es
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="MOO_concepts.html"
+       href="pre_requisities.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4.1. </span>Concepts in MOO</p>
+        <p class="prev-next-title"><span class="section-number">13.1. </span>Prerequisities</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../Day-3/intro.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -720,11 +610,9 @@ Monte Carlo integration is a numerical technique that uses random sampling to es
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-value-of-pi-using-mc-methods">4.2.1. Computing value of <code class="docutils literal notranslate"><span class="pre">pi</span></code> using MC methods</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">4.2.2. Exercise</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-now-generalize-this-to-any-a-lower-and-upper-limit">4.2.2.1. 1. Can you now generalize this to any a lower and upper limit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you-study-the-effects-of-n-on-computational-accuracy-of-pi">4.2.2.2. 2. Can you study the effects of <code class="docutils literal notranslate"><span class="pre">n</span></code> on computational accuracy of <code class="docutils literal notranslate"><span class="pre">pi</span></code>?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-can-you-find-the-area-of-the-circle-from-here-how-is-it-related-to-hv-calculation">4.2.2.3. 3. How can you find the area of the circle from here? How is it related to HV calculation.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eic-shell">13.2.1. eic-shell</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dd4hep">13.2.2. dd4hep</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">13.2.2.1. Exercise</a></li>
 </ul>
 </li>
 </ul>

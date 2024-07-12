@@ -99,7 +99,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script src="https://unpkg.com/d3/dist/d3.min.js"></script>
     <script>
                 window.addEventListener("load", function () {
-                  var svgs = d3.selectAll(".mermaid#id-f4a819bf-62d9-4ff3-ab38-d886b5a247c4 svg, .mermaid#id-33e52f35-b999-4383-8e7e-a27e9a601d88 svg");
+                  var svgs = d3.selectAll(".mermaid#id-9128551a-d79e-4553-848c-28f1b173b8c9 svg, .mermaid#id-244acf3a-f3ed-4141-ac87-7bad7c29e728 svg");
                   svgs.each(function() {
                     var svg = d3.select(this);
                     svg.html("<g>" + svg.html() + "</g>");
@@ -304,6 +304,12 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l2"><a class="reference internal" href="../../Day-4/Design_MOBO2.html">12.2. MOBO</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Day 5 - Introduction EIC software framework</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Day-5/intro_EIC-software.html">13. Introduction to EIC Software stack.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Day-5/pre_requisities.html">14. Prerequisities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Day-5/eic-shell.html">15. EIC installation and geometry</a></li>
 </ul>
 
     </div>
@@ -536,7 +542,7 @@ document.write(`
 <p>One of the primary goals of a VCS is to facilitate collaborative work. Imagine a team of developers working on the same project, perhaps even the same files, simultaneously. Without a VCS, their changes could easily conflict, leading to confusion and potential loss of work. A VCS allows multiple team members to collaborate seamlessly, ensuring that each person’s contributions are preserved and integrated without affecting others’ work.</p>
 <p>Another term often used interchangeably with VCS is Software Configuration Management (SCM) system. While version control is a critical component of SCM, SCM encompasses a broader range of practices and tools. Git, one of the most popular VCS tools, highlights this interchangeability in its official documentation, which can be found at <a class="reference external" href="http://git-scm.com">git-scm.com</a>. Although VCSs are predominantly used for software projects, their utility extends to other types of projects, such as books and online tutorials.</p>
 <div class="full-width docutils">
-<div id="id-f4a819bf-62d9-4ff3-ab38-d886b5a247c4" class="mermaid">
+<div id="id-9128551a-d79e-4553-848c-28f1b173b8c9" class="mermaid">
             graph TD
     subgraph Local VCS
         A[Local Repository]
@@ -568,7 +574,7 @@ document.write(`
 </ol>
 <p>By using a VCS, you not only maintain a comprehensive history of your project but also enhance collaboration and streamline your workflow. Whether you are working alone or as part of a team, a VCS is an indispensable tool for managing and preserving the integrity of your work.</p>
 <div class="full-width docutils">
-<div id="id-33e52f35-b999-4383-8e7e-a27e9a601d88" class="mermaid">
+<div id="id-244acf3a-f3ed-4141-ac87-7bad7c29e728" class="mermaid">
             graph LR
     VCS(Version Control System)
     VCS --&gt; CT(Change Tracking)
