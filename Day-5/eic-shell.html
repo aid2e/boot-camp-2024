@@ -509,6 +509,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eic-shell">13.2.1. eic-shell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dd4hep">13.2.2. dd4hep</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">13.2.2.1. Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#having-own-version-of-the-geometry">13.2.2.2. Having own version of the geometry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.2.2.3. Exercise</a></li>
 </ul>
 </li>
 </ul>
@@ -549,7 +551,26 @@ document.write(`
 <h3><span class="section-number">13.2.2.1. </span>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Visualize the geometry files for <code class="docutils literal notranslate"><span class="pre">far</span> <span class="pre">forward</span></code>, <code class="docutils literal notranslate"><span class="pre">dRICH</span></code> and <code class="docutils literal notranslate"><span class="pre">inner</span></code> detectors.</p></li>
-<li><p>Modify the increase radius of the cylindrical central trackers and check for</p></li>
+</ul>
+</section>
+<section id="having-own-version-of-the-geometry">
+<h3><span class="section-number">13.2.2.2. </span>Having own version of the geometry<a class="headerlink" href="#having-own-version-of-the-geometry" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$EIC_PROJECT_DIR</span></code></p></li>
+<li><p>If not in eic-shell then <code class="docutils literal notranslate"><span class="pre">./eic/eic-shell</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/eic/epic.git</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">$EIC_PROJECT_DIR/epic_install</span> <span class="pre">$EIC_PROJECT_DIR/epic_build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-B</span> <span class="pre">$EIC_PROJECT_DIR/epic_build</span> <span class="pre">-S</span> <span class="pre">$EIC_PROJECT_DIR/epic</span> <span class="pre">-DCMAKE_INSTALL_PREFIX=$EIC_PROJECT_DIR/epic_install</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span> <span class="pre">$EIC_PROJECT_DIR/epic_build</span> <span class="pre">-j8</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--install</span> <span class="pre">$EIC_PROJECT_DIR/epic_build</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">$EIC_PROJECT_DIR/epic_install/bin/thisepic.sh</span></code></p></li>
+</ul>
+</section>
+<section id="id1">
+<h3><span class="section-number">13.2.2.3. </span>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Repeat the same steps as above</p></li>
+<li><p>Try to change the dimensions of say the cylindrical inner tracker.</p></li>
 </ul>
 </section>
 </section>
@@ -613,6 +634,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eic-shell">13.2.1. eic-shell</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dd4hep">13.2.2. dd4hep</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">13.2.2.1. Exercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#having-own-version-of-the-geometry">13.2.2.2. Having own version of the geometry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">13.2.2.3. Exercise</a></li>
 </ul>
 </li>
 </ul>

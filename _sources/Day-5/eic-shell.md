@@ -23,7 +23,23 @@ Please check out [here](https://eic.github.io/tutorial-geometry-development-usin
 ### Exercise
 
 * Visualize the geometry files for `far forward`, `dRICH` and `inner` detectors. 
-* Modify the increase radius of the cylindrical central trackers and check for 
+
+### Having own version of the geometry
+
+* `cd $EIC_PROJECT_DIR`
+* If not in eic-shell then `./eic/eic-shell`
+* `git clone https://github.com/eic/epic.git`
+* `mkdir $EIC_PROJECT_DIR/epic_install $EIC_PROJECT_DIR/epic_build`
+* `cmake -B $EIC_PROJECT_DIR/epic_build -S $EIC_PROJECT_DIR/epic -DCMAKE_INSTALL_PREFIX=$EIC_PROJECT_DIR/epic_install`
+* `cmake --build $EIC_PROJECT_DIR/epic_build -j8`
+* `cmake --install $EIC_PROJECT_DIR/epic_build`
+* `source $EIC_PROJECT_DIR/epic_install/bin/thisepic.sh`
+
+### Exercise
+
+* Repeat the same steps as above
+* Try to change the dimensions of say the cylindrical inner tracker. 
+
 
 
 
