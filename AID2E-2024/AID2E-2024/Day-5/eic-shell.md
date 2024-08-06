@@ -40,6 +40,17 @@ Please check out [here](https://eic.github.io/tutorial-geometry-development-usin
 * Repeat the same steps as above
 * Try to change the dimensions of say the cylindrical inner tracker. 
 
+### Caveats 
+
+In nodes without a internet connections, the scripts fail due to the fact the calibration files cannot be downloaded. This is the case in JLab's farm nodes as well as some nodes in W&M. To circumvent this, one can in download all necessary calibration files and place them in the `${DETECTOR_PATH}/calibrations` folder
+
+1. Within the `eic-shell` and with all neccessary `epic_install`, run `dd_web_display  ${DETECTOR_PATH}/${DETECTOR_CONFIG}.xml`
+2. This should produce `calibrations` and `fieldmaps`. 
+3. `cp -r calibrations/* $DETECTOR_PATH/calibrations/`
+4. `cp -r fieldmaps $DETECTOR_PATH/calibrations/`
+
+Now, you have neccesary calibration files for the detector configuration you are using.
+
 
 
 
