@@ -13,3 +13,8 @@ The week-1 lectures are scheduled to to take place at [1291 at Integrated Scienc
 
 ```{tableofcontents}
 ```
+
+## A few Project links
+
+1. [B0 Tracker - Single Objective Optimization](https://github.com/aid2e/B0-Tracker-SOO)
+2. [SlurmRunner - For running B0 Tracker in parallel using slurm](https://github.com/aid2e/SlurmRunner)
